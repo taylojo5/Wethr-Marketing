@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wethr — App Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-400: #4A9EC1;
+      --cerulean-300: #72B8D4;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50: #E8F5FB;
+      --sunrise-700: #B85C00;
+      --sunrise-600: #D97022;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-300: #FAC48A;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50: #FEF6EC;
+      --meadow-700: #2A6120;
+      --meadow-600: #357A29;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50: #EBF7E4;
+      --amber-700: #9A5B00;
+      --amber-50: #FEF7E8;
+      --amber-100: #FDECC8;
+      --crimson-500: #C0293F;
+      --crimson-50: #FDF0F2;
+      --crimson-100: #F9D0D6;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50: #F9FAFB;
+      --brand-rule: linear-gradient(90deg, #1E3A5F, #2E86AB, #F08330);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--neutral-700); background: var(--neutral-50); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15, 35, 55, 0.97); backdrop-filter: blur(14px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 60px;
+    }
+    nav::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--brand-rule); opacity: 0.75; }
+
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-wordmark { font-family: 'Lora', serif; font-size: 19px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+    .nav-back { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: white; }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: var(--navy-950); padding: 100px 48px 72px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 20% 60%, rgba(46,134,171,0.14) 0%, transparent 55%), radial-gradient(ellipse 50% 50% at 80% 30%, rgba(240,131,48,0.08) 0%, transparent 50%); }
+    .page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--brand-rule); }
+    .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 2; }
+
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(240,131,48,0.1); border: 1px solid rgba(240,131,48,0.2); border-radius: 9999px; padding: 4px 13px; margin-bottom: 20px; }
+    .hero-eyebrow span { font-size: 11px; font-weight: 600; color: var(--sunrise-300); letter-spacing: 0.8px; text-transform: uppercase; }
+
+    .page-hero h1 { font-family: 'Lora', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: white; letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: italic; background: linear-gradient(90deg, var(--cerulean-300), var(--sunrise-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 580px; }
+
+    /* Surface nav pills */
+    .surface-nav { background: var(--navy-900); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 48px; position: sticky; top: 60px; z-index: 90; }
+    .surface-nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+    .surface-nav-inner::-webkit-scrollbar { display: none; }
+    .surface-nav-item { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.45); padding: 14px 18px; border-bottom: 2px solid transparent; text-decoration: none; white-space: nowrap; transition: all 0.2s; cursor: pointer; display: flex; align-items: center; gap: 7px; }
+    .surface-nav-item:hover { color: rgba(255,255,255,0.8); }
+    .surface-nav-item.active { color: white; border-bottom-color: var(--sunrise-500); }
+    .surface-nav-item .nav-icon { font-size: 14px; }
+
+    /* ── MAIN LAYOUT ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 0 48px 120px; }
+
+    /* ── SURFACE SECTION ── */
+    .surface-section { padding: 80px 0 0; }
+
+    .surface-header { margin-bottom: 48px; }
+    .surface-number { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--sunrise-600); margin-bottom: 8px; }
+    .surface-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 700; color: var(--navy-900); letter-spacing: -0.4px; margin-bottom: 10px; }
+    .surface-desc { font-size: 16px; color: var(--neutral-500); line-height: 1.7; max-width: 620px; }
+
+    /* Brand rule under surface titles */
+    .brand-rule { width: 40px; height: 3px; background: var(--brand-rule); border-radius: 2px; margin: 14px 0 18px; }
+
+    /* ── SCREENSHOT SLOT ── */
+    /*
+     * Replace .screenshot-placeholder > img with a real <img> tag when you have screenshots.
+     * The slot maintains aspect ratio and the label describes exactly what to show.
+     */
+    .screenshot-wrap { position: relative; }
+
+    .screenshot-slot {
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+      position: relative;
+    }
+
+    /* Window chrome bar at top of each screenshot */
+    .screenshot-chrome {
+      background: var(--navy-950);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .chrome-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .chrome-url { margin-left: 10px; font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'DM Sans', sans-serif; }
+    .chrome-rule { position: absolute; top: 36px; left: 0; right: 0; height: 2px; background: var(--brand-rule); opacity: 0.6; }
+
+    /* The placeholder area itself */
+    .screenshot-placeholder {
+      background: var(--neutral-50);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 48px 40px;
+      position: relative;
+      border: 2px dashed var(--neutral-200);
+      border-radius: 0 0 14px 14px;
+    }
+
+    /* Sizing variants */
+    .screenshot-placeholder.tall { min-height: 560px; }
+    .screenshot-placeholder.short { min-height: 300px; }
+    .screenshot-placeholder.wide { min-height: 480px; }
+
+    .placeholder-icon { font-size: 32px; opacity: 0.4; }
+
+    .placeholder-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--neutral-400);
+      text-align: center;
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .placeholder-desc {
+      font-size: 12px;
+      color: var(--neutral-400);
+      text-align: center;
+      max-width: 420px;
+      line-height: 1.65;
+    }
+
+    .placeholder-tag {
+      background: var(--neutral-100);
+      border: 1px solid var(--neutral-200);
+      border-radius: 9999px;
+      padding: 3px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--neutral-500);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    /* ── SCREENSHOT GRID LAYOUTS ── */
+    .screenshot-single { margin-bottom: 40px; }
+
+    .screenshot-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .screenshot-trio {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .screenshot-featured {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 20px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+
+    .screenshot-featured.reverse { grid-template-columns: 2fr 3fr; }
+
+    /* ── CALLOUT ANNOTATION ── */
+    /* Numbered annotations beneath a screenshot explaining what to show */
+    .annotations { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .annotation { display: flex; align-items: flex-start; gap: 12px; }
+    .annotation-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--sunrise-500); color: white;
+      font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .annotation-text { font-size: 13px; color: var(--neutral-600, #4B5563); line-height: 1.6; }
+    .annotation-text strong { color: var(--neutral-900); font-weight: 600; }
+
+    /* ── CAPTION ── */
+    .screenshot-caption { font-size: 12px; color: var(--neutral-400); margin-top: 10px; text-align: center; line-height: 1.5; }
+
+    /* ── SURFACE DIVIDER ── */
+    .surface-divider { height: 1px; background: var(--neutral-200); margin: 80px 0 0; }
+
+    /* ── WALKTHROUGH STEP ── */
+    /* Numbered steps within a surface section */
+    .step-group { display: flex; flex-direction: column; gap: 56px; }
+
+    .step { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+    .step.reverse { grid-template-columns: 1fr 280px; }
+    .step.reverse .step-meta { order: 2; }
+    .step.reverse .step-screenshot { order: 1; }
+
+    .step-meta {}
+    .step-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--sunrise-500); margin-bottom: 8px; }
+    .step-title { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: var(--navy-900); margin-bottom: 10px; line-height: 1.3; }
+    .step-body { font-size: 14px; color: var(--neutral-500); line-height: 1.7; }
+    .step-body ul { margin-top: 10px; list-style: none; display: flex; flex-direction: column; gap: 6px; padding-left: 0; }
+    .step-body li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
+    .step-body li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--sunrise-400); flex-shrink: 0; margin-top: 7px; }
+
+    .step-screenshot { width: 100%; }
+
+    /* ── CONTEXT CALLOUT BOX ── */
+    .callout {
+      background: var(--cerulean-50);
+      border: 1px solid var(--cerulean-100);
+      border-left: 3px solid var(--cerulean-500);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 24px 0;
+      font-size: 13px;
+      color: var(--cerulean-700);
+      line-height: 1.65;
+    }
+
+    .callout.sunrise {
+      background: var(--sunrise-50);
+      border-color: var(--sunrise-100);
+      border-left-color: var(--sunrise-500);
+      color: var(--sunrise-700);
+    }
+
+    .callout.meadow {
+      background: var(--meadow-50);
+      border-color: var(--meadow-100);
+      border-left-color: var(--meadow-500);
+      color: var(--meadow-700);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .surface-nav { padding: 0 20px; }
+      .page-hero { padding: 90px 20px 60px; }
+      main { padding: 0 20px 80px; }
+      .screenshot-pair, .screenshot-trio, .screenshot-featured, .screenshot-featured.reverse { grid-template-columns: 1fr; }
+      .step, .step.reverse { grid-template-columns: 1fr; }
+      .step.reverse .step-meta { order: 0; }
+      .step.reverse .step-screenshot { order: 0; }
+    }
+
+    /* ── FADE ANIMATION ── */
+    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── SECTION LABEL CHIP ── */
+    .scope-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 9999px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+    .scope-chip.admin { background: var(--navy-50, #EBF2F9); color: var(--navy-900); border: 1px solid var(--navy-100); }
+    .scope-chip.leader { background: var(--cerulean-50); color: var(--cerulean-700); border: 1px solid var(--cerulean-100); }
+    .scope-chip.volunteer { background: var(--meadow-50); color: var(--meadow-700); border: 1px solid var(--meadow-100); }
+    .scope-chip.public { background: var(--sunrise-50); color: var(--sunrise-700); border: 1px solid var(--sunrise-100); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="wethr-pitch-brochure.html" class="nav-brand">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <rect width="34" height="34" rx="8" fill="#0F2337"/>
+      <line x1="17" y1="4.5" x2="17" y2="7" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="23.2" y1="6.3" x2="21.6" y2="7.9" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="25.5" y1="12.5" x2="23" y2="12.5" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="10.8" y1="6.3" x2="12.4" y2="7.9" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <line x1="8.5" y1="12.5" x2="11" y2="12.5" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+      <circle cx="17" cy="12.5" r="2.8" fill="#F08330"/>
+      <polygon points="17,12 11,18 23,18" fill="#1E3A5F"/>
+      <rect x="15.8" y="9.5" width="2.4" height="4" rx="0.5" fill="#1E3A5F"/>
+      <line x1="14.8" y1="10.8" x2="19.2" y2="10.8" stroke="#F08330" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="12" y="18" width="10" height="7" rx="1" fill="#2E86AB"/>
+      <rect x="15.3" y="20.5" width="3.4" height="4.5" rx="1.7" fill="#0F2337"/>
+      <path d="M3 27.5 Q6 26 9 27.5 Q12 29 15 27.5 Q18 26 21 27.5 Q24 29 27 27.5 Q30 26 33 27.5" stroke="#4A9EC1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.85"/>
+    </svg>
+    <span class="nav-wordmark">Wethr</span>
+  </a>
+  <a href="wethr-pitch-brochure.html" class="nav-back">← Back to Pitch</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span>App Preview · Phase 1</span></div>
+    <h1>See Wethr <em>in action.</em></h1>
+    <p>A surface-by-surface walkthrough of the Wethr application — from the service builder your leaders live in on Saturday, to the schedule view your volunteers see on their phones Sunday morning.</p>
+  </div>
+</div>
+
+<!-- STICKY SURFACE NAV -->
+<nav class="surface-nav">
+  <div class="surface-nav-inner">
+    <a href="#shell" class="surface-nav-item"><span class="nav-icon">🏠</span> App Shell</a>
+    <a href="#directory" class="surface-nav-item"><span class="nav-icon">👥</span> Directory</a>
+    <a href="#teams" class="surface-nav-item"><span class="nav-icon">🎵</span> Ministry Teams</a>
+    <a href="#services" class="surface-nav-item"><span class="nav-icon">☀️</span> Order of Service</a>
+    <a href="#scheduling" class="surface-nav-item"><span class="nav-icon">📅</span> Scheduling</a>
+    <a href="#person" class="surface-nav-item"><span class="nav-icon">👤</span> Person Profile</a>
+    <a href="#mobile" class="surface-nav-item"><span class="nav-icon">📱</span> Mobile / PWA</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 1: APP SHELL
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="shell">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 01</div>
+      <h2 class="surface-title">The App Shell</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">The authenticated wrapper every logged-in user sees. Navy sidebar for navigation, canvas background for content, and the brand gradient rule at the top of every page header.</p>
+    </div>
+
+    <!-- SLOT 1-A: Full app shell overview -->
+    <div class="screenshot-single fade-up">
+      <div class="screenshot-slot">
+        <div class="screenshot-chrome">
+          <div class="chrome-dot" style="background:#FF5F56"></div>
+          <div class="chrome-dot" style="background:#FFBD2E"></div>
+          <div class="chrome-dot" style="background:#27C93F"></div>
+          <div class="chrome-url">gracechurch.wethr.app/dashboard</div>
+          <div class="chrome-rule"></div>
+        </div>
+        <div class="screenshot-placeholder wide">
+          <div class="placeholder-icon">🏠</div>
+          <div class="placeholder-label">Full-width dashboard screenshot — desktop</div>
+          <div class="placeholder-desc">Show the complete authenticated shell: navy sidebar on the left with the Wethr logo, church name, and all nav items (Order of Service, Directory, Teams, Scheduling, etc.). Main content area shows the dashboard with upcoming service summary cards and a "next service" highlight. The brand gradient rule (navy → cerulean → sunrise) visible at the top of the page header.</div>
+          <div class="placeholder-tag">1280 × 800 · Desktop</div>
+        </div>
+      </div>
+      <p class="screenshot-caption">The Wethr dashboard — your Sunday at a glance, with everything one click away.</p>
+    </div>
+
+    <div class="annotations fade-up">
+      <div class="annotation"><div class="annotation-num">1</div><div class="annotation-text"><strong>Sidebar navigation</strong> — navy, full-height. Logo at top, nav items with icons, active state highlighted with cerulean accent and left border. Church name and user avatar at the bottom.</div></div>
+      <div class="annotation"><div class="annotation-num">2</div><div class="annotation-text"><strong>Brand gradient rule</strong> — the 4px navy → cerulean → sunrise stripe at the top of every page header. Consistent visual anchor across every surface.</div></div>
+      <div class="annotation"><div class="annotation-num">3</div><div class="annotation-text"><strong>Dashboard cards</strong> — next upcoming service with date, status badge (Draft / Confirmed), and filled role count. Quick-action buttons to open the service or schedule view.</div></div>
+    </div>
+
+    <!-- SLOT 1-B: Sidebar close-up pair -->
+    <div class="screenshot-pair" style="margin-top:40px">
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">— sidebar (expanded)</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder">
+            <div class="placeholder-icon">◀</div>
+            <div class="placeholder-label">Sidebar close-up — all nav items visible</div>
+            <div class="placeholder-desc">Crop the sidebar to fill the frame. Show all 8 nav items: Order of Service (active, highlighted), Family Directory, Ministry Teams, Scheduling, Small Groups (future — dimmed), Communications (future — dimmed), Files & Notes (future — dimmed), Reporting (future — dimmed). Badge showing unread count on Scheduling if applicable.</div>
+            <div class="placeholder-tag">Cropped · Sidebar only</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Sidebar with active state on "Order of Service"</p>
+      </div>
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">— page header anatomy</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder">
+            <div class="placeholder-icon">📐</div>
+            <div class="placeholder-label">Page header close-up — brand rule + title</div>
+            <div class="placeholder-desc">A cropped screenshot of just the page header area. Shows the 4px brand gradient rule at the very top, the Lora serif page title (e.g. "Family Directory"), a subtitle or breadcrumb, and primary action button (e.g. "Add Person") in Sunrise orange on the right side.</div>
+            <div class="placeholder-tag">Cropped · Header region</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Consistent page header pattern — every surface looks like this.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface-divider"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 2: FAMILY DIRECTORY
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="directory">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 02</div>
+      <h2 class="surface-title">Family Directory</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">The relational foundation of Wethr. Every person and family record lives here — searchable, filterable, and always in sync with team memberships and scheduling history.</p>
+    </div>
+
+    <div class="callout fade-up">
+      <strong>Who sees this:</strong> Admins and Staff see full records. Ministry Leaders see directory members on their team. Volunteers and Members see a limited self-service view of their own profile.
+    </div>
+
+    <!-- SLOT 2-A: Directory list view -->
+    <div class="screenshot-single fade-up">
+      <div class="screenshot-slot">
+        <div class="screenshot-chrome">
+          <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+          <div class="chrome-url">gracechurch.wethr.app/directory</div>
+          <div class="chrome-rule"></div>
+        </div>
+        <div class="screenshot-placeholder wide">
+          <div class="placeholder-icon">👥</div>
+          <div class="placeholder-label">Directory list view — full page, populated with real-looking data</div>
+          <div class="placeholder-desc">Show the directory table/list with 8–10 rows of people. Each row: avatar with gradient initials, full name (Lora serif), member status badge (Member in meadow green, Visitor in amber, Inactive in gray), email, phone, and team membership tags. Search bar at the top with placeholder text. Filter chips for "All · Members · Visitors · Inactive". "Add Person" button in Sunrise orange top-right.</div>
+          <div class="placeholder-tag">1280 × 780 · Desktop</div>
+        </div>
+      </div>
+      <p class="screenshot-caption">The directory — 247 people, searchable in milliseconds.</p>
+    </div>
+
+    <div class="step-group" style="margin-top:48px">
+
+      <!-- Step: Person detail panel -->
+      <div class="step fade-up">
+        <div class="step-meta">
+          <div class="step-num">Detail View</div>
+          <h3 class="step-title">Person profile — slide-over panel</h3>
+          <p class="step-body">Clicking any person opens a side panel without leaving the list. Contact info, member status, household linkage, team memberships, and scheduling history in one place.</p>
+          <div class="callout" style="margin-top:16px;font-size:12px">The list stays in place behind the panel — position is never lost.</div>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">gracechurch.wethr.app/directory → panel open</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder tall">
+              <div class="placeholder-icon">👤</div>
+              <div class="placeholder-label">Directory list with person detail panel open on the right</div>
+              <div class="placeholder-desc">The directory list is visible but slightly dimmed on the left. A side panel slides in from the right showing a specific person's full record: large avatar, name + status badge at top, tabs for "Profile / Teams / Schedule History". Profile tab shows: contact info fields (email, phone, address), birthdate, member since date, household link (spouse + children listed below), notes field, and tags. An "Edit" button in the panel header.</div>
+              <div class="placeholder-tag">1280 × 800 · Panel open</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step: Add person form -->
+      <div class="step reverse fade-up">
+        <div class="step-meta">
+          <div class="step-num">Creating a Record</div>
+          <h3 class="step-title">Add person — modal form</h3>
+          <p class="step-body">Adding a new member or visitor opens a clean modal. Required fields only to start — everything else can be filled in later.</p>
+          <p class="step-body" style="margin-top:10px">The form uses inline validation: errors appear as you move between fields, not on submit.</p>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">gracechurch.wethr.app/directory → Add Person</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder tall">
+              <div class="placeholder-icon">➕</div>
+              <div class="placeholder-label">"Add Person" modal — partially filled, showing form validation</div>
+              <div class="placeholder-desc">Full-screen modal over a dimmed directory background. Form fields: First Name, Last Name (both filled), Email (filled, valid — green checkmark), Phone (empty, optional — shown in muted state), Member Status dropdown (showing "Member" selected), Household — "Link to existing household" option. One field showing an inline error state (e.g., malformed phone number) in crimson. "Save Person" button (Sunrise, active) and "Cancel" (ghost) in the footer.</div>
+              <div class="placeholder-tag">Modal · 560px wide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="surface-divider"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 3: MINISTRY TEAMS
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="teams">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 03</div>
+      <h2 class="surface-title">Ministry Teams</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">Every team in the church, structured. Leaders, roles, and members — always connected to the directory and the scheduling engine.</p>
+    </div>
+
+    <!-- SLOT 3-A: Team list + team detail -->
+    <div class="screenshot-featured fade-up">
+      <div class="screenshot-wrap">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">gracechurch.wethr.app/teams</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder tall">
+            <div class="placeholder-icon">🎵</div>
+            <div class="placeholder-label">Teams index — card grid of all ministry teams</div>
+            <div class="placeholder-desc">A grid of team cards (2–3 columns). Each card: navy header with the brand gradient rule stripe at top, team name in Lora serif, team leader name + avatar, member count, role count, and a "View Team →" link. Teams shown: Worship Team, Nursery, Youth Group, Hospitality, Tech & AV, Parking & Grounds. "New Team" button top-right in Sunrise orange.</div>
+            <div class="placeholder-tag">1280 × 700 · Desktop</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Teams index — every ministry at a glance.</p>
+      </div>
+      <div class="screenshot-wrap">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">gracechurch.wethr.app/teams/worship</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder tall">
+            <div class="placeholder-icon">🎸</div>
+            <div class="placeholder-label">Individual team page — Worship Team roster and roles</div>
+            <div class="placeholder-desc">Team detail page for "Worship Team." Header with team name, leader info, and member count. Two-panel layout: left side shows the Roles list (Vocalist Lead, Vocalist BG, Guitarist, Keys, Drums, Bass, Sound Tech — each with member count and an "Edit role" icon). Right side shows the full member roster as a list — each member with their avatar, name, role tags (e.g., "Vocalist · Keys"), and availability status chip. "Add Member" button.</div>
+            <div class="placeholder-tag">1280 × 800 · Team detail</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Worship Team — roles defined, roster populated.</p>
+      </div>
+    </div>
+
+    <div class="annotations fade-up">
+      <div class="annotation"><div class="annotation-num">1</div><div class="annotation-text"><strong>Role definitions</strong> are set here and flow directly into the Order of Service builder — when you add a Worship Set block to a service, Wethr knows exactly which roles need to be filled.</div></div>
+      <div class="annotation"><div class="annotation-num">2</div><div class="annotation-text"><strong>Multi-role members</strong> — a person can hold multiple roles on a team (e.g., "Vocalist + Keys"). The scheduler uses all their eligible roles when assigning them to services.</div></div>
+    </div>
+  </div>
+
+  <div class="surface-divider"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 4: ORDER OF SERVICE
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="services">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 04</div>
+      <h2 class="surface-title">Order of Service Builder</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">The most complex — and most used — surface in Wethr. A drag-and-drop service builder where every block is connected to a person, a role, and a time. This is the heartbeat of the product.</p>
+    </div>
+
+    <div class="callout sunrise fade-up">
+      <strong>The Order of Service is the center of gravity.</strong> Everything else in Wethr — teams, scheduling, people — exists to serve this surface. If a leader only ever uses one screen, it's this one.
+    </div>
+
+    <!-- SLOT 4-A: Full builder, hero shot -->
+    <div class="screenshot-single fade-up">
+      <div class="screenshot-slot">
+        <div class="screenshot-chrome">
+          <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+          <div class="chrome-url">gracechurch.wethr.app/services/mar-16</div>
+          <div class="chrome-rule"></div>
+        </div>
+        <div class="screenshot-placeholder tall" style="min-height:600px">
+          <div class="placeholder-icon">☀️</div>
+          <div class="placeholder-label">Order of Service builder — full page, service in progress</div>
+          <div class="placeholder-desc">The full service builder for "Sunday March 16 — Morning Worship." Status bar at top showing "Confirmed" badge in meadow green, date/time, and action buttons ("Print Run-of-Show", "Duplicate Service"). Below: a vertical list of 6–7 service blocks rendered as cards. Each block shows: drag handle on the left, colored dot for block type, block name (Lora serif), assigned person(s) with their avatar and role, time/duration estimate on the right, and a "···" overflow menu. A "+" insert block button visible between cards. The blocks: Welcome & Announcements (Pastor David Kim), Worship Set (3 avatars for Maria, James, Elena), Scripture Reading (Elena Marsh), Message — "Steadfast" (Pastor David Kim), Offering (Tony Rivera), Closing Worship (Worship Team). One block should be in an "expanded/editing" state showing its inline edit panel.</div>
+          <div class="placeholder-tag">1280 × 860 · Full builder</div>
+        </div>
+      </div>
+      <p class="screenshot-caption">The Order of Service for Sunday March 16 — confirmed, 6 blocks, all roles filled.</p>
+    </div>
+
+    <div class="step-group" style="margin-top:56px">
+
+      <!-- Step: Block expanded/editing -->
+      <div class="step fade-up">
+        <div class="step-meta">
+          <div class="step-num">Editing a Block</div>
+          <h3 class="step-title">Inline block configuration</h3>
+          <p class="step-body">Clicking any block expands its configuration panel in place — no modal, no page navigation. Fields are specific to the block type.</p>
+          <p class="step-body" style="margin-top:10px">The Worship Set block shows song list, key, tempo. The Sermon block shows series name, scripture reference, and speaker. Custom blocks are freeform.</p>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">— Worship Set block expanded</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder tall">
+              <div class="placeholder-icon">✏️</div>
+              <div class="placeholder-label">The Worship Set block in expanded/edit mode</div>
+              <div class="placeholder-desc">The Worship Set block card is expanded, taller than the others, with a soft highlight/border. Inside the expanded panel: a song list with 4 songs (draggable, each with title + key + a remove "×" button). An "Add song" input below the list. Below that, a "Role Assignments" section: a mini-roster showing each Worship Team role (Vocalist Lead, Guitarist, Keys, Drums) with a combobox dropdown for each — one shows "Maria Chen" selected (green Available badge), another shows "Sam Rivera" selected (red Blackout badge with a warning tooltip "Mar 16 blackout"). "Save block" button at the bottom of the panel.</div>
+              <div class="placeholder-tag">Cropped · Block expanded</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step: Add block picker -->
+      <div class="step reverse fade-up">
+        <div class="step-meta">
+          <div class="step-num">Adding a Block</div>
+          <h3 class="step-title">Block type picker</h3>
+          <p class="step-body">Clicking "+" between any two blocks — or at the bottom of the list — opens the block type picker. All standard types are one click away. Custom blocks accept a freeform label.</p>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">— Add block picker</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder">
+              <div class="placeholder-icon">➕</div>
+              <div class="placeholder-label">Block type picker — small popover</div>
+              <div class="placeholder-desc">A compact popover/dropdown that appears when clicking "+" between blocks. Shows a grid of block type options, each with a colored icon and label: 🎵 Worship Set (cerulean), 📖 Scripture Reading (meadow), 🎤 Message / Sermon (navy), 🙏 Prayer (soft purple), 💰 Offering (amber), 🍞 Communion (warm brown), 👋 Welcome / Announcements (cerulean), ✦ Custom Block (neutral). Hovering one shows a subtle highlight. A "Custom" text input at the bottom for naming a freeform block.</div>
+              <div class="placeholder-tag">Popover · 280px wide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step: Print / run of show -->
+      <div class="step fade-up">
+        <div class="step-meta">
+          <div class="step-num">Run-of-Show</div>
+          <h3 class="step-title">Printable service plan</h3>
+          <p class="step-body">One click generates a clean, printable run-of-show. Timed blocks, assigned personnel, and internal notes — formatted for the person holding it on Sunday morning.</p>
+          <p class="step-body" style="margin-top:10px">No login required to view a shared link — the run-of-show can be sent to anyone.</p>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">gracechurch.wethr.app/services/mar-16/print</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder">
+              <div class="placeholder-icon">🖨️</div>
+              <div class="placeholder-label">Print / run-of-show view — clean, white background</div>
+              <div class="placeholder-desc">A clean, print-optimized layout on a white background. Wethr logo + church name + service date at the top. A timeline-style table: Time column (9:00, 9:08, 9:32…), Block column (Welcome, Worship Set, Scripture…), Person column (Pastor David, Maria Chen + 3 others, Elena Marsh…), Duration column (8 min, 24 min…), Notes column (internal notes visible to staff only, shown in a lighter shade). All blocks present. Footer shows "Generated by Wethr · gracechurch.wethr.app".</div>
+              <div class="placeholder-tag">Print view · A4 / Letter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="surface-divider"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 5: SCHEDULING
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="scheduling">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 05</div>
+      <h2 class="surface-title">Scheduling</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">The scheduling surface is where leaders assign the right volunteer to each role — with full visibility into availability, blackout dates, and frequency caps before a single assignment is made.</p>
+    </div>
+
+    <!-- SLOT 5-A: Schedule grid -->
+    <div class="screenshot-single fade-up">
+      <div class="screenshot-slot">
+        <div class="screenshot-chrome">
+          <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+          <div class="chrome-url">gracechurch.wethr.app/schedule</div>
+          <div class="chrome-rule"></div>
+        </div>
+        <div class="screenshot-placeholder wide">
+          <div class="placeholder-icon">📅</div>
+          <div class="placeholder-label">Schedule grid — roles as rows, service dates as columns</div>
+          <div class="placeholder-desc">A grid view filtered to "Worship Team." Columns = next 4 service dates (Mar 9, Mar 16, Mar 23, Mar 30). Rows = roles (Vocalist Lead, Vocalist BG, Guitarist, Keys, Drummer, Sound Tech). Each cell: assigned person's name + small avatar + an RSVP status chip (Accepted in meadow, Pending in amber, Declined in crimson). Some cells show "Unassigned" in gray dashed state. A filter bar above the grid: "Team: Worship Team" chip + "Date range" picker + "Show conflicts" toggle (on). At least 2 cells should show a conflict indicator (orange warning icon).</div>
+          <div class="placeholder-tag">1280 × 640 · Desktop grid</div>
+        </div>
+      </div>
+      <p class="screenshot-caption">Four weeks of Worship Team scheduling — conflicts surfaced before they become problems.</p>
+    </div>
+
+    <div class="step-group" style="margin-top:56px">
+
+      <!-- Step: Role assignment panel -->
+      <div class="step fade-up">
+        <div class="step-meta">
+          <div class="step-num">Assigning a Role</div>
+          <h3 class="step-title">Volunteer selection with conflict awareness</h3>
+          <p class="step-body">Clicking an unassigned cell opens the volunteer picker. Every eligible person is shown with their availability status — so the leader never assigns someone who's blacked out or over-scheduled.</p>
+          <div class="callout meadow" style="margin-top:16px;font-size:12px"><strong>Only eligible volunteers appear</strong> — filtered to people with the right role on the team, automatically.</div>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">— Assign role: Guitarist · Mar 16</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder tall">
+              <div class="placeholder-icon">🎸</div>
+              <div class="placeholder-label">Volunteer picker for "Guitarist — March 16" assignment</div>
+              <div class="placeholder-desc">A side panel or popover. Header: "Assign Guitarist — March 16." Below: a list of 4–5 eligible Guitarists from the Worship Team roster, each with: avatar + name, availability status chip (Available in cerulean, Blackout in crimson, At Frequency Cap in amber), serving frequency note ("Served 2× this month · cap: 2"), and last served date. Sam Rivera shows a prominent "Blackout — Mar 16" warning. James Park shows "Available" and is highlighted as the recommended pick. A "Confirm Assignment" button activates when a person is selected.</div>
+              <div class="placeholder-tag">Panel · Role assignment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step: Preferences per person -->
+      <div class="step reverse fade-up">
+        <div class="step-meta">
+          <div class="step-num">Per-Person Preferences</div>
+          <h3 class="step-title">Availability, blackouts, and frequency caps</h3>
+          <p class="step-body">Each person in the directory has their own scheduling preferences — which days they're available, dates they can't serve, and how often they want to serve per month. These are set once and respected automatically.</p>
+        </div>
+        <div class="step-screenshot">
+          <div class="screenshot-slot">
+            <div class="screenshot-chrome">
+              <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+              <div class="chrome-url">gracechurch.wethr.app/directory/maria-chen → Schedule tab</div>
+              <div class="chrome-rule"></div>
+            </div>
+            <div class="screenshot-placeholder tall">
+              <div class="placeholder-icon">⚙️</div>
+              <div class="placeholder-label">Person profile — Schedule tab showing scheduling preferences</div>
+              <div class="placeholder-desc">Maria Chen's profile, Schedule tab open. Three sections: 1) "Available days" — a day-of-week toggle strip (Sun, Mon, Tue, Wed, Thu, Fri, Sat) with Sunday and Wednesday checked in cerulean. 2) "Frequency cap" — a number input showing "2 times per month" with a note "Currently scheduled 2× in March — at cap." 3) "Blackout dates" — a list of specific blocked dates with a calendar picker to add new ones. One date shown: "April 6 — Easter weekend." A save button at the bottom of the section.</div>
+              <div class="placeholder-tag">Profile · Schedule tab</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="surface-divider"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 6: PERSON PROFILE (detail)
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="person">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 06</div>
+      <h2 class="surface-title">Person Profile</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">The full record for a person in the directory. Profile, household, team memberships, scheduling history, and notes — all in one view.</p>
+    </div>
+
+    <!-- SLOT 6-A: Full person profile page -->
+    <div class="screenshot-single fade-up">
+      <div class="screenshot-slot">
+        <div class="screenshot-chrome">
+          <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+          <div class="chrome-url">gracechurch.wethr.app/directory/maria-chen</div>
+          <div class="chrome-rule"></div>
+        </div>
+        <div class="screenshot-placeholder tall">
+          <div class="placeholder-icon">👤</div>
+          <div class="placeholder-label">Full person profile page — Maria Chen</div>
+          <div class="placeholder-desc">Full-page profile for Maria Chen. Profile header: large avatar (gradient initials "MC"), name in 28px Lora serif, "Member" badge in meadow green, "Worship Team" tag. Row of quick-info: email address, phone, member since date. Tab bar below header: Profile · Teams · Schedule History · Notes. Profile tab shown: contact details card (address, birthday, anniversary), Household card (linked to "Chen Family" — shows husband David Chen and two children). No photo — show the gradient avatar placeholder prominently. Edit button top-right.</div>
+          <div class="placeholder-tag">1280 × 800 · Profile page</div>
+        </div>
+      </div>
+      <p class="screenshot-caption">Maria Chen's full profile — contact info, household, and team context at a glance.</p>
+    </div>
+
+    <!-- SLOT 6-B: Profile tabs -->
+    <div class="screenshot-trio" style="margin-top:20px">
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">— Teams tab</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder">
+            <div class="placeholder-icon">🎵</div>
+            <div class="placeholder-label">Profile → Teams tab</div>
+            <div class="placeholder-desc">Shows Maria's team memberships: "Worship Team" card with her roles listed (Vocalist Lead, Keys), her leader (James Park), and a "View team →" link. If she's on a second team, show that too. "Add to team" button at the bottom.</div>
+            <div class="placeholder-tag">Teams tab</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Teams tab — all memberships and roles</p>
+      </div>
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">— Schedule History tab</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder">
+            <div class="placeholder-icon">📅</div>
+            <div class="placeholder-label">Profile → Schedule History tab</div>
+            <div class="placeholder-desc">A list of Maria's past and upcoming service assignments: each row shows the service date, block name, role, and RSVP status. Past services show "Served" in gray. Upcoming shows the RSVP status chip. A "Serving 2× this month · cap: 2" stat chip at the top of the section in amber.</div>
+            <div class="placeholder-tag">Schedule History tab</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Schedule History tab — full serving timeline</p>
+      </div>
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot">
+          <div class="screenshot-chrome">
+            <div class="chrome-dot" style="background:#FF5F56"></div><div class="chrome-dot" style="background:#FFBD2E"></div><div class="chrome-dot" style="background:#27C93F"></div>
+            <div class="chrome-url">— Notes tab</div>
+            <div class="chrome-rule"></div>
+          </div>
+          <div class="screenshot-placeholder">
+            <div class="placeholder-icon">📝</div>
+            <div class="placeholder-label">Profile → Notes + Tags tab</div>
+            <div class="placeholder-desc">Notes tab with: a rich-text note area showing a short note ("Interested in leading a small group — follow up in April. Has background in music education."), and a Tags section below with chips: "Leadership Pipeline", "Small Group Interest", "Music". An "Add tag" input inline. Tags are used for filtering in the main directory.</div>
+            <div class="placeholder-tag">Notes tab</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Notes + Tags — the pastoral layer</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface-divider"></div>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECTION 7: MOBILE / PWA
+  ══════════════════════════════════════════════════════════════ -->
+  <div class="surface-section" id="mobile">
+    <div class="surface-header fade-up">
+      <div class="surface-number">Surface 07</div>
+      <h2 class="surface-title">Mobile & PWA</h2>
+      <div class="brand-rule"></div>
+      <p class="surface-desc">Wethr is a full PWA — installable on any iOS or Android home screen. Volunteers never need to log in through a browser. The app opens, their schedule is there.</p>
+    </div>
+
+    <div class="callout fade-up">
+      <strong>No App Store required.</strong> Wethr installs as a PWA directly from the browser. Push notifications work on iOS 16.4+ and all modern Android devices. The volunteer experience is fully functional offline.
+    </div>
+
+    <!-- SLOT 7: Phone mockup row -->
+    <div class="screenshot-trio" style="margin-top:40px">
+
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot" style="border-radius:40px;max-width:280px;margin:0 auto">
+          <div class="screenshot-placeholder tall" style="min-height:540px;border-radius:38px;border:none">
+            <div class="placeholder-icon">📱</div>
+            <div class="placeholder-label">iPhone home screen — Wethr PWA installed</div>
+            <div class="placeholder-desc">iPhone home screen screenshot showing the Wethr icon (navy square, rounded, with the logo mark) alongside other apps. The icon should look native — no browser chrome visible. Ideally iOS 17 home screen with standard app grid.</div>
+            <div class="placeholder-tag">iPhone · Home Screen</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Installed on home screen — feels native, no App Store needed.</p>
+      </div>
+
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot" style="border-radius:40px;max-width:280px;margin:0 auto">
+          <div class="screenshot-placeholder tall" style="min-height:540px;border-radius:38px;border:none">
+            <div class="placeholder-icon">✅</div>
+            <div class="placeholder-label">Volunteer schedule view — mobile, upcoming assignments</div>
+            <div class="placeholder-desc">The volunteer's schedule view on mobile. Full-screen app (no browser chrome — PWA standalone mode). Shows upcoming assignments as cards: "Sunday March 16 · Vocals Lead" with the service name, time, and two large buttons — "Accept ✓" (meadow green) and "Decline ✗" (ghost/outline). An accepted assignment above it shows "Accepted" badge. The Wethr sidebar replaced by a bottom tab bar on mobile: Home, Schedule, Notifications, Profile.</div>
+            <div class="placeholder-tag">iPhone · Schedule view</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">The volunteer view — upcoming assignments with one-tap RSVP.</p>
+      </div>
+
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot" style="border-radius:40px;max-width:280px;margin:0 auto">
+          <div class="screenshot-placeholder tall" style="min-height:540px;border-radius:38px;border:none">
+            <div class="placeholder-icon">🔔</div>
+            <div class="placeholder-label">iOS push notification — new schedule assignment</div>
+            <div class="placeholder-desc">iPhone lock screen or notification banner showing a Wethr push notification. Notification content: Wethr app icon on the left, "Wethr" as the app name, title: "You've been scheduled for March 16", body: "Maria, you're down for Vocals Lead · Sunday March 16 at 9:00 AM. Tap to respond." Time shown as "Just now." The lock screen background is a blurred version of the app — shows the notification as it would appear overlaid on the phone.</div>
+            <div class="placeholder-tag">iPhone · Push notification</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">Push notification on iOS — delivered without an App Store app.</p>
+      </div>
+
+    </div>
+
+    <!-- Mobile service view -->
+    <div class="screenshot-featured reverse" style="margin-top:40px">
+      <div class="screenshot-wrap fade-up">
+        <div class="screenshot-slot" style="border-radius:40px;max-width:280px;margin:0 auto">
+          <div class="screenshot-placeholder tall" style="min-height:540px;border-radius:38px;border:none">
+            <div class="placeholder-icon">☀️</div>
+            <div class="placeholder-label">Order of Service — mobile read view (volunteer)</div>
+            <div class="placeholder-desc">The Order of Service as seen by a volunteer on their phone (read-only, no editing). Shows the service timeline as a scrollable vertical list: each block as a compact card with time, block type dot (colored), block name, and their own name highlighted if they're in it (e.g., "Vocals Lead — You" with a subtle meadow green highlight). Offline badge at the top: "Offline · Last synced 2h ago" in amber — showing the offline capability.</div>
+            <div class="placeholder-tag">iPhone · Service view · Offline</div>
+          </div>
+        </div>
+        <p class="screenshot-caption">The service plan on a volunteer's phone — readable offline on Sunday morning when the wifi is unreliable.</p>
+      </div>
+      <div class="step-meta fade-up" style="padding-top:24px">
+        <div class="step-num">Offline Support</div>
+        <h3 class="step-title">Works without internet. Because Sunday mornings don't wait.</h3>
+        <p class="step-body" style="margin-top:8px">The service worker caches the current volunteer's schedule and the next service's Order of Service. If someone opens the app in the parking lot with no signal, they see exactly what they need.</p>
+        <p class="step-body" style="margin-top:14px">RSVP responses and messages made offline are queued and sent automatically when connectivity returns.</p>
+        <div class="callout meadow" style="margin-top:20px;font-size:12px"><strong>No login screen on repeat opens.</strong> The session persists for 30 days — volunteers tap the icon and land directly on their schedule.</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="background:var(--navy-950);padding:36px 48px;border-top:1px solid rgba(255,255,255,0.05);margin-top:0">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="28" height="28" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#0F2337"/><line x1="17" y1="4.5" x2="17" y2="7" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/><circle cx="17" cy="12.5" r="2.8" fill="#F08330"/><polygon points="17,12 11,18 23,18" fill="#1E3A5F"/><rect x="15.8" y="9.5" width="2.4" height="4" rx="0.5" fill="#1E3A5F"/><line x1="14.8" y1="10.8" x2="19.2" y2="10.8" stroke="#F08330" stroke-width="0.9" stroke-linecap="round"/><rect x="12" y="18" width="10" height="7" rx="1" fill="#2E86AB"/><rect x="15.3" y="20.5" width="3.4" height="4.5" rx="1.7" fill="#0F2337"/><path d="M3 27.5 Q6 26 9 27.5 Q12 29 15 27.5 Q18 26 21 27.5 Q24 29 27 27.5 Q30 26 33 27.5" stroke="#4A9EC1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.8"/></svg>
+        <span style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:rgba(255,255,255,0.65)">Wethr</span>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:6px;margin-left:38px">App Preview · Phase 1 · 2026</div>
+    </div>
+    <a href="wethr-pitch-brochure.html" style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.4);text-decoration:none">← Back to Pitch Brochure</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-ups
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Stagger pairs/trios
+  document.querySelectorAll('.screenshot-pair, .screenshot-trio').forEach(group => {
+    group.querySelectorAll('.fade-up').forEach((el, i) => {
+      el.style.transitionDelay = (i * 80) + 'ms';
+    });
+  });
+
+  // Surface nav scroll spy
+  const sections = document.querySelectorAll('.surface-section[id]');
+  const navItems = document.querySelectorAll('.surface-nav-item');
+
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => spy.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wethr — FAQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-950:#0F2337;--navy-900:#1E3A5F;--navy-800:#254873;
+  --navy-100:#D6E4F0;--navy-50:#EBF2F9;
+  --cerulean-700:#1A6B8A;--cerulean-500:#2E86AB;--cerulean-300:#72B8D4;
+  --cerulean-100:#C8E8F3;--cerulean-50:#E8F5FB;
+  --sunrise-700:#B85C00;--sunrise-600:#D97022;--sunrise-500:#F08330;
+  --sunrise-400:#F5A254;--sunrise-300:#FAC48A;--sunrise-100:#FDE8CC;--sunrise-50:#FEF6EC;
+  --meadow-700:#2A6120;--meadow-500:#4A9A35;--meadow-100:#C8EABC;--meadow-50:#EBF7E4;
+  --amber-700:#9A5B00;--amber-500:#D97B00;--amber-100:#FDECC8;--amber-50:#FEF7E8;
+  --crimson-500:#C0293F;
+  --n900:#1A1A1A;--n700:#374151;--n600:#4B5563;--n500:#6B7280;
+  --n400:#9CA3AF;--n300:#D1D5DB;--n200:#E5E7EB;--n100:#F3F4F6;--n50:#F9FAFB;
+  --brand-rule:linear-gradient(90deg,#1E3A5F,#2E86AB,#F08330);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);line-height:1.65}
+
+/* ── TOP NAV ── */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(15,35,55,0.97);backdrop-filter:blur(14px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:60px;
+}
+.topnav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--brand-rule);opacity:.75}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-wordmark{font-family:'Lora',serif;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.3px}
+.nav-back{font-size:13px;font-weight:500;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:#fff}
+
+/* ── HERO ── */
+.hero{
+  background:var(--navy-950);padding:104px 48px 72px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 65% 55% at 10% 60%,rgba(46,134,171,.13) 0%,transparent 55%),
+             radial-gradient(ellipse 50% 60% at 90% 20%,rgba(240,131,48,.07) 0%,transparent 50%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--brand-rule)}
+.hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:2;text-align:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(240,131,48,.1);border:1px solid rgba(240,131,48,.2);
+  border-radius:9999px;padding:4px 14px;margin-bottom:22px;
+}
+.eyebrow span{font-size:11px;font-weight:600;color:var(--sunrise-300);letter-spacing:.8px;text-transform:uppercase}
+.hero h1{font-family:'Lora',serif;font-size:clamp(30px,4vw,46px);font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1.18;margin-bottom:16px}
+.hero h1 em{font-style:italic;background:linear-gradient(90deg,var(--cerulean-300),var(--sunrise-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:16px;color:rgba(255,255,255,.52);line-height:1.75;max-width:540px;margin:0 auto}
+
+/* ── CATEGORY NAV ── */
+.catnav{
+  background:var(--navy-900);border-bottom:1px solid rgba(255,255,255,.06);
+  padding:0 48px;position:sticky;top:60px;z-index:190;
+}
+.catnav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.catnav-inner::-webkit-scrollbar{display:none}
+.catlink{
+  font-size:12.5px;font-weight:500;color:rgba(255,255,255,.42);
+  padding:13px 16px;border-bottom:2px solid transparent;
+  text-decoration:none;white-space:nowrap;transition:color .2s,border-color .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.catlink:hover{color:rgba(255,255,255,.78)}
+.catlink.is-active{color:#fff;border-bottom-color:var(--sunrise-500)}
+
+/* ── PAGE BODY ── */
+.page-body{max-width:1100px;margin:0 auto;padding:0 48px 120px;display:grid;grid-template-columns:220px 1fr;gap:64px;align-items:start}
+
+/* ── SIDEBAR TOC ── */
+.sidebar{position:sticky;top:116px;padding-top:52px}
+.toc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--n400);margin-bottom:14px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list a{
+  display:block;font-size:13px;font-weight:500;color:var(--n400);
+  text-decoration:none;padding:5px 10px;border-left:2px solid transparent;
+  transition:all .18s;line-height:1.4;
+}
+.toc-list a:hover{color:var(--n700);border-left-color:var(--n300)}
+.toc-list a.is-active{color:var(--sunrise-600);border-left-color:var(--sunrise-500);font-weight:600}
+
+/* ── FAQ CONTENT ── */
+.faq-content{padding-top:52px}
+
+/* ── CATEGORY SECTION ── */
+.faq-cat{margin-bottom:72px;scroll-margin-top:120px}
+.cat-header{margin-bottom:32px}
+.cat-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sunrise-600);margin-bottom:8px}
+.cat-title{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--navy-900);letter-spacing:-.3px;margin-bottom:8px}
+.cat-rule{width:36px;height:3px;background:var(--brand-rule);border-radius:2px;margin:12px 0 16px}
+.cat-desc{font-size:15px;color:var(--n500);line-height:1.7;max-width:560px}
+
+/* ── FAQ ACCORDION ── */
+.faq-item{
+  border:1px solid var(--n200);border-radius:12px;background:#fff;
+  margin-bottom:10px;overflow:hidden;transition:box-shadow .2s;
+}
+.faq-item:hover{box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.faq-item.is-open{box-shadow:0 4px 20px rgba(0,0,0,.08);border-color:var(--n300)}
+
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;cursor:pointer;gap:16px;
+  user-select:none;-webkit-user-select:none;
+}
+.faq-q-text{font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--navy-900);line-height:1.4;flex:1}
+
+.faq-toggle{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:var(--n100);border:1px solid var(--n200);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:300;color:var(--n500);
+  transition:background .25s,border-color .25s,transform .25s,color .25s;
+  line-height:1;
+}
+.faq-item.is-open .faq-toggle{
+  background:var(--sunrise-500);border-color:var(--sunrise-500);
+  color:#fff;transform:rotate(45deg);
+}
+
+.faq-body{
+  display:none;
+  padding:0 22px 22px;
+  border-top:1px solid var(--n100);
+}
+.faq-item.is-open .faq-body{display:block}
+.faq-body-inner{
+  padding-top:18px;
+  font-size:15px;color:var(--n600);line-height:1.75;
+}
+.faq-body-inner p{margin-bottom:14px}
+.faq-body-inner p:last-child{margin-bottom:0}
+.faq-body-inner strong{color:var(--n900);font-weight:600}
+.faq-body-inner em{font-style:italic}
+
+.faq-body-inner ul,.faq-body-inner ol{
+  margin:10px 0 14px;padding-left:0;list-style:none;
+  display:flex;flex-direction:column;gap:7px;
+}
+.faq-body-inner li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.6}
+.faq-body-inner ul li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--sunrise-400);flex-shrink:0;margin-top:8px;
+}
+.faq-body-inner ol{counter-reset:faq-ol}
+.faq-body-inner ol li{counter-increment:faq-ol}
+.faq-body-inner ol li::before{
+  content:counter(faq-ol);width:20px;height:20px;border-radius:50%;
+  background:var(--navy-900);color:#fff;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+
+/* callouts */
+.callout{
+  background:var(--cerulean-50);border:1px solid var(--cerulean-100);
+  border-left:3px solid var(--cerulean-500);
+  border-radius:0 8px 8px 0;padding:12px 16px;
+  margin:14px 0;font-size:13px;color:var(--cerulean-700);line-height:1.6;
+}
+.callout.sunrise{background:var(--sunrise-50);border-color:var(--sunrise-100);border-left-color:var(--sunrise-500);color:var(--sunrise-700)}
+.callout.meadow{background:var(--meadow-50);border-color:var(--meadow-100);border-left-color:var(--meadow-500);color:var(--meadow-700)}
+.callout.amber{background:var(--amber-50);border-color:var(--amber-100);border-left-color:var(--amber-500);color:var(--amber-700)}
+
+/* compare table */
+.ctable{width:100%;border-collapse:collapse;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--n200);font-size:13px}
+.ctable th{background:var(--navy-900);color:rgba(255,255,255,.8);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.ctable td{padding:10px 14px;border-bottom:1px solid var(--n100);vertical-align:top;color:var(--n700);line-height:1.5}
+.ctable tr:last-child td{border-bottom:none}
+.ctable tr:nth-child(even) td{background:var(--n50)}
+.ctable td:first-child{font-weight:600;color:var(--n900)}
+
+/* phase tags */
+.ptag{display:inline-flex;align-items:center;background:var(--navy-50);border:1px solid var(--navy-100);border-radius:9999px;padding:2px 9px;font-size:11px;font-weight:600;color:var(--navy-900);vertical-align:middle}
+.ptag.p1{background:var(--sunrise-50);border-color:var(--sunrise-100);color:var(--sunrise-700)}
+.ptag.p2{background:var(--cerulean-50);border-color:var(--cerulean-100);color:var(--cerulean-700)}
+.ptag.fut{background:var(--n100);border-color:var(--n200);color:var(--n500)}
+
+/* CTA */
+.faq-cta{
+  background:var(--navy-900);border-radius:16px;padding:48px 40px;
+  text-align:center;position:relative;overflow:hidden;margin-top:64px;
+}
+.faq-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand-rule)}
+.faq-cta::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 30% 50%,rgba(240,131,48,.07) 0%,transparent 55%)}
+.faq-cta-inner{position:relative;z-index:2}
+.faq-cta h3{font-family:'Lora',serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.3px}
+.faq-cta p{font-size:15px;color:rgba(255,255,255,.55);max-width:400px;margin:0 auto 28px;line-height:1.7}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--sunrise-500);color:#fff;font-size:14px;font-weight:700;
+  padding:12px 26px;border-radius:8px;text-decoration:none;
+  transition:all .2s;box-shadow:0 4px 16px rgba(240,131,48,.35);
+}
+.cta-btn:hover{background:var(--sunrise-600);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--navy-950);padding:36px 48px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-wordmark{font-family:'Lora',serif;font-size:16px;font-weight:700;color:rgba(255,255,255,.6)}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.22);margin-top:3px;margin-left:38px}
+
+@media(max-width:900px){
+  .topnav{padding:0 20px}
+  .catnav{padding:0 20px}
+  .hero{padding:90px 20px 60px}
+  .page-body{grid-template-columns:1fr;padding:0 20px 80px;gap:0}
+  .sidebar{display:none}
+  footer{padding:32px 20px}
+  .footer-inner{flex-direction:column;gap:12px;text-align:center}
+  .footer-tagline{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<header class="topnav">
+  <a href="wethr-pitch-brochure.html" class="nav-brand">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <rect width="34" height="34" rx="8" fill="#0F2337"/>
+      <line x1="17" y1="4.5" x2="17" y2="7" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="23.2" y1="6.3" x2="21.6" y2="7.9" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="25.5" y1="12.5" x2="23" y2="12.5" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="10.8" y1="6.3" x2="12.4" y2="7.9" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <line x1="8.5" y1="12.5" x2="11" y2="12.5" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+      <circle cx="17" cy="12.5" r="2.8" fill="#F08330"/>
+      <polygon points="17,12 11,18 23,18" fill="#1E3A5F"/>
+      <rect x="15.8" y="9.5" width="2.4" height="4" rx=".5" fill="#1E3A5F"/>
+      <line x1="14.8" y1="10.8" x2="19.2" y2="10.8" stroke="#F08330" stroke-width=".9" stroke-linecap="round"/>
+      <rect x="12" y="18" width="10" height="7" rx="1" fill="#2E86AB"/>
+      <rect x="15.3" y="20.5" width="3.4" height="4.5" rx="1.7" fill="#0F2337"/>
+      <path d="M3 27.5 Q6 26 9 27.5 Q12 29 15 27.5 Q18 26 21 27.5 Q24 29 27 27.5 Q30 26 33 27.5" stroke="#4A9EC1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".85"/>
+    </svg>
+    <span class="nav-wordmark">Wethr</span>
+  </a>
+  <a href="wethr-pitch-brochure.html" class="nav-back">← Back to Pitch</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span>FAQ · Phase 1</span></div>
+    <h1>Every question,<br><em>answered honestly.</em></h1>
+    <p>Who Wethr is for, what it doesn't do, how it was designed, and what to expect if you bring it to your church — no sales spin.</p>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="catnav" id="catnav">
+  <div class="catnav-inner">
+    <a href="#fit"        class="catlink" data-spy="fit">🎯 Is it for us?</a>
+    <a href="#not-for"    class="catlink" data-spy="not-for">🚫 Who it's not for</a>
+    <a href="#philosophy" class="catlink" data-spy="philosophy">🧭 Philosophy</a>
+    <a href="#not-trying" class="catlink" data-spy="not-trying">🚧 What it's not</a>
+    <a href="#features"   class="catlink" data-spy="features">⚙️ Features</a>
+    <a href="#onboarding" class="catlink" data-spy="onboarding">🚀 Getting started</a>
+    <a href="#roadmap"    class="catlink" data-spy="roadmap">🗺️ Roadmap</a>
+    <a href="#technical"  class="catlink" data-spy="technical">🔧 Technical</a>
+    <a href="#pricing"    class="catlink" data-spy="pricing">💰 Pricing</a>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="toc-label">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#fit"        data-spy="fit">Is Wethr right for us?</a></li>
+      <li><a href="#not-for"    data-spy="not-for">Who it's not for</a></li>
+      <li><a href="#philosophy" data-spy="philosophy">Design philosophy</a></li>
+      <li><a href="#not-trying" data-spy="not-trying">What Wethr is not trying to be</a></li>
+      <li><a href="#features"   data-spy="features">Features & capabilities</a></li>
+      <li><a href="#onboarding" data-spy="onboarding">Getting started</a></li>
+      <li><a href="#roadmap"    data-spy="roadmap">Roadmap & timing</a></li>
+      <li><a href="#technical"  data-spy="technical">Technical & security</a></li>
+      <li><a href="#pricing"    data-spy="pricing">Pricing & cost</a></li>
+    </ul>
+  </aside>
+
+  <!-- FAQ CONTENT -->
+  <div class="faq-content">
+
+
+    <!-- ═══ 01: IS IT FOR US ═══ -->
+    <section class="faq-cat" id="fit">
+      <div class="cat-header">
+        <div class="cat-num">Category 01</div>
+        <h2 class="cat-title">Is Wethr right for us?</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">The most important question to answer honestly — before anything else.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What kind of church is Wethr built for?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Wethr is built for mid-size congregations — roughly <strong>100 to 500 members</strong> — with a small staff team (typically 1–5 people) managing coordination across 3 to 8 active ministry teams.</p>
+          <p>This is the congregation that has genuinely outgrown spreadsheets and group texts — Sunday coordination is real work, not a side task — but hasn't needed, or can't justify, the complexity and cost of enterprise church management platforms built for megachurches.</p>
+          <p>The specific pain point Wethr resolves is <strong>volunteer coordination and service planning at scale</strong>. If you have a worship team, a nursery, a hospitality crew, and a tech team — all with their own leaders and overlapping volunteers — and Sunday mornings involve a lot of manual coordination, Wethr is designed exactly for you.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We're under 100 members. Does Wethr still make sense for us?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>It depends on your complexity, not just your count. A church of 80 members with 4 active teams, 40 rotating volunteers, and a leader spending real hours each week on scheduling would benefit from Wethr. A church of 80 members where one person handles everything in 20 minutes probably wouldn't — the tool would be more structure than you need right now.</p>
+          <p>The honest question is: <strong>Is Sunday coordination actually costing your leaders significant time and mental energy?</strong> If yes, Wethr is worth a conversation regardless of member count.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We're over 500 members. Should we look elsewhere?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Wethr will work for larger congregations — no hard membership ceiling, and the core workflows scale well. But the product is <em>designed</em> around the constraints of the mid-size church: lean admin staff, cost sensitivity, and a preference for simplicity over feature breadth.</p>
+          <p>Larger churches often need multi-campus support, deeper giving integration, and enterprise SSO — things Wethr isn't building toward in the near term. That said, many large churches have mid-size-style coordination problems and would benefit from Wethr's clarity. It's worth a conversation.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What denominations or traditions does Wethr support?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>All of them. Wethr is denomination-neutral. The product is built around the coordination structure nearly every church shares — people, teams, service plans, volunteers — not any particular theology or liturgical tradition.</p>
+          <p>Block types, role names, and team labels are fully customizable. Whether you run contemporary services with a full band or traditional services with a choir, the Order of Service builder reflects your structure.</p>
+          <div class="callout meadow">Wethr is used by churches from evangelical, mainline Protestant, and non-denominational backgrounds. The product embeds no theological content and preferences no worship tradition.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We already use Planning Center. Why would we switch?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>If Planning Center is working well for you, there may be no compelling reason to switch. Wethr isn't positioning itself as a Planning Center replacement for churches where it's a good fit.</p>
+          <p>Churches that find Wethr compelling are ones where Planning Center feels like too much — steep learning curve, low volunteer adoption, feature breadth that creates noise rather than clarity. Planning Center was built for churches with the staff capacity to configure and maintain a sophisticated system. For churches without that capacity, it often ends up used at 20% of its capability at 100% of its cost.</p>
+          <p>Wethr is narrower by design. If you're paying for a system half your team doesn't use, it's worth a look.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We use Breeze or Church Community Builder. How does Wethr compare?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Breeze and CCB are primarily <strong>ChMS</strong> platforms — their strength is membership management, giving records, check-in, and communication. They're not purpose-built for service planning and volunteer scheduling in the way Wethr is.</p>
+          <p>Many churches use Breeze for broader membership management while wishing they had something tighter for the Sunday coordination workflow. Wethr fills that gap. The two can sit alongside each other — Wethr handles coordination, your existing ChMS handles giving and membership records.</p>
+          <div class="callout">Wethr can import your people data from Breeze, CCB, or Planning Center via CSV. Your member records migrate cleanly on day one.</div>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 02: WHO IT'S NOT FOR ═══ -->
+    <section class="faq-cat" id="not-for">
+      <div class="cat-header">
+        <div class="cat-num">Category 02</div>
+        <h2 class="cat-title">Who Wethr is not for</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">Knowing who we're not trying to serve makes the product better for the people we are.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr right for a megachurch or multi-campus organization?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p><strong>Not in Phase 1, and probably not in the short term.</strong> Multi-campus support is explicitly a Phase 5 capability. The current data model is built around a single church account — no cross-campus shared directory, no campus-scoped views, no way to coordinate teams across locations.</p>
+          <p>Megachurches also typically need deeply integrated giving, media and sermon management, advanced event registration, and enterprise SSO. These are not on Wethr's near-term roadmap.</p>
+          <div class="callout amber">If you're a large, single-campus church without multi-site complexity, Wethr may still work well. If multi-campus coordination is a core need today, we're not the right fit yet.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We need giving/stewardship tracking. Does Wethr handle that?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No — not now, and not in the near term. Giving and stewardship is a Phase 5 capability, several years out. If giving tracking is a core requirement, Wethr is not the right primary platform for you today.</p>
+          <p>Many churches successfully use Wethr alongside a dedicated giving platform (Pushpay, Tithe.ly, Breeze, etc.). Wethr handles coordination; your giving platform handles financial workflows. They don't need to be the same system.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What about attendance tracking and nursery check-in?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Service headcount and nursery check-in (badge printing, allergies, custody notes, etc.) are Phase 5 features. If check-in is a critical workflow today, Wethr can't replace your current system for that.</p>
+          <p>Nursery <em>team coordination</em> — scheduling volunteers and helpers, building the service plan for nursery care, managing the Nursery team roster — is fully supported in Phase 1. It's the check-in and attendance piece that isn't.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We need sermon media management or live streaming tools. Is that here?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No. Wethr is a coordination platform, not a media platform. Sermon notes, series archives, podcast publishing, and live streaming integration are not on the roadmap. Wethr helps you staff and plan the service — what gets recorded or streamed afterward is handled by purpose-built tools (YouTube, Boxcast, Sermon.net, etc.).</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We're a single-person church plant with no real admin needs yet. Should we start with Wethr?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Probably not yet. Wethr shines when there's genuine coordination complexity — multiple teams, rotating volunteers, a real Sunday production workflow. A church plant where everything fits in a group text isn't the right moment. You'd be adding structure before the chaos that structure solves.</p>
+          <p>There's nothing wrong with starting simple. Come back when coordination starts costing you real time. That's the right moment.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 03: PHILOSOPHY ═══ -->
+    <section class="faq-cat" id="philosophy">
+      <div class="cat-header">
+        <div class="cat-num">Category 03</div>
+        <h2 class="cat-title">Design philosophy</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">The principles baked into every product decision — and why they matter for your church.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What does "service-first design" actually mean in practice?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>It means the Order of Service is the center of gravity for everything in Wethr. Other platforms organize around people, or teams, or communications. Wethr organizes around the service event itself — because that's what your church is actually building toward every week.</p>
+          <p>In practice: the directory exists to support the service. Teams exist to support the service. Scheduling exists to fill roles in the service. When you open Wethr, the first thing you see is your next service. The question the whole product is oriented around is: <em>Is Sunday ready?</em></p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What does "people over data" mean? How is it different from other platforms?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Many church software platforms are built from the database outward — every feature is an opportunity to capture more information, generate more reports, create more records to manage. The result is a system that feels like work to maintain and creates new administrative burden even as it tries to reduce it.</p>
+          <p>Wethr's principle is that the system should carry the burden, not the people. A volunteer shouldn't have to learn software to be scheduled. A ministry leader shouldn't have to configure twelve settings before assigning someone to a role. The complexity lives in the backend; what the user sees should feel light.</p>
+          <p>Concretely: volunteers log in to one screen (their schedule), see exactly what's relevant to them, and tap to accept or decline. They don't need to learn Wethr — they just need to be in it.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Why is burnout prevention a first-class feature, not an afterthought?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Because volunteer burnout is one of the most common and preventable ways churches lose their most committed people — and it almost always happens invisibly. Someone ends up serving three Sundays a month because they never said no, the leader never tracked it, and by the time anyone noticed, the person was exhausted and quietly withdrawn.</p>
+          <p>Wethr bakes frequency caps and availability preferences into the scheduling system at the data level — not as a note field someone has to remember to check, but as a constraint the scheduling engine respects automatically. A volunteer set to "once a month" cannot be assigned twice without a visible conflict alert.</p>
+          <div class="callout meadow">We hear this from church leaders who've lost volunteers: "If I'd had visibility into how often they were serving, I would have intervened sooner." Wethr makes that invisible thing visible by default.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What does "lean admin" look like — what can one person actually manage?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>In Phase 1, a single church administrator can realistically manage the full Wethr setup for a church of 300 members with 6 ministry teams — maintaining the directory, configuring team structures, building weekly service plans, and managing volunteer assignments across teams.</p>
+          <p>In Phase 2, once auto-scheduling and communications ship, that same administrator's weekly coordination work drops significantly — the system generates draft schedules, sends notifications, and handles RSVP reminders automatically. The admin's job shifts from doing the coordination to reviewing and adjusting it.</p>
+          <p>Every workflow in Wethr is designed with the assumption that one person is holding it. Things requiring a dedicated IT person or extensive training to maintain are explicitly out of scope.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Why no native app? Doesn't that hurt volunteer adoption?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Wethr is a PWA (Progressive Web App) — it installs on iOS and Android home screens directly from the browser, looks and behaves like a native app, supports push notifications on iOS 16.4+ and all modern Android, and works offline. For most volunteers, it's indistinguishable from a native app once installed.</p>
+          <p>The reason we chose PWA over native is pragmatic: a native app requires App Store and Google Play distribution, a separate codebase to maintain, and review cycles that slow down updates. A PWA ships instantly to all users simultaneously. For a coordination tool used by volunteers a few times a month, the App Store burden isn't justified by the benefit.</p>
+          <p>The one real limitation: push notifications on iOS require 16.4 or newer. Email and SMS cover this gap for users on older hardware.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What does "church-paced communication" mean?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Churches operate on a weekly rhythm, not a real-time business pace. Volunteers aren't checking a work inbox hourly. Many serve once or twice a month. Over-notifying them — sending every update as a push notification, emailing every change — trains them to ignore Wethr.</p>
+          <p>Church-paced communication means messages go out when they're meaningful: assignment notifications, reminders before the service, urgent changes. Not a firehose of activity updates. Every user also controls their own notification preferences — email digest vs. real-time, SMS opt-in, push notification permissions. The default is thoughtful, not aggressive.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 04: WHAT IT'S NOT ═══ -->
+    <section class="faq-cat" id="not-trying">
+      <div class="cat-header">
+        <div class="cat-num">Category 04</div>
+        <h2 class="cat-title">What Wethr is not trying to be</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">Scope clarity is a product virtue. These are the things we have consciously decided not to be.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr trying to be a full church management system (ChMS)?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No. A full ChMS covers giving, fund accounting, contribution statements, check-in, event registration, background checks, and a dozen other workflows that touch the administrative operations of a church.</p>
+          <p>Wethr is a <strong>coordination platform</strong>, not a church management system. Its entire focus is the Sunday coordination loop — people, teams, service planning, and scheduling. It deliberately does not try to be the system of record for giving, attendance, or member lifecycle management.</p>
+          <p>Many churches will use Wethr alongside an existing ChMS. They're complementary, not competing, for most church contexts.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr a project management tool for ministry?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No. General project management tools (Asana, Notion, Trello, Monday) are flexible but context-agnostic. They don't know what a "service" is, what a "worship team" is, or what it means for a volunteer to have a frequency cap. You'd have to build all of that meaning yourself through custom fields and conventions.</p>
+          <p>Wethr is purpose-built for church coordination. The data model, workflows, terminology, and UI are all shaped around how churches are organized and how Sunday services are produced. You don't have to configure it to understand your context — it already does.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr a communication platform? A Slack for churches?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No. Communications in Wethr (Phase 2) are <strong>event-driven and role-aware</strong> — the system sends the right message to the right person at the right time based on what's happening in the scheduling system. It's not a general-purpose messaging platform or chat tool.</p>
+          <p>Wethr won't replace your church's email newsletter, staff Slack channel, or all-church communication strategy. It handles one specific job: getting volunteers the information they need about their schedule, and surfacing the right alerts to leaders when something needs attention.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr trying to automate away the human relationships in ministry?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Explicitly not. Wethr automates the administrative and logistical layer of coordination — building schedules, sending reminders, tracking RSVPs — so that ministry leaders have more time and energy for the relational work that no software can do.</p>
+          <p>The scheduling system assigns people to roles. It doesn't build relationships with them, notice when they're struggling, or know when to have a pastoral conversation. That's the leader's job. Wethr's job is to get the logistics out of the leader's way so that work can happen.</p>
+          <div class="callout sunrise">The deepest value Wethr creates isn't faster scheduling — it's giving a worship director or nursery team leader 2 hours back every week to do the human work that actually matters.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is this another app that gets adopted by leadership and ignored by everyone else?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>This is a real and valid fear — most church software suffers from exactly this problem. The answer depends on the volunteer experience, and Wethr is designed specifically around that concern.</p>
+          <p>Volunteers don't need to "learn" Wethr. Their experience is: receive a notification, tap a link, see their assignment, accept or decline. No training, no account configuration, no familiarity with the broader product required.</p>
+          <p>Whether adoption sticks depends on whether leaders are actually consistent about using Wethr to schedule. If scheduling still happens via text sometimes, volunteers won't trust the app as the source of truth. Leadership buy-in is a prerequisite for volunteer adoption — that's true of every coordination tool.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 05: FEATURES ═══ -->
+    <section class="faq-cat" id="features">
+      <div class="cat-header">
+        <div class="cat-num">Category 05</div>
+        <h2 class="cat-title">Features & capabilities</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">What Wethr does in Phase 1, what it doesn't do yet, and how it handles the details.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What exactly is in Phase 1?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Phase 1 delivers the <strong>Sunday coordination loop</strong> — everything needed to go from "I need to staff a service" to "everyone knows where to be and what to do."</p>
+          <ul>
+            <li><strong>Family Directory</strong> — every person in your church, with household relationships, member status, contact info, and tags</li>
+            <li><strong>Ministry Teams</strong> — structured teams with leaders, members, and role definitions</li>
+            <li><strong>Order of Service Builder</strong> — a flexible block-based service planner with role assignments and a printable run-of-show</li>
+            <li><strong>Scheduling (manual)</strong> — per-person availability preferences, blackout dates, frequency caps, and manual role assignment with conflict detection</li>
+            <li><strong>Roles & Permissions</strong> — Super Admin, Staff, Ministry Leader, Volunteer, and Member roles with scoped access throughout</li>
+          </ul>
+          <div class="callout">Phase 1 is intentionally focused. Auto-scheduling, volunteer notifications, RSVP, and communications are Phase 2 — they ship once Phase 1 is stable and in churches' hands.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Does Phase 1 send notifications to volunteers about their schedules?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p><strong>No — that ships in Phase 2.</strong> In Phase 1, Wethr is a coordination tool for leaders, not yet a communication tool for volunteers. Leaders use Wethr to plan and assign; how they communicate assignments to volunteers is still handled outside the app (text, email, verbal) in Phase 1.</p>
+          <p>This is a deliberate sequencing decision, not an oversight. Assignment and scheduling data needs to be reliable and in use before the notification system is built on top of it. Phase 2 wires that together: volunteers receive push/email/SMS notifications when assigned, get reminders before the service date, and can accept or decline from their phone.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How does scheduling work — auto-assign or always manual?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>In Phase 1: <strong>always manual</strong>. Leaders assign people to roles themselves. What Wethr provides is the intelligence layer that makes manual assignment much better: you see who's available, who's eligible (right role, right team), who's at their frequency cap, and who has a blackout date — before you make the assignment.</p>
+          <p>In Phase 2: <strong>auto-scheduling becomes available as an opt-in</strong>. Each team leader can toggle auto-scheduling on for their team. Wethr generates a draft schedule respecting all preferences and caps; the leader reviews and confirms it rather than building from scratch. Manual assignment remains available at any time — the two modes coexist.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How many teams, people, or services can we have?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No hard caps in Phase 1. The platform is designed to handle churches up to 500 members without performance constraints, and is architected to scale well beyond that.</p>
+          <p>The practical limit for most churches will be what one admin team can reasonably maintain — not a system limit.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Can a volunteer serve on multiple teams?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Yes. A person can be a member of multiple teams simultaneously, with different roles on each. The scheduling system respects their frequency cap across all teams combined — if Maria is scheduled twice as a vocalist on the Worship Team, she won't be available for a Nursery slot if her cap is two per month.</p>
+          <p>This cross-team conflict detection is one of the harder coordination problems that spreadsheets handle poorly and Wethr handles natively.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What happens when a volunteer declines an assignment?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>In Phase 1: the assignment is removed and the role surfaces as unfilled. The leader sees the gap and assigns someone else manually.</p>
+          <p>In Phase 2: the leader is notified of the decline. If auto-schedule is enabled for the team, the system automatically attempts to find and assign an available replacement. If none is found, the role is flagged as unresolved and the leader is alerted. Pending assignments never auto-decline — they stay open until the volunteer responds or the leader removes them.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Can we have multiple service times on the same Sunday?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Yes. Each service in Wethr is a separate record with its own Order of Service, date, and time. You can create as many services on the same day as needed (9am, 11am, evening service, etc.). Team assignments and volunteer schedules are managed per-service.</p>
+          <p>Conflict detection accounts for this — if a volunteer is assigned to the 9am service, they won't show as available for the 11am on the same date without a conflict indicator.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 06: GETTING STARTED ═══ -->
+    <section class="faq-cat" id="onboarding">
+      <div class="cat-header">
+        <div class="cat-num">Category 06</div>
+        <h2 class="cat-title">Getting started</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">What onboarding actually looks like — how your data gets in, who does the work, and what you're handed on day one.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How does onboarding work? Do we set everything up ourselves?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Not in Phase 1. Onboarding is <strong>white-glove and team-handled</strong> — the Wethr team does the setup work for you. Here's the process:</p>
+          <ol>
+            <li>You send us an export of your people data (CSV from Planning Center, Breeze, CCB, or a spreadsheet you maintain)</li>
+            <li>We clean, map, and import your directory and team structures directly into your account</li>
+            <li>We configure your church settings (name, logo, timezone, service day defaults)</li>
+            <li>Your Super Admin receives a magic link and logs in to a fully configured, data-populated account</li>
+          </ol>
+          <div class="callout meadow">The goal: you log in on day one and your church is already in there. No data entry, no configuration work, no "start from scratch" experience.</div>
+          <p>Self-serve CSV import and a setup wizard are Phase 2 and Phase 4 capabilities respectively. Until then, the Wethr team handles it — and we think that's actually the right experience for pilot churches anyway.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How long does onboarding take?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>The target is <strong>under one business day of Wethr team effort</strong> from the time we receive your data export. Data quality in the source file is the main variable — clean, well-structured exports come through faster; messy spreadsheets take longer to normalize.</p>
+          <p>From your side, the work is: export your people data, share it with us, and review your account once we've set it up. Most church admins spend under two hours on their side of the process.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What data gets migrated? What gets left behind?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p><strong>What we migrate in Phase 1:</strong></p>
+          <ul>
+            <li>People and family/household records (names, contact info, member status, household relationships)</li>
+            <li>Ministry team structures and role definitions</li>
+            <li>Team member assignments (who is on which team, in which roles)</li>
+          </ul>
+          <p><strong>What we don't migrate:</strong></p>
+          <ul>
+            <li>Historical service records — your church starts fresh with Wethr services built from scratch</li>
+            <li>Old scheduling history or RSVP history</li>
+            <li>Communication history from previous platforms</li>
+            <li>File attachments from your current system</li>
+            <li>Giving or contribution records</li>
+          </ul>
+          <p>The clean break on service history is intentional — starting with a blank slate means you're not importing the assumptions and formatting of your previous system.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Do we need to do anything technical? Does IT need to be involved?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No. Wethr is a fully hosted web application — nothing to install, configure, or maintain on your end. Your church subdomain (<em>yourchurch.wethr.app</em>) is provisioned automatically when your account is created. The Wethr team handles all infrastructure.</p>
+          <p>The closest thing to a "technical" step on your end is exporting your people data from whatever platform you currently use. That's a CSV export — a standard feature in every ChMS and spreadsheet tool. No IT involvement needed.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What's the login experience? Do volunteers need to create accounts and remember passwords?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>No passwords. Wethr uses <strong>email OTP (one-time code)</strong> for authentication — users enter their email address, receive a 6-digit code, and enter it. That's the entire login. No password to create, remember, or reset.</p>
+          <p>Sessions last 30 days. A volunteer who logs in once a month will almost never see a login screen again — they tap the icon and land directly on their schedule. The login friction that kills church app usage is gone.</p>
+          <div class="callout">The OTP code expires in 24 hours. If someone receives a code on a different device than where they open the app, they can still enter it manually.</div>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 07: ROADMAP ═══ -->
+    <section class="faq-cat" id="roadmap">
+      <div class="cat-header">
+        <div class="cat-num">Category 07</div>
+        <h2 class="cat-title">Roadmap & timing</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">Where Wethr is going and how to think about the phased build.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What's the full roadmap in plain language?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <table class="ctable">
+            <thead><tr><th>Phase</th><th>Theme</th><th>What it delivers</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ptag p1">Phase 1</span></td><td>Foundation</td><td>Directory, teams, order of service, manual scheduling, permissions. A church can staff and plan a Sunday.</td></tr>
+              <tr><td><span class="ptag p2">Phase 2</span></td><td>Intelligence</td><td>Auto-scheduling, volunteer notifications, RSVP flow, email/SMS/push, CSV self-serve import. The system does the scheduling work.</td></tr>
+              <tr><td><span class="ptag fut">Phase 3</span></td><td>Community</td><td>Small groups, public group discovery page, visitor intake form, files and notes. Wethr extends beyond Sunday.</td></tr>
+              <tr><td><span class="ptag fut">Phase 4</span></td><td>Insight</td><td>Reporting dashboards, volunteer health flags, group health metrics, self-serve onboarding wizard.</td></tr>
+              <tr><td><span class="ptag fut">Phase 5</span></td><td>Growth</td><td>Giving, attendance check-in, member journey, multi-campus, CNAME support.</td></tr>
+            </tbody>
+          </table>
+          <p>Phases are sequenced by dependency, not arbitrary timeline. Each one builds on the last and exits with a clear definition of done.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">When does auto-scheduling ship? When do volunteers get notifications?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Both are Phase 2 capabilities. Phase 2 begins development once Phase 1 is stable and in the hands of pilot churches. There is no fixed calendar date — the timeline depends on Phase 1 adoption and feedback. The intent is that Phase 2 begins development within the first few months of Phase 1 being live.</p>
+          <p>If your church's ability to adopt Wethr depends on auto-scheduling or volunteer notifications, Phase 1 may not be the right moment to onboard. If you can pilot Phase 1 for service planning and manual scheduling while waiting for Phase 2, that's the ideal path.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr committed to building everything on the roadmap, or might it change?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>The phase structure and sequencing reflect genuine product intent, not vaporware. That said, every product roadmap evolves based on what's learned from real church usage. The themes of each phase are stable; the specific features within later phases will be shaped by what pilot churches actually need.</p>
+          <p>Phase 1 and Phase 2 are the most locked-in. The principle we hold to: <strong>nothing gets added that makes Phase 1 and Phase 2 worse</strong>. Feature breadth for later phases never comes at the expense of the core coordination experience.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">We need small groups functionality. When does that arrive?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Small groups — group creation, member enrollment, public discoverability, and group-level messaging — is a Phase 3 capability. Phase 3 is the "Community" phase and directly follows Phase 2. Features planned include a public-facing group discovery page, a visitor intake form, and file/notes storage.</p>
+          <p>If small groups are a current urgent need, Wethr Phase 1 won't serve that yet. If you're willing to manage small groups outside Wethr for now and consolidate later, Phase 1 and 2 still deliver significant value in the Sunday coordination workflow while Phase 3 catches up.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 08: TECHNICAL ═══ -->
+    <section class="faq-cat" id="technical">
+      <div class="cat-header">
+        <div class="cat-num">Category 08</div>
+        <h2 class="cat-title">Technical & security</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">Where your data lives, who can see it, and how the platform is built.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Where is our church's data stored? Who can see it?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>All data is stored in a cloud-hosted PostgreSQL database (Supabase) and isolated by church. Every database record is tagged with your church's unique ID — one church can never access another church's data by design. Row-Level Security (RLS) policies enforce this at the database layer, not just the application layer, so data isolation holds even if there's a bug in application code.</p>
+          <p>Your data is hosted in US-based infrastructure. The Wethr team can access your data for support and onboarding purposes. No third parties have access to your church's member data.</p>
+          <div class="callout">Wethr does not sell or share member data. Your directory exists to run your church, and that's the only thing it's used for.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What browsers and devices does Wethr support?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Wethr works in any current version of Chrome, Safari, Firefox, or Edge on desktop, tablet, or mobile. As a PWA, it can be installed on iOS (16+) and Android home screens for an app-like experience.</p>
+          <p>Internet Explorer is not supported — it reached end of life in 2022 and lacks the web platform APIs Wethr relies on.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What happens to our data if we stop using Wethr?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>You can export your directory, team structures, and service history at any time via CSV export. Your data is yours and is portable. If you close your account, Wethr retains your data for a 90-day grace period during which you can request a full export. After that period, data is deleted from production systems.</p>
+          <p>A platform that holds your data hostage to prevent churn is not the kind of platform we're building.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Does Wethr work offline?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Partially. The PWA service worker caches two key views for offline use: the current volunteer's upcoming schedule, and the next service's Order of Service. If a volunteer opens the app with no connection — in the parking lot on Sunday morning — they see their assignment and the service plan from the last sync.</p>
+          <p>Actions taken offline (RSVP responses, messages) are queued and sent automatically when connectivity returns. Admin-level editing requires a connection.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Is Wethr built on top of another platform, or is it custom-built?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Wethr is a purpose-built Next.js application: Next.js (App Router) for the frontend, Supabase for the database and authentication, Cloudflare R2 for file storage, and Inngest for background job processing. It is not a reskinned version of another platform or a no-code tool.</p>
+          <p>This matters for long-term reliability: Wethr's behavior and data model are fully under its own control, not dependent on the product decisions of a third-party platform provider.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- ═══ 09: PRICING ═══ -->
+    <section class="faq-cat" id="pricing">
+      <div class="cat-header">
+        <div class="cat-num">Category 09</div>
+        <h2 class="cat-title">Pricing & cost</h2>
+        <div class="cat-rule"></div>
+        <p class="cat-desc">What Wethr costs to run, and what the pricing model will look like.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How much does Wethr cost?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Wethr is in a <strong>pilot phase</strong> — formal pricing has not been finalized and pilot churches are onboarding under an early-access arrangement. Contact us to discuss what participation in the pilot looks like.</p>
+          <p>The model we're building toward is a flat monthly subscription per church — not per-seat, not per-member. A church of 150 members and a church of 400 members should pay the same base rate, because the coordination problem is roughly the same scale and the administrative burden to serve them is similar.</p>
+          <div class="callout sunrise">One thing we're firmly committed to: Wethr will never be priced out of reach for the mid-size church. The whole point of building this product is to serve churches that existing platforms have priced or complexity-gated out of good tools.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What does it actually cost to run Wethr — is the business model sustainable?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>The infrastructure cost to run Wethr is very low — under $4 per church per month at any scale, because the stack is entirely serverless and consumption-based. There are no fixed server costs.</p>
+          <p>At a pricing point of $49–$99/month per church, gross margins on infrastructure alone would be 92–97%. The real cost driver at scale is people — engineering, support, and onboarding. That's a healthy business model, not a precarious one.</p>
+          <p>SMS is the one variable cost worth watching: at high volunteer opt-in rates, Twilio charges can grow. Wethr defaults to leading with push notifications and email, with SMS as an opt-in layer — this keeps SMS costs proportional to actual usage.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Will pricing change after the pilot? Will early churches be grandfathered?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>Pilot churches are joining during the product's most formative phase — helping shape what Wethr becomes, tolerating rough edges later customers won't have to deal with, and providing feedback that directly influences the roadmap. That contribution matters, and it will be recognized in how pilot pricing transitions to production pricing.</p>
+          <p>We're committed to treating pilot churches fairly when formal pricing launches. The specific terms will be worked out with each pilot church individually — but "you helped build this" is not something we'll forget when the invoice arrives.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Are there any per-user fees or seat limits?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-body"><div class="faq-body-inner">
+          <p>The intended model is flat per-church, with no per-seat or per-user fees. Your entire church — all members, all volunteers, all ministry leaders — is included in one subscription. Adding a volunteer doesn't cost more. Growing from 200 to 350 members doesn't trigger a price increase.</p>
+          <p>Per-seat pricing creates perverse incentives (don't add that volunteer, it costs money) and makes budgeting unpredictable. Flat pricing per church is simpler and more appropriate for the way churches think about software costs.</p>
+        </div></div>
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <div class="faq-cta">
+      <div class="faq-cta-inner">
+        <h3>Still have questions?</h3>
+        <p>We'd rather answer them honestly in a conversation than have you guess. Reach out.</p>
+        <a href="mailto:hello@wethr.app" class="cta-btn">Get in touch →</a>
+      </div>
+    </div>
+
+  </div><!-- /faq-content -->
+</div><!-- /page-body -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="28" height="28" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#0F2337"/><line x1="17" y1="4.5" x2="17" y2="7" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity=".65"/><circle cx="17" cy="12.5" r="2.8" fill="#F08330"/><polygon points="17,12 11,18 23,18" fill="#1E3A5F"/><rect x="15.8" y="9.5" width="2.4" height="4" rx=".5" fill="#1E3A5F"/><line x1="14.8" y1="10.8" x2="19.2" y2="10.8" stroke="#F08330" stroke-width=".9" stroke-linecap="round"/><rect x="12" y="18" width="10" height="7" rx="1" fill="#2E86AB"/><rect x="15.3" y="20.5" width="3.4" height="4.5" rx="1.7" fill="#0F2337"/><path d="M3 27.5 Q6 26 9 27.5 Q12 29 15 27.5 Q18 26 21 27.5 Q24 29 27 27.5 Q30 26 33 27.5" stroke="#4A9EC1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".8"/></svg>
+        <span class="footer-wordmark">Wethr</span>
+      </div>
+      <div class="footer-tagline">Named for the bellwether · Built for the church at your scale.</div>
+    </div>
+    <div style="display:flex;gap:24px;align-items:center">
+      <a href="wethr-pitch-brochure.html" style="font-size:13px;font-weight:500;color:rgba(255,255,255,.4);text-decoration:none">Pitch Brochure</a>
+      <a href="wethr-preview.html" style="font-size:13px;font-weight:500;color:rgba(255,255,255,.4);text-decoration:none">App Preview</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+
+  // ── Accordion ──────────────────────────────────────────────────
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.querySelector('.faq-q').addEventListener('click', function() {
+      var wasOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(function(o) {
+        o.classList.remove('is-open');
+      });
+      if (!wasOpen) item.classList.add('is-open');
+    });
+  });
+
+  // ── Scroll spy ────────────────────────────────────────────────
+  var sections = Array.from(document.querySelectorAll('section.faq-cat[id]'));
+
+  function getStickyOffset() {
+    // Measure actual rendered height of both sticky bars dynamically
+    var topnav  = document.querySelector('.topnav');
+    var catnav  = document.querySelector('.catnav');
+    var h1 = topnav  ? topnav.getBoundingClientRect().height  : 60;
+    var h2 = catnav  ? catnav.getBoundingClientRect().height  : 44;
+    return h1 + h2 + 16; // 16px breathing room
+  }
+
+  function setActive(id) {
+    document.querySelectorAll('[data-spy]').forEach(function(a) {
+      var match = a.getAttribute('data-spy') === id;
+      a.classList.toggle('is-active', match);
+    });
+  }
+
+  function onScroll() {
+    var offset = getStickyOffset();
+    var best   = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top <= offset) {
+        best = sections[i];
+      }
+    }
+    setActive(best.id);
+  }
+
+  // Use both scroll and resize (offset can change on resize)
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  // Delay first run slightly to ensure layout is complete
+  setTimeout(onScroll, 100);
+  onScroll();
+
+})();
+</script>
+
+</body>
+</html>
