@@ -6,111 +6,15 @@
   <title>Terms of Service — Wethr</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy-950: #0F2337;
-      --navy-900: #1E3A5F;
-      --navy-800: #254873;
-      --navy-700: #2D5886;
-      --navy-600: #3A6B9E;
-      --navy-100: #D6E4F0;
-      --navy-50:  #EBF2F9;
-      --cerulean-700: #1A6B8A;
-      --cerulean-600: #2180A4;
-      --cerulean-500: #2E86AB;
-      --cerulean-100: #C8E8F3;
-      --cerulean-50:  #E8F5FB;
-      --sunrise-500: #F08330;
-      --sunrise-400: #F5A254;
-      --sunrise-100: #FDE8CC;
-      --sunrise-50:  #FEF6EC;
-      --meadow-500: #4A9A35;
-      --meadow-100: #C8EABC;
-      --meadow-50:  #EBF7E4;
-      --amber-700: #9A5B00;
-      --amber-500: #D97B00;
-      --amber-100: #FDECC8;
-      --amber-50:  #FEF7E8;
-      --crimson-700: #8B1A2B;
-      --crimson-500: #C0293F;
-      --crimson-100: #F9D0D6;
-      --crimson-50:  #FDF0F2;
-      --neutral-900: #1A1A1A;
-      --neutral-700: #374151;
-      --neutral-500: #6B7280;
-      --neutral-400: #9CA3AF;
-      --neutral-300: #D1D5DB;
-      --neutral-200: #E5E7EB;
-      --neutral-100: #F3F4F6;
-      --neutral-50:  #F9FAFB;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--neutral-50);
-      color: var(--neutral-700);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    /* ── NAV ── */
-    nav {
-      background: var(--navy-900);
-      padding: 0 40px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo-mark {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-logo-mark svg { width: 18px; height: 18px; }
-
-    .nav-wordmark {
-      font-family: 'Lora', serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: -0.2px;
-    }
-
-    .nav-badge {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--navy-100);
-      letter-spacing: 0.4px;
-      opacity: 0.7;
-    }
+    body { line-height: 1.7; min-height: 100vh; }
 
     /* ── HERO ── */
     .hero {
       background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
-      padding: 72px 40px 80px;
+      padding: 120px 40px 80px;
       position: relative;
       overflow: hidden;
     }
@@ -520,55 +424,11 @@
     .badge.amber  { background: var(--amber-50);    color: var(--amber-700);    border: 1px solid var(--amber-100); }
     .badge.red    { background: var(--crimson-50);  color: var(--crimson-700);  border: 1px solid var(--crimson-100); }
 
-    /* Footer */
-    footer {
-      background: var(--navy-950);
-      padding: 40px;
-      text-align: center;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .footer-logo-mark {
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
-      border-radius: 7px;
-    }
-
-    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--navy-100);
-      opacity: 0.6;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-
-    .footer-links a:hover { opacity: 1; }
-    .footer-copy { font-size: 12px; color: var(--navy-100); opacity: 0.4; }
-
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .page-body { grid-template-columns: 1fr; padding: 36px 20px 60px; gap: 0; }
       .toc { display: none; }
       .hero { padding: 48px 20px 56px; }
-      nav { padding: 0 20px; }
       .commitment-banner { grid-template-columns: 1fr; padding: 20px; }
       .commitment-item + .commitment-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
       .rights-grid { grid-template-columns: 1fr; }
@@ -584,11 +444,17 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">
-      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+    <a href="index.html" class="nav-brand">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="nav-logo">
       <span class="nav-wordmark">Wethr</span>
     </a>
-    <span class="nav-badge">Terms of Service</span>
+    <ul class="nav-links">
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="preview.html">App Preview</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mailto:hello@wethr.co" class="nav-cta">Request a Demo</a></li>
+    </ul>
   </nav>
 
   <!-- HERO -->
@@ -688,7 +554,7 @@
             <p class="callout-text">The church or ministry that creates the Wethr account is the contracting party and is responsible for all activity that occurs within that account — including actions taken by staff, team leaders, and volunteers you authorize.</p>
           </div>
         </div>
-        <p>These Terms should be read alongside our <a href="bellwether-privacy.html" style="color: var(--cerulean-600); font-weight: 500;">Privacy Policy</a>, which explains how we handle personal data, and any order forms or subscription agreements you have executed with us.</p>
+        <p>These Terms should be read alongside our <a href="privacy.html" style="color: var(--cerulean-600); font-weight: 500;">Privacy Policy</a>, which explains how we handle personal data, and any order forms or subscription agreements you have executed with us.</p>
       </section>
 
       <!-- 2. Eligibility & Accounts -->

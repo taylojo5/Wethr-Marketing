@@ -6,92 +6,9 @@
   <title>Wethr — Phase 1 Pitch</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy-950: #0F2337;
-      --navy-900: #1E3A5F;
-      --navy-800: #254873;
-      --navy-700: #2D5886;
-      --navy-600: #3A6B9E;
-      --navy-100: #D6E4F0;
-      --navy-50:  #EBF2F9;
-
-      --cerulean-700: #1A6B8A;
-      --cerulean-600: #2180A4;
-      --cerulean-500: #2E86AB;
-      --cerulean-400: #4A9EC1;
-      --cerulean-300: #72B8D4;
-      --cerulean-100: #C8E8F3;
-      --cerulean-50:  #E8F5FB;
-
-      /* Sunrise — Wethr brand accent, from logo sunburst */
-      --sunrise-700: #B85C00;
-      --sunrise-600: #D97022;
-      --sunrise-500: #F08330;
-      --sunrise-400: #F5A254;
-      --sunrise-300: #FAC48A;
-      --sunrise-100: #FDE8CC;
-      --sunrise-50:  #FEF6EC;
-
-      /* Meadow — success green, from logo landscape */
-      --meadow-700: #2A6120;
-      --meadow-600: #357A29;
-      --meadow-500: #4A9A35;
-      --meadow-100: #C8EABC;
-      --meadow-50:  #EBF7E4;
-
-      --amber-700: #9A5B00;
-      --amber-500: #D97B00;
-      --amber-400: #F5A623;
-      --amber-100: #FDECC8;
-      --amber-50:  #FEF7E8;
-
-      --crimson-700: #8B1A2B;
-      --crimson-500: #C0293F;
-      --crimson-400: #D94F62;
-      --crimson-100: #F9D0D6;
-      --crimson-50:  #FDF0F2;
-
-      --neutral-900: #1A1A1A;
-      --neutral-700: #374151;
-      --neutral-500: #6B7280;
-      --neutral-400: #9CA3AF;
-      --neutral-300: #D1D5DB;
-      --neutral-200: #E5E7EB;
-      --neutral-100: #F3F4F6;
-      --neutral-50:  #F9FAFB;
-      --white: #FFFFFF;
-
-      /* Brand signature gradient: Navy → Cerulean → Sunrise */
-      --brand-rule: linear-gradient(90deg, #1E3A5F, #2E86AB, #F08330);
-    }
-
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--neutral-700); background: var(--neutral-50); line-height: 1.6; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(15, 35, 55, 0.97);
-      backdrop-filter: blur(14px);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 60px;
-    }
-    nav::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--brand-rule); opacity: 0.75; }
-
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo { width: 34px; height: 34px; flex-shrink: 0; }
-    .nav-wordmark { font-family: 'Lora', serif; font-size: 19px; font-weight: 700; color: white; letter-spacing: -0.3px; }
-
-    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: white; }
-    .nav-cta { background: var(--sunrise-500) !important; color: white !important; padding: 7px 18px; border-radius: 8px; font-weight: 600 !important; }
-    .nav-cta:hover { background: var(--sunrise-600) !important; }
-
     /* ── HERO ── */
     .hero { min-height: 100vh; background: var(--navy-950); position: relative; overflow: hidden; display: flex; align-items: center; padding: 120px 0 80px; }
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 55% at 15% 55%, rgba(46,134,171,0.16) 0%, transparent 55%), radial-gradient(ellipse 50% 50% at 75% 25%, rgba(240,131,48,0.09) 0%, transparent 50%), radial-gradient(ellipse 40% 60% at 85% 75%, rgba(74,154,53,0.06) 0%, transparent 50%); }
@@ -312,67 +229,12 @@
     .cta-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.7); font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 9px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
     .cta-btn-outline:hover { background: rgba(255,255,255,0.06); color: white; }
 
-    /* Footer */
-    footer {
-      background: var(--navy-950);
-      padding: 40px;
-      text-align: center;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .footer-logo-mark {
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
-      border-radius: 7px;
-    }
-
-    .footer-wordmark {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--navy-100);
-      opacity: 0.6;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-
-    .footer-links a:hover { opacity: 1; }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--navy-100);
-      opacity: 0.4;
-    }
-
     /* ── ANIMATIONS ── */
     .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
       section { padding: 60px 20px; }
       .heritage-banner { padding: 24px 20px; }
       .quote-strip { padding: 40px 20px; }
@@ -387,8 +249,6 @@
       .roadmap-timeline::before { display: none; }
       .tease-features { grid-template-columns: 1fr 1fr; }
       .quote-grid { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
-      .footer-tagline, .footer-brand { margin-left: 0; }
     }
   </style>
 </head>
@@ -396,7 +256,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-brand">
+  <a href="index.html" class="nav-brand">
     <img src="./wethr_logo-192.png" alt="Wethr" class="nav-logo">
     <span class="nav-wordmark">Wethr</span>
   </a>
@@ -405,10 +265,10 @@
     <li><a href="#icp">Who It's For</a></li>
     <li><a href="#features">Phase 1 Features</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <!-- <li><a href="./wethr-preview.html">Preview the App</a></li> -->
-    <li><a href="./faq.html">FAQs</a></li>
-    <li><a href="./contact.html">Contact</a></li>
-    <li><a href="./support.html">Support</a></li>
+    <li><a href="faq.html">FAQs</a></li>
+    <li><a href="preview.html">App Preview</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="support.html">Support</a></li>
     <li><a href="#cta" class="nav-cta">Request a Demo</a></li>
   </ul>
 </nav>

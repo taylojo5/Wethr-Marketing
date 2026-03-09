@@ -6,39 +6,9 @@
 <title>Wethr — FAQ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --navy-950:#0F2337;--navy-900:#1E3A5F;--navy-800:#254873;
-  --navy-100:#D6E4F0;--navy-50:#EBF2F9;
-  --cerulean-700:#1A6B8A;--cerulean-500:#2E86AB;--cerulean-300:#72B8D4;
-  --cerulean-100:#C8E8F3;--cerulean-50:#E8F5FB;
-  --sunrise-700:#B85C00;--sunrise-600:#D97022;--sunrise-500:#F08330;
-  --sunrise-400:#F5A254;--sunrise-300:#FAC48A;--sunrise-100:#FDE8CC;--sunrise-50:#FEF6EC;
-  --meadow-700:#2A6120;--meadow-500:#4A9A35;--meadow-100:#C8EABC;--meadow-50:#EBF7E4;
-  --amber-700:#9A5B00;--amber-500:#D97B00;--amber-100:#FDECC8;--amber-50:#FEF7E8;
-  --crimson-500:#C0293F;
-  --n900:#1A1A1A;--n700:#374151;--n600:#4B5563;--n500:#6B7280;
-  --n400:#9CA3AF;--n300:#D1D5DB;--n200:#E5E7EB;--n100:#F3F4F6;--n50:#F9FAFB;
-  --brand-rule:linear-gradient(90deg,#1E3A5F,#2E86AB,#F08330);
-}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);line-height:1.65}
-
-/* ── TOP NAV ── */
-.topnav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  background:rgba(15,35,55,0.97);backdrop-filter:blur(14px);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;height:60px;
-}
-.topnav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--brand-rule);opacity:.75}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-wordmark{font-family:'Lora',serif;font-size:19px;font-weight:700;color:#fff;letter-spacing:-.3px}
-.nav-back{font-size:13px;font-weight:500;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
-.nav-back:hover{color:#fff}
-
 /* ── HERO ── */
 .hero{
   background:var(--navy-950);padding:104px 48px 72px;
@@ -88,14 +58,14 @@ body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);li
 
 /* ── SIDEBAR TOC ── */
 .sidebar{position:sticky;top:116px;padding-top:52px}
-.toc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--n400);margin-bottom:14px}
+.toc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--neutral-400);margin-bottom:14px}
 .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
 .toc-list a{
-  display:block;font-size:13px;font-weight:500;color:var(--n400);
+  display:block;font-size:13px;font-weight:500;color:var(--neutral-400);
   text-decoration:none;padding:5px 10px;border-left:2px solid transparent;
   transition:all .18s;line-height:1.4;
 }
-.toc-list a:hover{color:var(--n700);border-left-color:var(--n300)}
+.toc-list a:hover{color:var(--neutral-700);border-left-color:var(--neutral-300)}
 .toc-list a.is-active{color:var(--sunrise-600);border-left-color:var(--sunrise-500);font-weight:600}
 
 /* ── FAQ CONTENT ── */
@@ -107,15 +77,15 @@ body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);li
 .cat-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sunrise-600);margin-bottom:8px}
 .cat-title{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--navy-900);letter-spacing:-.3px;margin-bottom:8px}
 .cat-rule{width:36px;height:3px;background:var(--brand-rule);border-radius:2px;margin:12px 0 16px}
-.cat-desc{font-size:15px;color:var(--n500);line-height:1.7;max-width:560px}
+.cat-desc{font-size:15px;color:var(--neutral-500);line-height:1.7;max-width:560px}
 
 /* ── FAQ ACCORDION ── */
 .faq-item{
-  border:1px solid var(--n200);border-radius:12px;background:#fff;
+  border:1px solid var(--neutral-200);border-radius:12px;background:#fff;
   margin-bottom:10px;overflow:hidden;transition:box-shadow .2s;
 }
 .faq-item:hover{box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.faq-item.is-open{box-shadow:0 4px 20px rgba(0,0,0,.08);border-color:var(--n300)}
+.faq-item.is-open{box-shadow:0 4px 20px rgba(0,0,0,.08);border-color:var(--neutral-300)}
 
 .faq-q{
   display:flex;align-items:center;justify-content:space-between;
@@ -126,9 +96,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);li
 
 .faq-toggle{
   width:28px;height:28px;border-radius:50%;flex-shrink:0;
-  background:var(--n100);border:1px solid var(--n200);
+  background:var(--neutral-100);border:1px solid var(--neutral-200);
   display:flex;align-items:center;justify-content:center;
-  font-size:16px;font-weight:300;color:var(--n500);
+  font-size:16px;font-weight:300;color:var(--neutral-500);
   transition:background .25s,border-color .25s,transform .25s,color .25s;
   line-height:1;
 }
@@ -140,16 +110,16 @@ body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);li
 .faq-body{
   display:none;
   padding:0 22px 22px;
-  border-top:1px solid var(--n100);
+  border-top:1px solid var(--neutral-100);
 }
 .faq-item.is-open .faq-body{display:block}
 .faq-body-inner{
   padding-top:18px;
-  font-size:15px;color:var(--n600);line-height:1.75;
+  font-size:15px;color:var(--neutral-600);line-height:1.75;
 }
 .faq-body-inner p{margin-bottom:14px}
 .faq-body-inner p:last-child{margin-bottom:0}
-.faq-body-inner strong{color:var(--n900);font-weight:600}
+.faq-body-inner strong{color:var(--neutral-900);font-weight:600}
 .faq-body-inner em{font-style:italic}
 
 .faq-body-inner ul,.faq-body-inner ol{
@@ -181,18 +151,18 @@ body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);li
 .callout.amber{background:var(--amber-50);border-color:var(--amber-100);border-left-color:var(--amber-500);color:var(--amber-700)}
 
 /* compare table */
-.ctable{width:100%;border-collapse:collapse;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--n200);font-size:13px}
+.ctable{width:100%;border-collapse:collapse;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--neutral-200);font-size:13px}
 .ctable th{background:var(--navy-900);color:rgba(255,255,255,.8);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
-.ctable td{padding:10px 14px;border-bottom:1px solid var(--n100);vertical-align:top;color:var(--n700);line-height:1.5}
+.ctable td{padding:10px 14px;border-bottom:1px solid var(--neutral-100);vertical-align:top;color:var(--neutral-700);line-height:1.5}
 .ctable tr:last-child td{border-bottom:none}
-.ctable tr:nth-child(even) td{background:var(--n50)}
-.ctable td:first-child{font-weight:600;color:var(--n900)}
+.ctable tr:nth-child(even) td{background:var(--neutral-50)}
+.ctable td:first-child{font-weight:600;color:var(--neutral-900)}
 
 /* phase tags */
 .ptag{display:inline-flex;align-items:center;background:var(--navy-50);border:1px solid var(--navy-100);border-radius:9999px;padding:2px 9px;font-size:11px;font-weight:600;color:var(--navy-900);vertical-align:middle}
 .ptag.p1{background:var(--sunrise-50);border-color:var(--sunrise-100);color:var(--sunrise-700)}
 .ptag.p2{background:var(--cerulean-50);border-color:var(--cerulean-100);color:var(--cerulean-700)}
-.ptag.fut{background:var(--n100);border-color:var(--n200);color:var(--n500)}
+.ptag.fut{background:var(--neutral-100);border-color:var(--neutral-200);color:var(--neutral-500)}
 
 /* CTA */
 .faq-cta{
@@ -212,81 +182,30 @@ body{font-family:'DM Sans',sans-serif;color:var(--n700);background:var(--n50);li
 }
 .cta-btn:hover{background:var(--sunrise-600);transform:translateY(-1px)}
 
-/* Footer */
-footer {
-      background: var(--navy-950);
-      padding: 40px;
-      text-align: center;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .footer-logo-mark {
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
-      border-radius: 7px;
-    }
-
-    .footer-wordmark {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--navy-100);
-      opacity: 0.6;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-
-    .footer-links a:hover { opacity: 1; }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--navy-100);
-      opacity: 0.4;
-    }
-
 @media(max-width:900px){
-  .topnav{padding:0 20px}
   .catnav{padding:0 20px}
   .hero{padding:90px 20px 60px}
   .page-body{grid-template-columns:1fr;padding:0 20px 80px;gap:0}
   .sidebar{display:none}
-  footer{padding:32px 20px}
-  .footer-inner{flex-direction:column;gap:12px;text-align:center}
-  .footer-tagline{margin-left:0}
 }
 </style>
 </head>
 <body>
 
-<!-- TOP NAV -->
-<header class="topnav">
-  <a href="wethr-pitch-brochure.html" class="nav-brand">
-    <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="./wethr_logo-192.png" alt="Wethr" class="nav-logo">
     <span class="nav-wordmark">Wethr</span>
   </a>
-  <a href="index.html" class="nav-back">← Back to Pitch</a>
-</header>
+  <ul class="nav-links">
+    <li><a href="faq.html">FAQs</a></li>
+    <li><a href="preview.html">App Preview</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="mailto:hello@wethr.co" class="nav-cta">Request a Demo</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
 <div class="hero">
@@ -913,9 +832,9 @@ footer {
 
   function getStickyOffset() {
     // Measure actual rendered height of both sticky bars dynamically
-    var topnav  = document.querySelector('.topnav');
+    var mainNav = document.querySelector('nav');
     var catnav  = document.querySelector('.catnav');
-    var h1 = topnav  ? topnav.getBoundingClientRect().height  : 60;
+    var h1 = mainNav ? mainNav.getBoundingClientRect().height : 60;
     var h2 = catnav  ? catnav.getBoundingClientRect().height  : 44;
     return h1 + h2 + 16; // 16px breathing room
   }
