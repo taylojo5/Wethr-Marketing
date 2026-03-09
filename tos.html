@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Wethr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --navy-600: #3A6B9E;
+      --navy-100: #D6E4F0;
+      --navy-50:  #EBF2F9;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50:  #E8F5FB;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50:  #FEF6EC;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50:  #EBF7E4;
+      --amber-700: #9A5B00;
+      --amber-500: #D97B00;
+      --amber-100: #FDECC8;
+      --amber-50:  #FEF7E8;
+      --crimson-700: #8B1A2B;
+      --crimson-500: #C0293F;
+      --crimson-100: #F9D0D6;
+      --crimson-50:  #FDF0F2;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50:  #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-700);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-900);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.4px;
+      opacity: 0.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+      padding: 72px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(46,134,171,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 30%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(240,131,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--cerulean-100);
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: var(--sunrise-400);
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--navy-100);
+      opacity: 0.85;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.7;
+    }
+
+    .hero-meta-item svg { width: 14px; height: 14px; opacity: 0.8; }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR TOC ── */
+    .toc { position: sticky; top: 80px; }
+
+    .toc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: 14px;
+    }
+
+    .toc-list { list-style: none; }
+    .toc-list li + li { margin-top: 2px; }
+
+    .toc-list a {
+      display: block;
+      padding: 7px 12px 7px 14px;
+      font-size: 13px;
+      color: var(--neutral-500);
+      text-decoration: none;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--cerulean-600);
+      background: var(--cerulean-50);
+      border-left-color: var(--cerulean-500);
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: var(--neutral-200);
+      margin: 16px 0;
+    }
+
+    .toc-contact-card {
+      background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50));
+      border: 1px solid var(--navy-100);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .toc-contact-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .toc-contact-card a {
+      font-size: 13px;
+      color: var(--cerulean-600);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toc-contact-card a:hover { text-decoration: underline; }
+
+    .toc-contact-card p {
+      font-size: 12px;
+      color: var(--neutral-500);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* Summary banner */
+    .commitment-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .commitment-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .commitment-item + .commitment-item {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 20px;
+    }
+
+    .commitment-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .commitment-icon.cerulean { background: rgba(46,134,171,0.2); }
+    .commitment-icon.meadow   { background: rgba(74,154,53,0.2); }
+    .commitment-icon.sunrise  { background: rgba(240,131,48,0.2); }
+    .commitment-icon svg { width: 16px; height: 16px; }
+
+    .commitment-title { font-size: 13px; font-weight: 600; color: #fff; }
+    .commitment-desc  { font-size: 12px; color: var(--navy-100); opacity: 0.75; line-height: 1.5; }
+
+    /* Section */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 84px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .section-number {
+      width: 32px;
+      height: 32px;
+      background: var(--navy-900);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: -0.2px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--neutral-700);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section h3 {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin: 24px 0 10px;
+    }
+
+    /* Callout */
+    .callout {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .callout.info    { background: var(--cerulean-50); border: 1px solid var(--cerulean-100); }
+    .callout.success { background: var(--meadow-50);   border: 1px solid var(--meadow-100); }
+    .callout.warm    { background: var(--sunrise-50);  border: 1px solid var(--sunrise-100); }
+    .callout.caution { background: var(--amber-50);    border: 1px solid var(--amber-100); }
+    .callout.danger  { background: var(--crimson-50);  border: 1px solid var(--crimson-100); }
+
+    .callout-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .callout.info    .callout-icon { color: var(--cerulean-600); }
+    .callout.success .callout-icon { color: var(--meadow-500); }
+    .callout.warm    .callout-icon { color: var(--sunrise-500); }
+    .callout.caution .callout-icon { color: var(--amber-500); }
+    .callout.danger  .callout-icon { color: var(--crimson-500); }
+
+    .callout-body { flex: 1; }
+
+    .callout-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .callout-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--neutral-700);
+      margin: 0 !important;
+    }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--neutral-200);
+    }
+
+    .data-table thead { background: var(--navy-900); }
+
+    .data-table thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--neutral-200);
+      transition: background 0.1s;
+    }
+
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:nth-child(odd)  { background: #fff; }
+    .data-table tbody tr:nth-child(even) { background: var(--neutral-50); }
+    .data-table tbody tr:hover { background: var(--cerulean-50); }
+
+    .data-table td {
+      padding: 12px 16px;
+      vertical-align: top;
+      color: var(--neutral-700);
+      line-height: 1.6;
+    }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: var(--navy-900);
+      white-space: nowrap;
+    }
+
+    /* Feature grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .right-card {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+
+    .right-card:hover { box-shadow: 0 2px 12px rgba(30,58,95,0.08); }
+
+    .right-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--navy-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .right-card-icon svg { width: 16px; height: 16px; color: var(--cerulean-600); }
+    .right-card-title { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .right-card-desc  { font-size: 12.5px; color: var(--neutral-500); line-height: 1.55; }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    .badge.blue   { background: var(--cerulean-50); color: var(--cerulean-700); border: 1px solid var(--cerulean-100); }
+    .badge.green  { background: var(--meadow-50);   color: var(--meadow-500);   border: 1px solid var(--meadow-100); }
+    .badge.warm   { background: var(--sunrise-50);  color: var(--sunrise-500);  border: 1px solid var(--sunrise-100); }
+    .badge.amber  { background: var(--amber-50);    color: var(--amber-700);    border: 1px solid var(--amber-100); }
+    .badge.red    { background: var(--crimson-50);  color: var(--crimson-700);  border: 1px solid var(--crimson-100); }
+
+    /* Footer */
+    footer {
+      background: var(--navy-950);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 12px; color: var(--navy-100); opacity: 0.4; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-body { grid-template-columns: 1fr; padding: 36px 20px 60px; gap: 0; }
+      .toc { display: none; }
+      .hero { padding: 48px 20px 56px; }
+      nav { padding: 0 20px; }
+      .commitment-banner { grid-template-columns: 1fr; padding: 20px; }
+      .commitment-item + .commitment-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+      .rights-grid { grid-template-columns: 1fr; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="nav-wordmark">Wethr</span>
+    </a>
+    <span class="nav-badge">Terms of Service</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Legal &amp; Trust</div>
+      <h1>Terms of Service</h1>
+      <p>These terms govern your church's use of the Wethr platform. We've written them to be straightforward — so you know exactly what you're agreeing to and what you can expect from us.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 2V1M10 2V1M1 5.5h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Effective: March 1, 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5V7l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Last updated: March 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5L7 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Version 1.0
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#overview" class="active">Overview</a></li>
+        <li><a href="#eligibility">Eligibility &amp; Accounts</a></li>
+        <li><a href="#subscription">Subscription &amp; Billing</a></li>
+        <li><a href="#acceptable-use">Acceptable Use</a></li>
+        <li><a href="#your-data">Your Data &amp; Content</a></li>
+        <li><a href="#our-service">Our Service Obligations</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#third-parties">Third-Party Services</a></li>
+        <li><a href="#liability">Limitation of Liability</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#disputes">Disputes</a></li>
+        <li><a href="#changes">Changes to Terms</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+
+      <div class="toc-divider"></div>
+
+      <div class="toc-contact-card">
+        <div class="label">Legal questions?</div>
+        <a href="mailto:legal@wethr.co">legal@wethr.co</a>
+        <p>We aim to respond within 3 business days.</p>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- Summary banner -->
+      <div class="commitment-banner">
+        <div class="commitment-item">
+          <div class="commitment-icon cerulean">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L9.5 5H14L10.5 7.5L12 11.5L8 9L4 11.5L5.5 7.5L2 5H6.5L8 1Z" stroke="#2E86AB" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">Fair &amp; straightforward.</div>
+          <div class="commitment-desc">No hidden clauses. These terms say what they mean.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon meadow">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="6" width="12" height="9" rx="2" stroke="#4A9A35" stroke-width="1.4"/><path d="M5 6V4.5a3 3 0 016 0V6" stroke="#4A9A35" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1.5" fill="#4A9A35"/></svg>
+          </div>
+          <div class="commitment-title">Your church's data is yours.</div>
+          <div class="commitment-desc">We don't claim ownership over anything your church creates or uploads.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon sunrise">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z" stroke="#F08330" stroke-width="1.4"/><path d="M5.5 8.5l2 2 3-4" stroke="#F08330" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">We commit to uptime.</div>
+          <div class="commitment-desc">Wethr is a tool your team depends on. We take that seriously.</div>
+        </div>
+      </div>
+
+      <!-- 1. Overview -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Overview</h2>
+        </div>
+        <p>These Terms of Service ("Terms") constitute a binding agreement between Wethr ("we," "our," or "us") and the church or organization ("you" or "your church") that registers for and uses the Wethr platform at <strong>wethr.co</strong> and associated subdomains.</p>
+        <p>By creating an account, accessing the platform, or permitting your staff or volunteers to use Wethr, you agree to these Terms on behalf of your organization. If you do not agree, do not use Wethr.</p>
+        <div class="callout warm">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">These Terms apply to your organization</div>
+            <p class="callout-text">The church or ministry that creates the Wethr account is the contracting party and is responsible for all activity that occurs within that account — including actions taken by staff, team leaders, and volunteers you authorize.</p>
+          </div>
+        </div>
+        <p>These Terms should be read alongside our <a href="bellwether-privacy.html" style="color: var(--cerulean-600); font-weight: 500;">Privacy Policy</a>, which explains how we handle personal data, and any order forms or subscription agreements you have executed with us.</p>
+      </section>
+
+      <!-- 2. Eligibility & Accounts -->
+      <section class="section" id="eligibility">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>Eligibility &amp; Accounts</h2>
+        </div>
+        <p>Wethr is designed for churches, ministries, and faith-based nonprofits. To create and maintain an account, your organization must:</p>
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L9.5 5H14L10.5 7.5L12 11.5L8 9L4 11.5L5.5 7.5L2 5H6.5L8 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Be a recognized organization</div>
+              <div class="right-card-desc">A church, religious nonprofit, or ministry entity with legal standing in your jurisdiction.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Designate an administrator</div>
+              <div class="right-card-desc">An authorized individual (18+) who accepts these Terms and manages the account.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.5h12M5 9.5h2M9 9.5h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Maintain a valid subscription</div>
+              <div class="right-card-desc">Full access to the platform requires an active, paid subscription in good standing.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8.5l2 2 3-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Comply with applicable law</div>
+              <div class="right-card-desc">Use the platform in accordance with all applicable local, state, and federal laws.</div>
+            </div>
+          </div>
+        </div>
+        <h3>Account Security</h3>
+        <p>Your church is responsible for maintaining the confidentiality of all login credentials issued to your staff and volunteers. You agree to notify us immediately at <a href="mailto:support@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">support@wethr.co</a> if you become aware of any unauthorized access to your account. Wethr is not liable for losses resulting from unauthorized use of credentials that you failed to secure.</p>
+      </section>
+
+      <!-- 3. Subscription & Billing -->
+      <section class="section" id="subscription">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>Subscription &amp; Billing</h2>
+        </div>
+        <p>Wethr is offered as a subscription service billed on a monthly or annual basis, depending on the plan you select at signup.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Billing cycle</td>
+              <td>Monthly or annual, charged in advance on the anniversary of your subscription start date.</td>
+            </tr>
+            <tr>
+              <td>Payment method</td>
+              <td>A valid credit or debit card is required. Billing is handled by our payment processor — Wethr never stores full card details.</td>
+            </tr>
+            <tr>
+              <td>Auto-renewal</td>
+              <td>Subscriptions renew automatically. You may cancel before the next billing date to prevent renewal.</td>
+            </tr>
+            <tr>
+              <td>Price changes</td>
+              <td>We will provide at least 30 days' notice before any price change takes effect for existing subscribers.</td>
+            </tr>
+            <tr>
+              <td>Refunds</td>
+              <td>Monthly plans are non-refundable after billing. Annual plans may be eligible for a prorated refund within 14 days of payment — contact us to request one.</td>
+            </tr>
+            <tr>
+              <td>Failed payments</td>
+              <td>If payment fails, we will retry and notify your administrator. Access may be suspended after 10 days of non-payment.</td>
+            </tr>
+            <tr>
+              <td>Taxes</td>
+              <td>Prices are exclusive of applicable taxes. You are responsible for any sales tax, VAT, or similar obligations in your jurisdiction.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Nonprofit &amp; pilot pricing</div>
+            <p class="callout-text">We offer discounted rates for qualifying nonprofits and special arrangements for pilot churches. Contact us at <a href="mailto:hello@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">hello@wethr.co</a> to discuss options.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Acceptable Use -->
+      <section class="section" id="acceptable-use">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>Acceptable Use</h2>
+        </div>
+        <p>Wethr is built for ministry coordination. You agree to use the platform only for its intended purpose and in ways that comply with these Terms and all applicable laws.</p>
+        <h3>You may use Wethr to:</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Permitted Activity</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Manage your congregation</td>
+              <td>Maintain a family directory, track member status, organize household records.</td>
+            </tr>
+            <tr>
+              <td>Coordinate volunteers</td>
+              <td>Build ministry teams, assign roles, schedule services, manage RSVPs.</td>
+            </tr>
+            <tr>
+              <td>Plan services</td>
+              <td>Build orders of service, attach resources, manage service history.</td>
+            </tr>
+            <tr>
+              <td>Communicate with your team</td>
+              <td>Send schedule notifications, reminders, and team messages via in-app, email, and SMS channels.</td>
+            </tr>
+            <tr>
+              <td>Manage groups &amp; files</td>
+              <td>Organize small groups, upload ministry documents, share resources with teams.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>You may not use Wethr to:</h3>
+        <div class="callout danger">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v4m0 2.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Prohibited uses</div>
+            <p class="callout-text">Harass, threaten, or discriminate against individuals; send unsolicited bulk communications; attempt to access accounts or data you are not authorized to view; reverse-engineer or scrape the platform; resell or sublicense access to Wethr; store or transmit illegal content; or use the platform for any commercial purpose unrelated to your ministry.</p>
+          </div>
+        </div>
+        <p>Violations of this section may result in immediate suspension or termination of your account. We reserve the right to investigate suspected violations and cooperate with law enforcement where required.</p>
+      </section>
+
+      <!-- 5. Your Data & Content -->
+      <section class="section" id="your-data">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Your Data &amp; Content</h2>
+        </div>
+        <p>Your church retains full ownership of all data, content, and records you create, upload, or import into Wethr — including directory records, service plans, files, notes, and messages ("Your Content").</p>
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">We do not claim ownership of your content</div>
+            <p class="callout-text">Wethr does not acquire any ownership rights over Your Content by virtue of you storing it on our platform. Your church's records are yours — before, during, and after your subscription.</p>
+          </div>
+        </div>
+        <h3>License you grant us</h3>
+        <p>By storing Your Content in Wethr, you grant us a limited, non-exclusive, royalty-free license to host, process, transmit, and display Your Content solely as necessary to provide the platform to you. This license ends when you delete the content or close your account.</p>
+        <h3>Your responsibilities</h3>
+        <p>You are responsible for ensuring that Your Content — including any personal data about your congregation members — is collected and stored lawfully, with appropriate notice and consent where required by applicable privacy law. Wethr is a processor acting on your instructions; the legal responsibilities of a data controller rest with your church.</p>
+        <h3>Data export</h3>
+        <p>You may export Your Content at any time through the Wethr admin settings. We provide data in standard, portable formats (CSV, PDF) so you are never locked in. Upon account closure, you may request a final data export within 30 days before permanent deletion.</p>
+      </section>
+
+      <!-- 6. Our Service Obligations -->
+      <section class="section" id="our-service">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Our Service Obligations</h2>
+        </div>
+        <p>We are committed to providing a reliable, well-maintained platform. Our obligations to you include:</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Commitment</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Availability</td>
+              <td>We target 99.5% monthly uptime, excluding scheduled maintenance. We will communicate planned maintenance windows with at least 48 hours' notice.</td>
+            </tr>
+            <tr>
+              <td>Security</td>
+              <td>We implement industry-standard security measures including encryption in transit and at rest, role-based access controls, and regular security reviews.</td>
+            </tr>
+            <tr>
+              <td>Data protection</td>
+              <td>We process your congregation's data only as described in our Privacy Policy and these Terms. We do not sell or monetize your data.</td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>We provide email support at <a href="mailto:support@wethr.co" style="color: var(--cerulean-600);">support@wethr.co</a> with a target first response of 1 business day for paid subscribers.</td>
+            </tr>
+            <tr>
+              <td>Updates</td>
+              <td>We continuously improve the platform. Updates are included in your subscription at no additional cost. We will not remove core features without reasonable notice.</td>
+            </tr>
+            <tr>
+              <td>Incident notification</td>
+              <td>In the event of a security incident affecting your data, we will notify your account administrator within 72 hours of becoming aware.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout caution">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 3L2 17h16L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 10v3m0 2.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Service provided "as is"</div>
+            <p class="callout-text">While we strive for reliability, Wethr is provided without warranty of uninterrupted or error-free operation. We are not liable for losses arising from unavailability, data loss, or service interruptions beyond our reasonable control — including acts of God, third-party infrastructure failures, or cyberattacks.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Intellectual Property -->
+      <section class="section" id="ip">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>Intellectual Property</h2>
+        </div>
+        <p>The Wethr platform — including its software, design, trademarks, logos, and documentation — is owned by Wethr and protected by copyright, trademark, and other intellectual property laws.</p>
+        <p>Your subscription grants you a limited, non-transferable, non-exclusive right to access and use Wethr for your church's internal ministry coordination purposes. This license does not include the right to copy, modify, distribute, reverse-engineer, or create derivative works of the platform or any of its components.</p>
+        <h3>Feedback</h3>
+        <p>If you provide feedback, suggestions, or ideas about Wethr, you grant us a perpetual, royalty-free license to use that feedback to improve our products and services, without any obligation to compensate you or credit your organization.</p>
+      </section>
+
+      <!-- 8. Third-Party Services -->
+      <section class="section" id="third-parties">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Third-Party Services</h2>
+        </div>
+        <p>Wethr integrates with third-party providers to deliver certain features. These integrations are subject to the third party's own terms and privacy policies.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Purpose</th>
+              <th>Data shared</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Email provider <span class="badge blue">SendGrid / Postmark</span></td>
+              <td>Transactional email delivery for schedule notifications, reminders, and announcements</td>
+              <td>Recipient name, email address, message content</td>
+            </tr>
+            <tr>
+              <td>SMS provider <span class="badge warm">Twilio</span></td>
+              <td>Optional SMS notifications for schedule alerts and urgent communications</td>
+              <td>Recipient phone number, message content</td>
+            </tr>
+            <tr>
+              <td>Payment processor <span class="badge green">Stripe</span></td>
+              <td>Subscription billing and invoicing</td>
+              <td>Billing contact name, email; no card data stored by Wethr</td>
+            </tr>
+            <tr>
+              <td>Infrastructure <span class="badge blue">Cloud hosting</span></td>
+              <td>Servers, storage, and CDN for platform operation</td>
+              <td>All platform data, encrypted at rest and in transit</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Wethr is not responsible for the acts or omissions of third-party providers. If a third-party integration experiences downtime or a security incident, we will communicate with you as promptly as possible and work to restore service.</p>
+        <p>The platform may contain links to external websites or resources. These links are provided for convenience only — Wethr does not endorse and is not responsible for the content or practices of any external sites.</p>
+      </section>
+
+      <!-- 9. Limitation of Liability -->
+      <section class="section" id="liability">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <h2>Limitation of Liability</h2>
+        </div>
+        <p>To the fullest extent permitted by law, Wethr's total liability to your church for any claim arising from or related to these Terms or the platform — whether in contract, tort, or otherwise — shall not exceed the greater of (a) the total subscription fees paid by your church in the 12 months preceding the claim, or (b) $500 USD.</p>
+        <div class="callout caution">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 3L2 17h16L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 10v3m0 2.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Exclusion of consequential damages</div>
+            <p class="callout-text">In no event shall Wethr be liable for any indirect, incidental, special, consequential, or punitive damages — including loss of data, loss of revenue, or reputational harm — even if we have been advised of the possibility of such damages. Some jurisdictions do not allow these exclusions; in those cases, our liability is limited to the minimum extent permitted by law.</p>
+          </div>
+        </div>
+        <p>Nothing in these Terms limits liability that cannot be excluded by law, including liability for fraud, gross negligence, or willful misconduct.</p>
+      </section>
+
+      <!-- 10. Termination -->
+      <section class="section" id="termination">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <h2>Termination</h2>
+        </div>
+        <p>Either party may terminate this agreement at any time for any reason, subject to the terms below.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Process</th>
+              <th>Effect on data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>You cancel your subscription</td>
+              <td>Cancel anytime via account settings or by emailing <a href="mailto:support@wethr.co" style="color: var(--cerulean-600);">support@wethr.co</a>. Access continues until the end of the paid period.</td>
+              <td>Data retained for 30 days post-cancellation; exportable during that window. Permanently deleted after 30 days.</td>
+            </tr>
+            <tr>
+              <td>We terminate for cause</td>
+              <td>We may suspend or terminate immediately for material breach of these Terms, with written notice. We will provide an opportunity to cure where practicable.</td>
+              <td>Data export available for 30 days unless the breach involved illegal activity.</td>
+            </tr>
+            <tr>
+              <td>We discontinue the service</td>
+              <td>We will provide at least 90 days' notice before discontinuing Wethr, to give your church time to transition.</td>
+              <td>Full data export provided; we will assist with migration where possible.</td>
+            </tr>
+            <tr>
+              <td>Non-payment</td>
+              <td>Access suspended after 10 days of failed payment. Terminated after 30 days if not resolved.</td>
+              <td>Data retained for 30 days post-termination, then deleted.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Upon termination, the licenses granted to you under these Terms cease immediately. Sections that by their nature should survive termination — including ownership, limitation of liability, and dispute resolution — will survive.</p>
+      </section>
+
+      <!-- 11. Disputes -->
+      <section class="section" id="disputes">
+        <div class="section-header">
+          <div class="section-number">11</div>
+          <h2>Disputes</h2>
+        </div>
+        <p>We hope to resolve any concerns through direct conversation first. If you have a dispute, please contact us at <a href="mailto:legal@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">legal@wethr.co</a> before initiating any formal proceeding. We commit to responding within 10 business days and working in good faith toward a resolution.</p>
+        <h3>Governing law</h3>
+        <p>These Terms are governed by the laws of the State of Delaware, USA, without regard to its conflict of law provisions. Any disputes not resolved informally shall be subject to the exclusive jurisdiction of the state and federal courts located in Delaware.</p>
+        <h3>Informal resolution</h3>
+        <p>Before either party may bring a formal legal claim, the parties agree to attempt informal resolution for a period of 30 days from written notice of the dispute. This requirement does not apply to claims for injunctive or equitable relief.</p>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Class action waiver</div>
+            <p class="callout-text">To the extent permitted by law, you agree to resolve disputes with Wethr on an individual basis and waive the right to participate in any class action, collective action, or representative proceeding.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. Changes to Terms -->
+      <section class="section" id="changes">
+        <div class="section-header">
+          <div class="section-number">12</div>
+          <h2>Changes to Terms</h2>
+        </div>
+        <p>We may update these Terms from time to time to reflect changes in our service, legal requirements, or business practices. When we make material changes, we will:</p>
+        <p>Notify your church administrator via email at least <strong>30 days before</strong> the updated Terms take effect. Display a prominent notice within the Wethr platform. Post the updated Terms at <strong>wethr.co/terms</strong> with a revised effective date.</p>
+        <p>Continued use of Wethr after the effective date of updated Terms constitutes your acceptance of the revised agreement. If you do not agree to the updated Terms, you may cancel your subscription before the effective date.</p>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Version history</div>
+            <p class="callout-text">Previous versions of these Terms are available upon request. Email legal@wethr.co and we will provide the version that was in effect on any date you specify.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. Contact -->
+      <section class="section" id="contact">
+        <div class="section-header">
+          <div class="section-number">13</div>
+          <h2>Contact Us</h2>
+        </div>
+        <p>If you have questions about these Terms, your subscription, or anything else related to the Wethr service, please reach out:</p>
+        <div style="background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50)); border: 1px solid var(--navy-100); border-radius: 12px; padding: 28px 32px; margin-top: 20px;">
+          <div style="font-family: 'Lora', serif; font-size: 18px; font-weight: 600; color: var(--navy-900); margin-bottom: 16px;">Wethr Legal &amp; Support</div>
+          <div style="display: grid; gap: 10px;">
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Legal</span>
+              <a href="mailto:legal@wethr.co" style="color: var(--cerulean-600); text-decoration: none; font-weight: 500;">legal@wethr.co</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Support</span>
+              <a href="mailto:support@wethr.co" style="color: var(--cerulean-600); text-decoration: none; font-weight: 500;">support@wethr.co</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">General</span>
+              <a href="mailto:hello@wethr.co" style="color: var(--cerulean-600); text-decoration: none; font-weight: 500;">hello@wethr.co</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Website</span>
+              <a href="https://wethr.co" style="color: var(--cerulean-600); text-decoration: none; font-weight: 500;">wethr.co</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Response</span>
+              <span>Within 3 business days for legal &amp; billing inquiries</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="footer-wordmark">Wethr</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Landing</a>
+      <a href="faq.html">FAQs</a>
+      <a href="preview.html">App Preview</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="security.html">Security</a>
+      <a href="support.html">Support</a> 
+      <a href="contact.html">Contact</a>
+      <a href="ai.html">AI Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

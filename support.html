@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Wethr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --navy-600: #3A6B9E;
+      --navy-100: #D6E4F0;
+      --navy-50:  #EBF2F9;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-400: #4A9EC1;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50:  #E8F5FB;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50:  #FEF6EC;
+      --meadow-700: #2A6120;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50:  #EBF7E4;
+      --amber-700: #9A5B00;
+      --amber-500: #D97B00;
+      --amber-100: #FDECC8;
+      --amber-50:  #FEF7E8;
+      --crimson-500: #C0293F;
+      --crimson-100: #F9D0D6;
+      --crimson-50:  #FDF0F2;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50:  #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-700);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-900);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.4px;
+      opacity: 0.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+      padding: 72px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(46,134,171,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 30%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(240,131,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--cerulean-100);
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: var(--sunrise-400);
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--navy-100);
+      opacity: 0.85;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.7;
+    }
+
+    .hero-meta-item svg { width: 14px; height: 14px; opacity: 0.8; }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR TOC ── */
+    .toc { position: sticky; top: 80px; }
+
+    .toc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: 14px;
+    }
+
+    .toc-list { list-style: none; }
+    .toc-list li + li { margin-top: 2px; }
+
+    .toc-list a {
+      display: block;
+      padding: 7px 12px 7px 14px;
+      font-size: 13px;
+      color: var(--neutral-500);
+      text-decoration: none;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--cerulean-600);
+      background: var(--cerulean-50);
+      border-left-color: var(--cerulean-500);
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: var(--neutral-200);
+      margin: 16px 0;
+    }
+
+    .toc-contact-card {
+      background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50));
+      border: 1px solid var(--navy-100);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .toc-contact-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .toc-contact-card a {
+      font-size: 13px;
+      color: var(--cerulean-600);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toc-contact-card a:hover { text-decoration: underline; }
+
+    .toc-contact-card p {
+      font-size: 12px;
+      color: var(--neutral-500);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* Summary banner */
+    .commitment-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .commitment-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .commitment-item + .commitment-item {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 20px;
+    }
+
+    .commitment-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .commitment-icon.cerulean { background: rgba(46,134,171,0.2); }
+    .commitment-icon.meadow   { background: rgba(74,154,53,0.2); }
+    .commitment-icon.sunrise  { background: rgba(240,131,48,0.2); }
+    .commitment-icon svg { width: 16px; height: 16px; }
+
+    .commitment-title { font-size: 13px; font-weight: 600; color: #fff; }
+    .commitment-desc  { font-size: 12px; color: var(--navy-100); opacity: 0.75; line-height: 1.5; }
+
+    /* Section */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 84px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .section-number {
+      width: 32px;
+      height: 32px;
+      background: var(--navy-900);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: -0.2px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--neutral-700);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section h3 {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin: 28px 0 10px;
+    }
+
+    /* Callout */
+    .callout {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .callout.info    { background: var(--cerulean-50); border: 1px solid var(--cerulean-100); }
+    .callout.success { background: var(--meadow-50);   border: 1px solid var(--meadow-100); }
+    .callout.warm    { background: var(--sunrise-50);  border: 1px solid var(--sunrise-100); }
+    .callout.caution { background: var(--amber-50);    border: 1px solid var(--amber-100); }
+
+    .callout-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .callout.info    .callout-icon { color: var(--cerulean-600); }
+    .callout.success .callout-icon { color: var(--meadow-500); }
+    .callout.warm    .callout-icon { color: var(--sunrise-500); }
+    .callout.caution .callout-icon { color: var(--amber-500); }
+
+    .callout-body { flex: 1; }
+
+    .callout-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .callout-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--neutral-700);
+      margin: 0 !important;
+    }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--neutral-200);
+    }
+
+    .data-table thead { background: var(--navy-900); }
+
+    .data-table thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--neutral-200);
+      transition: background 0.1s;
+    }
+
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:nth-child(odd)  { background: #fff; }
+    .data-table tbody tr:nth-child(even) { background: var(--neutral-50); }
+    .data-table tbody tr:hover { background: var(--cerulean-50); }
+
+    .data-table td {
+      padding: 12px 16px;
+      vertical-align: top;
+      color: var(--neutral-700);
+      line-height: 1.6;
+    }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: var(--navy-900);
+      white-space: nowrap;
+    }
+
+    /* Card grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .right-card {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+
+    .right-card:hover { box-shadow: 0 2px 12px rgba(30,58,95,0.08); }
+
+    .right-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--navy-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .right-card-icon svg { width: 16px; height: 16px; color: var(--cerulean-600); }
+    .right-card-title { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .right-card-desc  { font-size: 12.5px; color: var(--neutral-500); line-height: 1.55; }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    .badge.blue   { background: var(--cerulean-50); color: var(--cerulean-700); border: 1px solid var(--cerulean-100); }
+    .badge.green  { background: var(--meadow-50);   color: var(--meadow-700);   border: 1px solid var(--meadow-100); }
+    .badge.warm   { background: var(--sunrise-50);  color: var(--sunrise-500);  border: 1px solid var(--sunrise-100); }
+    .badge.navy   { background: var(--navy-50);     color: var(--navy-900);     border: 1px solid var(--navy-100); }
+
+    /* Contact channel cards */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .channel-card {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 12px;
+      padding: 22px 24px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .channel-card:hover {
+      box-shadow: 0 4px 16px rgba(30,58,95,0.10);
+      border-color: var(--cerulean-100);
+    }
+
+    .channel-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .channel-card-icon svg { width: 20px; height: 20px; }
+
+    .channel-card-icon.cerulean { background: var(--cerulean-50); color: var(--cerulean-600); }
+    .channel-card-icon.meadow   { background: var(--meadow-50);   color: var(--meadow-500); }
+    .channel-card-icon.sunrise  { background: var(--sunrise-50);  color: var(--sunrise-500); }
+    .channel-card-icon.navy     { background: var(--navy-50);     color: var(--navy-700); }
+
+    .channel-title {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .channel-desc {
+      font-size: 13px;
+      color: var(--neutral-500);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .channel-sla {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--meadow-700);
+      background: var(--meadow-50);
+      border: 1px solid var(--meadow-100);
+      border-radius: 99px;
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+
+    .channel-sla svg { width: 10px; height: 10px; }
+
+    .channel-link {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cerulean-600);
+      text-decoration: none;
+    }
+
+    .channel-link:hover { text-decoration: underline; }
+
+    /* Onboarding steps */
+    .steps {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 18px;
+      position: relative;
+    }
+
+    .step + .step { margin-top: 0; }
+
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-line {
+      width: 2px;
+      flex: 1;
+      background: var(--neutral-200);
+      margin: 4px 0;
+      min-height: 24px;
+    }
+
+    .step:last-child .step-line { display: none; }
+
+    .step-body {
+      padding-bottom: 28px;
+      padding-top: 4px;
+      flex: 1;
+    }
+
+    .step:last-child .step-body { padding-bottom: 0; }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 13.5px;
+      color: var(--neutral-700);
+      line-height: 1.65;
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+
+    .faq-item.open { border-color: var(--cerulean-100); }
+
+    .faq-q {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-q-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy-900);
+      line-height: 1.45;
+    }
+
+    .faq-toggle {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--neutral-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      line-height: 1;
+      color: var(--neutral-500);
+      transition: all 0.2s;
+    }
+
+    .faq-item.open .faq-toggle {
+      background: var(--cerulean-50);
+      color: var(--cerulean-600);
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--neutral-700);
+      border-top: 1px solid var(--neutral-100);
+    }
+
+    .faq-body p { margin-top: 12px; }
+    .faq-body p:first-child { margin-top: 14px; }
+
+    .faq-item.open .faq-body { display: block; }
+
+    /* Status indicator */
+    .status-bar {
+      background: var(--meadow-50);
+      border: 1px solid var(--meadow-100);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--meadow-500);
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(74,154,53,0.2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(74,154,53,0.2); }
+      50%       { box-shadow: 0 0 0 6px rgba(74,154,53,0.08); }
+    }
+
+    .status-text {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--meadow-700);
+    }
+
+    .status-link {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cerulean-600);
+      text-decoration: none;
+    }
+
+    .status-link:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      background: var(--navy-950);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 12px; color: var(--navy-100); opacity: 0.4; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-body { grid-template-columns: 1fr; padding: 36px 20px 60px; gap: 0; }
+      .toc { display: none; }
+      .hero { padding: 48px 20px 56px; }
+      nav { padding: 0 20px; }
+      .commitment-banner { grid-template-columns: 1fr; padding: 20px; }
+      .commitment-item + .commitment-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .channel-grid { grid-template-columns: 1fr; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="nav-wordmark">Wethr</span>
+    </a>
+    <span class="nav-badge">Support</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Help &amp; Resources</div>
+      <h1>Support Center</h1>
+      <p>Whether you're just getting started or running into something unexpected, we're here to help. Find answers below, or reach out directly — we're a small team and we respond personally.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5V7l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          1 business day response
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M2 3h10a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.3"/><path d="M1 4l6 4.5L13 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          support@wethr.co
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7.5l2 2 3.5-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          White-glove onboarding (~1 week)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#contact" class="active">Contact Support</a></li>
+        <li><a href="#onboarding">Getting Started</a></li>
+        <li><a href="#account">Account &amp; Settings</a></li>
+        <li><a href="#directory">Directory &amp; People</a></li>
+        <li><a href="#teams">Ministry Teams</a></li>
+        <li><a href="#scheduling">Scheduling</a></li>
+        <li><a href="#service">Order of Service</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#data">Your Data</a></li>
+        <li><a href="#billing">Billing &amp; Plans</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ul>
+
+      <div class="toc-divider"></div>
+
+      <div class="toc-contact-card">
+        <div class="label">Get in touch</div>
+        <a href="mailto:support@wethr.co">support@wethr.co</a>
+        <p>Mon – Fri, response within 1 business day.</p>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- Summary banner -->
+      <div class="commitment-banner">
+        <div class="commitment-item">
+          <div class="commitment-icon cerulean">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6c0 1.5.8 2.8 2 3.5V11h4V9.5c1.2-.7 2-2 2-3.5 0-2.2-1.8-4-4-4z" stroke="#2E86AB" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 11h4M6.5 13h3" stroke="#2E86AB" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="commitment-title">Real people, real answers.</div>
+          <div class="commitment-desc">Every support email is read and answered by the Wethr team — not a bot.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon meadow">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4" stroke="#4A9A35" stroke-width="1.4"/><path d="M2 14c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#4A9A35" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="commitment-title">We handle your onboarding.</div>
+          <div class="commitment-desc">The Wethr team sets up your account, imports your data, and hands you a ready-to-use system.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon sunrise">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#F08330" stroke-width="1.4"/><path d="M2 6.5h12M5 3V2M11 3V2" stroke="#F08330" stroke-width="1.4" stroke-linecap="round"/><path d="M5 9.5h3M5 11.5h5" stroke="#F08330" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="commitment-title">1 business day response.</div>
+          <div class="commitment-desc">Paid subscribers receive a first response within one business day, Monday through Friday.</div>
+        </div>
+      </div>
+
+      <!-- 1. Contact Support -->
+      <section class="section" id="contact">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Contact Support</h2>
+        </div>
+
+        <div class="status-bar">
+          <div class="status-dot"></div>
+          <span class="status-text">All Wethr systems are operating normally.</span>
+          <a href="https://status.wethr.co" class="status-link">View status page →</a>
+        </div>
+
+        <p>Choose the right channel for your question. For most issues, email is the fastest path to a solution.</p>
+
+        <div class="channel-grid">
+          <div class="channel-card">
+            <div class="channel-card-icon cerulean">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l8 5.5L18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="channel-title">General Support</div>
+            <div class="channel-desc">Questions about features, account configuration, scheduling, and anything else day-to-day.</div>
+            <div class="channel-sla">
+              <svg viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 3v2.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              1 business day
+            </div>
+            <a href="mailto:support@wethr.co" class="channel-link">support@wethr.co</a>
+          </div>
+          <div class="channel-card">
+            <div class="channel-card-icon meadow">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L4 5v5c0 4.1 3 7.3 6 8.2C13 17.3 16 14.1 16 10V5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="channel-title">Security &amp; Privacy</div>
+            <div class="channel-desc">Suspected vulnerabilities, data incidents, privacy requests, or GDPR/CCPA concerns.</div>
+            <div class="channel-sla">
+              <svg viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 3v2.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              48 hours
+            </div>
+            <a href="mailto:security@wethr.co" class="channel-link">security@wethr.co</a>
+          </div>
+          <div class="channel-card">
+            <div class="channel-card-icon sunrise">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14M8 4V3M12 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6 12h3M6 14.5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="channel-title">Billing &amp; Subscriptions</div>
+            <div class="channel-desc">Invoice questions, plan changes, cancellations, and payment issues.</div>
+            <div class="channel-sla">
+              <svg viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 3v2.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              1 business day
+            </div>
+            <a href="mailto:billing@wethr.co" class="channel-link">billing@wethr.co</a>
+          </div>
+          <div class="channel-card">
+            <div class="channel-card-icon navy">
+              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v4m0 2.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="channel-title">General Inquiries</div>
+            <div class="channel-desc">Pilot program interest, partnership inquiries, press, and anything not covered above.</div>
+            <div class="channel-sla">
+              <svg viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 3v2.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              2–3 business days
+            </div>
+            <a href="mailto:hello@wethr.co" class="channel-link">hello@wethr.co</a>
+          </div>
+        </div>
+
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Include your church subdomain when you write in</div>
+            <p class="callout-text">Include your church's Wethr subdomain (e.g., <span style="font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--cerulean-50);padding:1px 5px;border-radius:3px;">gracechurch.wethr.co</span>) and a brief description of what you're seeing. This helps us look up your account and respond faster — no back-and-forth required.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Getting Started -->
+      <section class="section" id="onboarding">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>Getting Started</h2>
+        </div>
+        <p>Wethr uses a white-glove onboarding model in Phase 1. Your church does not set up the system from scratch — the Wethr team handles the heavy lifting and hands you a working account on day one.</p>
+
+        <h3>The onboarding process</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Send us your data export</div>
+              <div class="step-desc">Export your people data from your current tool — Planning Center, Breeze, Church Community Builder, or a spreadsheet — and email it to <a href="mailto:support@wethr.co" style="color:var(--cerulean-600);font-weight:500;">support@wethr.co</a>. Any format works; we handle the cleanup.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">We configure your account</div>
+              <div class="step-desc">The Wethr team creates your church account, provisions your subdomain (<span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;background:var(--neutral-100);padding:1px 5px;border-radius:3px;">churchname.wethr.co</span>), sets your timezone and service day defaults, and uploads your logo.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">We import your directory and teams</div>
+              <div class="step-desc">We clean, deduplicate, and import your people records and household relationships into the directory. We set up your ministry team structures and role definitions based on what you send us.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Your Super Admin receives an invite</div>
+              <div class="step-desc">We send a magic link to your designated administrator. They click it, confirm their profile, and land on a fully populated dashboard — directory in place, teams ready, first service waiting to be built.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">5</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Invite your team</div>
+              <div class="step-desc">From Settings &gt; Users, invite your staff and ministry leaders. They receive magic link emails, confirm their profiles, and get access scoped to their role. Volunteers are invited by leaders directly from the team view.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Typical timeline: 3–5 business days</div>
+            <p class="callout-text">Once we receive your data, most churches are fully set up and live within a week. The timeline depends on the size and complexity of your directory — we'll give you a realistic estimate when you reach out to get started.</p>
+          </div>
+        </div>
+
+        <h3>What to prepare</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Format</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>People / directory export</td>
+              <td>CSV, Excel, or Planning Center / Breeze export</td>
+              <td>Include first name, last name, email, phone, household grouping where available. We handle messy data.</td>
+            </tr>
+            <tr>
+              <td>Ministry team list</td>
+              <td>Plain text or spreadsheet</td>
+              <td>Team names and the roles within each team (e.g., Worship → Vocalist, Guitarist, Keys, Sound).</td>
+            </tr>
+            <tr>
+              <td>Church logo</td>
+              <td>PNG or JPG, max 5MB</td>
+              <td>Displayed in the app nav and on public-facing pages. Square or landscape format both work.</td>
+            </tr>
+            <tr>
+              <td>Super Admin details</td>
+              <td>Name + email address</td>
+              <td>This person receives the first magic link and manages the account. Can be changed later.</td>
+            </tr>
+            <tr>
+              <td>Preferred subdomain</td>
+              <td>URL-safe text (no spaces or special characters)</td>
+              <td>Becomes <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">yourchurch.wethr.co</span>. Cannot be changed after creation without a support request.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 3. Account & Settings -->
+      <section class="section" id="account">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>Account &amp; Settings</h2>
+        </div>
+        <p>Your church's account settings are managed from the <strong>Settings</strong> area, accessible to Super Admins and Staff Admins.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I update my church name, logo, or timezone?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Go to <strong>Settings &gt; Church Profile</strong>. You can update the church name, upload a new logo (PNG or JPG, max 5MB), change the timezone, and adjust your service day defaults. Changes save immediately and apply across the entire platform.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can I change my church's subdomain?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Subdomains are set at account creation and cannot be changed through the settings UI — they are tied to your data at the infrastructure level. If you need to change your subdomain, contact <a href="mailto:support@wethr.co" style="color:var(--cerulean-600);font-weight:500;">support@wethr.co</a> and we'll coordinate the change with you. Note that any saved bookmarks or links using the old subdomain will stop working.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I invite a new staff member or leader?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Go to <strong>Settings &gt; Users</strong> and click <strong>Invite User</strong>. Enter their email address, select the appropriate role (Staff/Admin or Ministry Leader), and for Leaders, assign the specific teams they'll manage. They'll receive a magic link email within a few minutes. If they already have a directory record with a matching email, they'll be automatically linked to it on first login.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I deactivate a user who has left?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Go to <strong>Settings &gt; Users</strong>, find the user, and select <strong>Deactivate</strong>. Their access is revoked immediately — the next request they make will return an authentication error. Their directory record and scheduling history are preserved; deactivation is an auth action, not a data deletion. You can reactivate them at any time from the same screen.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">A user never received their magic link. What should I do?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>First, ask them to check their spam or junk folder — transactional emails occasionally get filtered. If it's not there, go to <strong>Settings &gt; Users</strong>, find the user, and use <strong>Resend Invite</strong> to send a fresh magic link. Magic links expire after 24 hours; a resend generates a new one. If the issue persists, contact <a href="mailto:support@wethr.co" style="color:var(--cerulean-600);font-weight:500;">support@wethr.co</a> with the user's email and we'll investigate.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Directory & People -->
+      <section class="section" id="directory">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>Directory &amp; People</h2>
+        </div>
+        <p>The directory is the foundation of Wethr — every team assignment, schedule, and communication starts from a person record. Admins have full control; volunteers and members can manage their own profiles.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I add a new person to the directory?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>From the <strong>Directory</strong> section, click <strong>Add Person</strong>. Fill in their details — at minimum, a first name. Email address is required if you want to invite them to Wethr as a user. You can also create household groups and link family members together from the person's profile.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What's the difference between a person record and a user account?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>A <strong>person record</strong> is simply a contact in your directory — it holds their name, contact info, household, and status. Anyone in your congregation can have a person record.</p>
+              <p>A <strong>user account</strong> gives someone the ability to log in to Wethr. It's linked to a person record by email. Not everyone in your directory needs a login — only staff, leaders, and volunteers who actively use the platform need to be invited as users.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can volunteers see other members' contact information?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Volunteers can see names and profile photos for all church members — but full contact details (phone number, email, address) are only visible for members on their own team. Ministry Leaders see full contact info for all members on their teams, but only names and photos for the rest of the directory. Admins see everything. This is enforced by the platform and cannot be overridden.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I handle duplicate person records?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>In Phase 1, duplicate detection and merging is handled during onboarding by the Wethr team. If duplicates appear after go-live, contact <a href="mailto:support@wethr.co" style="color:var(--cerulean-600);font-weight:500;">support@wethr.co</a> and we'll assist with the merge. A self-serve merge UI is planned for a future phase.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Ministry Teams -->
+      <section class="section" id="teams">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Ministry Teams</h2>
+        </div>
+        <p>Ministry teams organize your volunteers into named groups with defined roles. Each team has a leader who can manage scheduling and communication independently.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I create a new ministry team?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Go to <strong>Teams</strong> and click <strong>New Team</strong>. Give the team a name, add the roles within that team (e.g., for a Worship team: Vocalist, Guitarist, Keys, Drummer, Sound), and assign a leader. Once created, you can add team members from the directory and the team is ready for scheduling.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can a person be on multiple teams?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Yes. A single person can be a member of multiple teams simultaneously — for example, someone who volunteers on both the Worship team and the Hospitality team. Their scheduling preferences and blackout dates apply across all team assignments, and the conflict detection system accounts for any double-booking across teams within the same service.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can a Ministry Leader manage more than one team?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Yes. A Ministry Leader can be assigned to multiple teams. When inviting or editing a leader's role in <strong>Settings &gt; Users</strong>, select all the teams they should manage. Their access is scoped only to those teams — they cannot view or edit scheduling data for teams they have not been assigned to.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Scheduling -->
+      <section class="section" id="scheduling">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Scheduling</h2>
+        </div>
+        <p>Scheduling is built around individual volunteer preferences — availability windows, blackout dates, and frequency caps — all of which are set by each volunteer in their own profile.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How does scheduling work for volunteers?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Volunteers set their scheduling preferences from their profile — available days, any recurring blackout dates, and a frequency cap (e.g., serve no more than twice a month). Leaders use these preferences to assign volunteers to services, manually in Phase 1. If a volunteer is assigned and declines, the leader is notified to find a replacement.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What happens when a volunteer doesn't respond to an assignment?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Pending assignments do not auto-decline. They remain open and the volunteer will receive automated reminder notifications as the service date approaches — configurable at 7 days, 3 days, and 1 day out. The leader remains responsible for following up on any unresolved assignments. If a volunteer misses all reminders, the role surfaces as unconfirmed on the leader's dashboard.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can we have multiple services on the same day?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Yes. Each service is a separate record with its own Order of Service, date, time, and volunteer assignments. You can create as many services per day as needed. The conflict detection system treats same-day services separately — assigning a volunteer to the 9am service flags a conflict if you try to assign them to the 11am as well.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What is burnout protection and how does it work?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Each volunteer can set a <strong>frequency cap</strong> in their scheduling preferences — for example, "no more than twice per month." When assigning volunteers manually, Wethr flags anyone who would exceed their cap with a visual indicator. This is a warning, not a hard block — leaders can override it if needed. Automated scheduling in Phase 2 will respect frequency caps automatically.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Order of Service -->
+      <section class="section" id="service">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>Order of Service</h2>
+        </div>
+        <p>The Order of Service is the central planning tool in Wethr — every Sunday's flow is built here, with blocks for each element and people assigned to each role.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What block types are available?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Wethr includes standard block types for common service elements: Welcome, Worship Set, Scripture Reading, Sermon, Offering, Communion, Prayer, and Custom. Each block type has fields appropriate to its purpose — a Worship Set can list songs and keys, a Sermon stores the speaker and series, and Custom blocks are freeform. Blocks can be reordered by dragging.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can I save a service as a template for future weeks?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Yes. From any service, use <strong>Save as Template</strong> to create a reusable structure. When creating a new service, you can start from a template — this pre-populates the block structure and roles, so you're filling in the details for the week rather than rebuilding from scratch. Templates are shared across all admins and leaders in your church.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Can I print or share the Order of Service?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Yes. Each service has a printable run-of-show view accessible from the service menu. This view is formatted for printing — clean, black and white, with block times and assignments laid out as a reference sheet for service day. A PDF export option is also available for sharing digitally.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Notifications -->
+      <section class="section" id="notifications">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Notifications</h2>
+        </div>
+        <p>Wethr sends notifications through three channels — in-app, email, and optional SMS. Each user controls their own notification preferences.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Notification type</th>
+              <th>Channels</th>
+              <th>Who receives it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Schedule assignment</td>
+              <td><span class="badge blue">In-app</span> <span class="badge green">Email</span> <span class="badge warm">SMS (opt-in)</span></td>
+              <td>The assigned volunteer</td>
+            </tr>
+            <tr>
+              <td>Service reminder</td>
+              <td><span class="badge blue">In-app</span> <span class="badge green">Email</span> <span class="badge warm">SMS (opt-in)</span></td>
+              <td>All volunteers assigned to the service, at 7 / 3 / 1 day before</td>
+            </tr>
+            <tr>
+              <td>Volunteer decline</td>
+              <td><span class="badge blue">In-app</span> <span class="badge green">Email</span></td>
+              <td>The team's Ministry Leader</td>
+            </tr>
+            <tr>
+              <td>RSVP confirmation</td>
+              <td><span class="badge blue">In-app</span></td>
+              <td>The assigned volunteer (confirmation of their own response)</td>
+            </tr>
+            <tr>
+              <td>Team message</td>
+              <td><span class="badge blue">In-app</span> <span class="badge green">Email</span></td>
+              <td>All members of the messaged team</td>
+            </tr>
+            <tr>
+              <td>Invite / magic link</td>
+              <td><span class="badge green">Email only</span></td>
+              <td>The newly invited user</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="faq-list" style="margin-top:20px;">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do volunteers opt in to SMS notifications?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Volunteers manage their notification preferences from <strong>My Profile &gt; Notifications</strong>. SMS is off by default — they can toggle it on and enter their mobile number. They can also choose between real-time email notifications and a daily digest. Individual volunteers control their own preferences; admins cannot force SMS on anyone.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">A volunteer says they're not receiving emails. How do I fix this?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Ask them to check their spam or promotions folder first — this is the most common cause. If emails are landing there, they should mark Wethr as a trusted sender. If nothing is arriving at all, verify the email address on their person record in the directory is correct. If the address looks right and emails still aren't arriving, contact <a href="mailto:support@wethr.co" style="color:var(--cerulean-600);font-weight:500;">support@wethr.co</a> with the volunteer's email and we'll check the delivery logs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Your Data -->
+      <section class="section" id="data">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <h2>Your Data</h2>
+        </div>
+        <p>Your church owns all the data in Wethr. You can export it at any time, and we will never hold it hostage.</p>
+
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v6M5.5 9l2.5 2.5L11 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Export directory</div>
+              <div class="right-card-desc">Download your full people and household data as a CSV from the Directory settings.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6.5h14" stroke="currentColor" stroke-width="1.3"/><path d="M4 9.5h3M9 9.5h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Export service history</div>
+              <div class="right-card-desc">Download a full archive of past services with block structure and volunteer assignments.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M4 6h8M4 9h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Export team rosters</div>
+              <div class="right-card-desc">Download your ministry team structures, member lists, and role assignments.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M5 4V3h6v1M6 7v5M10 7v5M4 4l1 9h6l1-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Delete your data</div>
+              <div class="right-card-desc">Contact support to request deletion of specific records or your entire account.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout warm">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Data after account closure</div>
+            <p class="callout-text">If you close your Wethr account, your data is retained for a 30-day grace period during which you can request a full export. After 30 days, all church data is permanently deleted from our systems. Billing records are retained for 7 years as required by law.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Billing & Plans -->
+      <section class="section" id="billing">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <h2>Billing &amp; Plans</h2>
+        </div>
+        <p>Wethr is billed as a flat monthly or annual subscription per church — no per-seat or per-member fees. Your entire congregation is included in one price.</p>
+
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Currently in pilot phase</div>
+            <p class="callout-text">Wethr is in an early access pilot. Pilot churches are onboarding under a special arrangement, and formal pricing has not yet been finalized. To discuss pricing or join the pilot, email <a href="mailto:hello@wethr.co" style="color:var(--cerulean-600);font-weight:500;">hello@wethr.co</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How does billing work?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Subscriptions are billed monthly or annually in advance, on the anniversary of your start date. Payment is via credit or debit card, processed by our payment provider. Wethr never stores your card details directly. You can update your payment method from <strong>Settings &gt; Billing</strong> at any time.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">Are there discounts for nonprofits or small churches?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>Yes. We offer discounted pricing for qualifying nonprofits and can discuss special arrangements for very small churches where standard pricing would be a genuine hardship. Wethr is committed to being accessible to mid-size congregations — pricing out the churches we're built for would defeat the point. Email <a href="mailto:hello@wethr.co" style="color:var(--cerulean-600);font-weight:500;">hello@wethr.co</a> to discuss your situation.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">How do I cancel my subscription?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>You can cancel from <strong>Settings &gt; Billing</strong> or by emailing <a href="mailto:billing@wethr.co" style="color:var(--cerulean-600);font-weight:500;">billing@wethr.co</a>. Cancellations take effect at the end of the current billing period — you'll retain access until then. We recommend exporting your data before cancelling. Annual plans may be eligible for a prorated refund within 14 days of payment; contact us to request one.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              <span class="faq-q-text">What happens if our payment fails?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-body">
+              <p>If a payment attempt fails, we'll retry automatically and send an email notification to your account administrator. Access continues during a 10-day grace period while you update your payment method. If payment is not resolved within 10 days, access to the platform is suspended (but your data is not deleted). Contact <a href="mailto:billing@wethr.co" style="color:var(--cerulean-600);font-weight:500;">billing@wethr.co</a> if you're having trouble — we'll work with you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Troubleshooting -->
+      <section class="section" id="troubleshooting">
+        <div class="section-header">
+          <div class="section-number">11</div>
+          <h2>Troubleshooting</h2>
+        </div>
+        <p>A quick checklist before contacting support — most issues have a simple fix.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Problem</th>
+              <th>Try this first</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Can't log in</td>
+              <td>Request a new magic link from the login page. Check your spam folder if the email doesn't arrive. Make sure you're visiting the correct subdomain for your church.</td>
+            </tr>
+            <tr>
+              <td>Magic link says "expired" or "already used"</td>
+              <td>Magic links are single-use and expire after 24 hours. Return to the login page and request a new one. Each new request invalidates all previous links.</td>
+            </tr>
+            <tr>
+              <td>Page won't load or shows an error</td>
+              <td>Hard-refresh the page (Ctrl+Shift+R / Cmd+Shift+R). Clear browser cache. Try a different browser. Check the <a href="https://status.wethr.co" style="color:var(--cerulean-600);">status page</a> for any known incidents.</td>
+            </tr>
+            <tr>
+              <td>"Access denied" or wrong view after logging in</td>
+              <td>Your role may not have access to that page. Contact your church admin to verify your role assignment. Role changes take effect on your next request — try refreshing.</td>
+            </tr>
+            <tr>
+              <td>Notifications not arriving</td>
+              <td>Check spam/junk folder. Verify your email address is correct in your profile. For SMS, confirm it's enabled in your notification preferences and your number includes the country code.</td>
+            </tr>
+            <tr>
+              <td>Uploaded file not appearing</td>
+              <td>Ensure the file is under 25MB and in a supported format (PDF, JPG, PNG, DOCX, MP3, MP4). Refresh the page after upload. If the issue persists, try a different browser.</td>
+            </tr>
+            <tr>
+              <td>Schedule conflict showing incorrectly</td>
+              <td>Check the volunteer's blackout dates and availability in their profile. Conflicts are recalculated on each save — try editing and re-saving the assignment.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout info" style="margin-top: 24px;">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Still stuck? We're one email away.</div>
+            <p class="callout-text">If none of the above resolves your issue, email <a href="mailto:support@wethr.co" style="color:var(--cerulean-600);font-weight:500;">support@wethr.co</a> with your church subdomain, a description of the problem, and what you've already tried. A screenshot or screen recording is very helpful if you can include one. We'll get back to you within one business day.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="footer-wordmark">Wethr</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Landing</a>
+      <a href="faq.html">FAQs</a>
+      <a href="preview.html">App Preview</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="security.html">Security</a>
+      <a href="support.html">Support</a> 
+      <a href="contact.html">Contact</a>
+      <a href="ai.html">AI Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
+  </footer>
+
+  <script>
+    // Accordion
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all in the same list
+      const list = item.closest('.faq-list');
+      list.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // TOC scroll spy
+    const sections = document.querySelectorAll('.section');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

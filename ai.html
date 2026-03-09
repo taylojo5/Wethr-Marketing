@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Approach to AI — Wethr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --navy-600: #3A6B9E;
+      --navy-100: #D6E4F0;
+      --navy-50:  #EBF2F9;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-400: #4A9EC1;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50:  #E8F5FB;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50:  #FEF6EC;
+      --meadow-700: #2A6120;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50:  #EBF7E4;
+      --amber-700: #9A5B00;
+      --amber-500: #D97B00;
+      --amber-100: #FDECC8;
+      --amber-50:  #FEF7E8;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50:  #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-700);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-900);
+      padding: 0 40px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+    .nav-wordmark { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.2px; }
+    .nav-badge { font-size: 11px; font-weight: 600; color: var(--navy-100); letter-spacing: 0.4px; opacity: 0.7; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+      padding: 72px 40px 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(46,134,171,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -60px; left: 30%;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(240,131,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 760px; margin: 0 auto; position: relative;
+      animation: fadeUp 0.5s ease both;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--cerulean-100);
+      margin-bottom: 20px; opacity: 0.85;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block; width: 18px; height: 2px;
+      background: var(--sunrise-400); border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 48px); font-weight: 600;
+      color: #fff; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.5px;
+    }
+    .hero h1 em { font-style: italic; color: var(--cerulean-400); }
+    .hero p { font-size: 16px; color: var(--navy-100); opacity: 0.85; max-width: 580px; line-height: 1.75; }
+    .hero-meta { margin-top: 32px; display: flex; gap: 24px; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--navy-100); opacity: 0.7; }
+    .hero-meta-item svg { width: 14px; height: 14px; opacity: 0.8; }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1100px; margin: 0 auto;
+      padding: 56px 40px 100px;
+      display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .toc { position: sticky; top: 80px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--neutral-400); margin-bottom: 14px; }
+    .toc-list { list-style: none; }
+    .toc-list li + li { margin-top: 2px; }
+    .toc-list a {
+      display: block; padding: 7px 12px 7px 14px; font-size: 13px; color: var(--neutral-500);
+      text-decoration: none; border-radius: 6px; border-left: 2px solid transparent; transition: all 0.15s;
+    }
+    .toc-list a:hover, .toc-list a.active {
+      color: var(--cerulean-600); background: var(--cerulean-50); border-left-color: var(--cerulean-500);
+    }
+    .toc-divider { height: 1px; background: var(--neutral-200); margin: 16px 0; }
+    .toc-contact-card {
+      background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50));
+      border: 1px solid var(--navy-100); border-radius: 10px; padding: 16px; margin-top: 20px;
+    }
+    .toc-contact-card .label { font-size: 11px; font-weight: 600; color: var(--navy-900); letter-spacing: 0.4px; margin-bottom: 6px; }
+    .toc-contact-card a { font-size: 13px; color: var(--cerulean-600); text-decoration: none; font-weight: 500; }
+    .toc-contact-card a:hover { text-decoration: underline; }
+    .toc-contact-card p { font-size: 12px; color: var(--neutral-500); margin-top: 4px; line-height: 1.5; }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* Commitment banner */
+    .commitment-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      border-radius: 14px; padding: 28px 32px; margin-bottom: 48px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+    .commitment-item { display: flex; flex-direction: column; gap: 6px; }
+    .commitment-item + .commitment-item { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px; }
+    .commitment-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+    .commitment-icon svg { width: 16px; height: 16px; }
+    .commitment-icon.cerulean { background: rgba(46,134,171,0.2); color: #4A9EC1; }
+    .commitment-icon.meadow   { background: rgba(74,154,53,0.2);  color: #6BB855; }
+    .commitment-icon.sunrise  { background: rgba(240,131,48,0.2); color: #F5A254; }
+    .commitment-title { font-size: 13px; font-weight: 600; color: #fff; }
+    .commitment-desc  { font-size: 12px; color: var(--navy-100); opacity: 0.75; line-height: 1.5; }
+
+    /* Section */
+    .section { margin-bottom: 56px; scroll-margin-top: 84px; animation: fadeUp 0.4s ease both; }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--neutral-200);
+    }
+    .section-number {
+      width: 32px; height: 32px; background: var(--navy-900); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lora', serif; font-size: 13px; font-weight: 600; color: #fff; flex-shrink: 0;
+    }
+    .section h2 { font-family: 'Lora', serif; font-size: 22px; font-weight: 600; color: var(--navy-900); letter-spacing: -0.2px; }
+    .section p { font-size: 15px; line-height: 1.8; color: var(--neutral-700); margin-bottom: 14px; }
+    .section p:last-child { margin-bottom: 0; }
+    .section h3 { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: var(--navy-900); margin: 28px 0 10px; }
+
+    /* Callout */
+    .callout { border-radius: 10px; padding: 18px 20px; margin: 20px 0; display: flex; gap: 14px; align-items: flex-start; }
+    .callout.info    { background: var(--cerulean-50); border: 1px solid var(--cerulean-100); }
+    .callout.success { background: var(--meadow-50);   border: 1px solid var(--meadow-100); }
+    .callout.warm    { background: var(--sunrise-50);  border: 1px solid var(--sunrise-100); }
+    .callout.caution { background: var(--amber-50);    border: 1px solid var(--amber-100); }
+    .callout-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .callout.info    .callout-icon { color: var(--cerulean-600); }
+    .callout.success .callout-icon { color: var(--meadow-500); }
+    .callout.warm    .callout-icon { color: var(--sunrise-500); }
+    .callout.caution .callout-icon { color: var(--amber-700); }
+    .callout-body { flex: 1; }
+    .callout-title { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 4px; }
+    .callout-text  { font-size: 13.5px; line-height: 1.65; color: var(--neutral-700); margin: 0 !important; }
+
+    /* Data table */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--neutral-200); }
+    .data-table thead { background: var(--navy-900); }
+    .data-table thead th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 600; color: var(--navy-100); letter-spacing: 0.6px; text-transform: uppercase; }
+    .data-table tbody tr { border-bottom: 1px solid var(--neutral-200); transition: background 0.1s; }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:nth-child(odd)  { background: #fff; }
+    .data-table tbody tr:nth-child(even) { background: var(--neutral-50); }
+    .data-table tbody tr:hover { background: var(--cerulean-50); }
+    .data-table td { padding: 12px 16px; vertical-align: top; color: var(--neutral-700); line-height: 1.6; }
+    .data-table td:first-child { font-weight: 600; color: var(--navy-900); }
+
+    /* Badge */
+    .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; }
+    .badge.blue   { background: var(--cerulean-50); color: var(--cerulean-700); border: 1px solid var(--cerulean-100); }
+    .badge.green  { background: var(--meadow-50);   color: var(--meadow-700);   border: 1px solid var(--meadow-100); }
+    .badge.warm   { background: var(--sunrise-50);  color: var(--sunrise-500);  border: 1px solid var(--sunrise-100); }
+    .badge.navy   { background: var(--navy-50);     color: var(--navy-900);     border: 1px solid var(--navy-100); }
+    .badge.amber  { background: var(--amber-50);    color: var(--amber-700);    border: 1px solid var(--amber-100); }
+
+    /* Card grid */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .card {
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 10px;
+      padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+    .card:hover { box-shadow: 0 2px 12px rgba(30,58,95,0.08); }
+    .card-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--navy-50); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .card-icon svg { width: 16px; height: 16px; }
+    .card-icon.cerulean { background: var(--cerulean-50); color: var(--cerulean-600); }
+    .card-icon.meadow   { background: var(--meadow-50);   color: var(--meadow-500); }
+    .card-icon.sunrise  { background: var(--sunrise-50);  color: var(--sunrise-500); }
+    .card-icon.amber    { background: var(--amber-50);    color: var(--amber-700); }
+    .card-icon.navy     { background: var(--navy-50);     color: var(--navy-700); }
+    .card-title { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .card-desc  { font-size: 12.5px; color: var(--neutral-500); line-height: 1.55; }
+
+    /* ── BOUNDARY TABLE — uses/never-uses ── */
+    .boundary-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 20px 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--neutral-200); }
+    .boundary-table thead { background: var(--navy-900); }
+    .boundary-table thead th { padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; color: var(--navy-100); letter-spacing: 0.6px; text-transform: uppercase; }
+    .boundary-table thead th:last-child { border-left: 1px solid rgba(255,255,255,0.1); }
+    .boundary-table tbody tr { border-bottom: 1px solid var(--neutral-200); }
+    .boundary-table tbody tr:last-child { border-bottom: none; }
+    .boundary-table tbody tr:nth-child(odd)  { background: #fff; }
+    .boundary-table tbody tr:nth-child(even) { background: var(--neutral-50); }
+    .boundary-table td { padding: 14px 20px; vertical-align: top; line-height: 1.6; }
+    .boundary-table td:last-child { border-left: 1px solid var(--neutral-200); }
+    .boundary-table .col-yes { color: var(--meadow-700); font-weight: 500; }
+    .boundary-table .col-no  { color: #C0293F; font-weight: 500; }
+    .dot-yes { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--meadow-500); margin-right: 7px; flex-shrink: 0; }
+    .dot-no  { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C0293F; margin-right: 7px; flex-shrink: 0; }
+
+    /* Opt-out strip */
+    .opt-out-grid { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+    .opt-out-row {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 10px; padding: 16px 20px;
+      transition: border-color 0.15s;
+    }
+    .opt-out-row:hover { border-color: var(--cerulean-100); }
+    .opt-out-feature { flex: 1; }
+    .opt-out-name { font-size: 14px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .opt-out-desc { font-size: 13px; color: var(--neutral-500); line-height: 1.55; }
+    .opt-out-badge {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600;
+      background: var(--meadow-50); color: var(--meadow-700);
+      border: 1px solid var(--meadow-100); border-radius: 99px; padding: 4px 10px; white-space: nowrap; margin-top: 2px;
+    }
+    .opt-out-badge svg { width: 10px; height: 10px; }
+
+    /* Human-in-loop diagram */
+    .review-flow {
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 12px;
+      padding: 24px; margin: 20px 0; display: flex; align-items: center; gap: 0; overflow: hidden;
+    }
+    .flow-step {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 12px; position: relative;
+    }
+    .flow-step + .flow-step::before {
+      content: '';
+      position: absolute; left: 0; top: 28px;
+      width: 100%; height: 2px;
+      background: var(--neutral-200); z-index: 0;
+      transform: translateX(-50%);
+    }
+    .flow-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1; margin-bottom: 10px;
+    }
+    .flow-icon svg { width: 22px; height: 22px; }
+    .flow-icon.ai     { background: var(--cerulean-50); border: 2px solid var(--cerulean-100); color: var(--cerulean-600); }
+    .flow-icon.person { background: var(--sunrise-50);  border: 2px solid var(--sunrise-100);  color: var(--sunrise-500); }
+    .flow-icon.check  { background: var(--meadow-50);   border: 2px solid var(--meadow-100);   color: var(--meadow-500); }
+    .flow-label { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .flow-desc  { font-size: 12px; color: var(--neutral-400); line-height: 1.45; }
+    .flow-arrow {
+      font-size: 18px; color: var(--neutral-300); flex-shrink: 0;
+      position: relative; z-index: 1; padding: 0 4px;
+      margin-top: -24px;
+    }
+
+    /* Footer */
+    footer { background: var(--navy-950); padding: 40px; text-align: center; }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+    .footer-logo-mark { width: 28px; height: 28px; background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500)); border-radius: 7px; }
+    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--navy-100); opacity: 0.6; text-decoration: none; transition: opacity 0.15s; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 12px; color: var(--navy-100); opacity: 0.4; }
+
+    @media (max-width: 768px) {
+      .page-body { grid-template-columns: 1fr; padding: 36px 20px 60px; gap: 0; }
+      .toc { display: none; }
+      .hero { padding: 48px 20px 56px; }
+      nav { padding: 0 20px; }
+      .commitment-banner { grid-template-columns: 1fr; padding: 20px; }
+      .commitment-item + .commitment-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .review-flow { flex-direction: column; gap: 16px; }
+      .flow-step + .flow-step::before { display: none; }
+      .flow-arrow { transform: rotate(90deg); margin: 0; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="nav-wordmark">Wethr</span>
+    </a>
+    <span class="nav-badge">AI Policy</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Transparency &amp; Trust</div>
+      <h1>Our approach<br>to <em>artificial intelligence.</em></h1>
+      <p>AI is a real concern for some churches, and we think that's a reasonable and healthy position. Here's exactly where we use it, where we don't, and why — so you can make an informed decision about Wethr.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5L9 5.2l4.2.6-3 3 .7 4.1L7 11l-3.9 2 .7-4.1-3-3L5 5.2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          No AI-generated pastoral content
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7.5l2 2 3.5-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Every AI feature is opt-out
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><rect x="2" y="5" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 5V4a2.5 2.5 0 015 0v1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Human review before anything goes out
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#honest" class="active">Starting honestly</a></li>
+        <li><a href="#where-we-use-it">Where we use AI</a></li>
+        <li><a href="#hard-boundaries">What AI never does</a></li>
+        <li><a href="#human-review">Human review</a></li>
+        <li><a href="#opt-out">Opt-out policy</a></li>
+        <li><a href="#your-data">Your data &amp; AI</a></li>
+        <li><a href="#our-posture">Our posture</a></li>
+        <li><a href="#conversation">Let's talk about it</a></li>
+      </ul>
+
+      <div class="toc-divider"></div>
+
+      <div class="toc-contact-card">
+        <div class="label">Questions about AI?</div>
+        <a href="mailto:hello@wethr.co">hello@wethr.co</a>
+        <p>We're always open to a direct conversation.</p>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- Summary banner -->
+      <div class="commitment-banner">
+        <div class="commitment-item">
+          <div class="commitment-icon cerulean">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M3 5h5M3 11h7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="1" y="2" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+          <div class="commitment-title">AI assists us, not your congregation.</div>
+          <div class="commitment-desc">We use AI internally to build Wethr faster. The app your church uses is not AI-driven.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon sunrise">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6.5" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 14c0-2.8 2.7-4.5 6-4.5s6 1.7 6 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M11 2.5l1 1-1 1M13 3.5h-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">A person reviews everything before it's used.</div>
+          <div class="commitment-desc">No AI-drafted content reaches your church without a human reading, editing, and approving it first.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon meadow">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 8.5l2 2 3.5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">Every AI feature can be turned off.</div>
+          <div class="commitment-desc">No core functionality is locked behind AI. Opt out of any AI feature without losing access to anything else.</div>
+        </div>
+      </div>
+
+      <!-- 1. Starting honestly -->
+      <section class="section" id="honest">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Starting honestly</h2>
+        </div>
+
+        <p>Some churches have strong concerns about AI — theological, ethical, practical. We respect that, and we don't think it requires justification. If you've landed on this page because you want to understand exactly what role AI plays in Wethr before trusting us with your congregation's data, that's exactly the right instinct.</p>
+
+        <p>This page isn't a sales pitch for AI. It's a plain-language description of where we use it, where we've drawn hard lines, and why. If anything here gives you pause, we'd genuinely rather hear about it than have you guess at our intentions.</p>
+
+        <div class="callout warm">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Skepticism is healthy</div>
+            <p class="callout-text">AI is being layered into software products faster than most people can evaluate it. We think it's entirely reasonable to want to know whether a platform you use with your congregation has established clear limits — and to hold us accountable to them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Where we use AI -->
+      <section class="section" id="where-we-use-it">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>Where we use AI</h2>
+        </div>
+
+        <p>AI plays two distinct roles at Wethr: as a development tool for our team, and as an optional productivity layer in the app itself. These are meaningfully different, and we want to be clear about both.</p>
+
+        <h3>Internal — how we build Wethr</h3>
+        <p>Our engineering and content teams use AI tools to work more efficiently. This is AI as a productivity layer for us, not a feature we expose to you.</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon cerulean">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 3h4v4H3zM9 3h4v4H9zM3 9h4v4H3zM9 9h4v4H9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Code assistance</div>
+              <div class="card-desc">Engineers use AI tools to write, review, and refactor code. All output is reviewed and tested before it ships.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon cerulean">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Documentation drafting</div>
+              <div class="card-desc">Support articles, changelog entries, and product docs may be AI-assisted. All are reviewed and edited by a person before publishing.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon cerulean">
+              <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 5.5v2.5l2 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Summarization &amp; research</div>
+              <div class="card-desc">We use AI to synthesize research and information when making product decisions. Conclusions are always evaluated by a human.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon cerulean">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 5l3 4 2-3 3 6H2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Error &amp; log analysis</div>
+              <div class="card-desc">AI tools help our team find patterns in application logs and error reports faster — for debugging, not for anything customer-facing.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>In the app — optional features only</h3>
+        <p>A small number of features in Wethr may use AI to help admins and leaders work more efficiently. These are <strong>always optional</strong>, <strong>always disclosed</strong>, and never touch pastoral, personal, or congregational guidance.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Feature area</th>
+              <th>What AI does</th>
+              <th>What a person does</th>
+              <th>Opt-out</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Scheduling suggestions</td>
+              <td>Suggests volunteers based on availability, frequency history, and role fit</td>
+              <td>Leader reviews every suggestion and makes the final assignment</td>
+              <td><span class="badge green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Service plan templates</td>
+              <td>Offers a suggested block structure based on past services</td>
+              <td>Admin edits freely before saving — the template is a starting point, not a plan</td>
+              <td><span class="badge green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Reminder copy suggestions</td>
+              <td>Drafts a suggested reminder message for volunteer assignments</td>
+              <td>Leader reads, edits, and approves before any message is sent</td>
+              <td><span class="badge green">Available</span></td>
+            </tr>
+            <tr>
+              <td>Smart search</td>
+              <td>Interprets natural-language queries in the directory (e.g., "active volunteers who served last month")</td>
+              <td>Results are shown as a list — no action taken automatically</td>
+              <td><span class="badge green">Available</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">AI features are labelled in the interface</div>
+            <p class="callout-text">Anywhere AI is involved in generating a suggestion, draft, or result in the app, it is clearly labelled — with an indicator that identifies it as AI-assisted. We do not present AI output as a neutral system result.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Hard boundaries -->
+      <section class="section" id="hard-boundaries">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>What AI never does in Wethr</h2>
+        </div>
+
+        <p>These are not aspirational guidelines — they are hard limits written into how Wethr is built and operated. They are not subject to change based on what becomes technically possible or commercially convenient.</p>
+
+        <table class="boundary-table">
+          <thead>
+            <tr>
+              <th style="width:50%">AI is used for this</th>
+              <th style="width:50%">AI is never used for this</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-yes"><span class="dot-yes"></span>Suggesting who to schedule for a service role</td>
+              <td class="col-no"><span class="dot-no"></span>Generating pastoral advice, spiritual guidance, or counselling language</td>
+            </tr>
+            <tr>
+              <td class="col-yes"><span class="dot-yes"></span>Drafting a volunteer reminder message for a leader to review</td>
+              <td class="col-no"><span class="dot-no"></span>Sending any message to a church member without explicit human approval</td>
+            </tr>
+            <tr>
+              <td class="col-yes"><span class="dot-yes"></span>Suggesting a service block structure based on past plans</td>
+              <td class="col-no"><span class="dot-no"></span>Writing sermon content, prayers, liturgy, or service elements</td>
+            </tr>
+            <tr>
+              <td class="col-yes"><span class="dot-yes"></span>Interpreting a natural-language search query in the directory</td>
+              <td class="col-no"><span class="dot-no"></span>Making decisions about people — assignments, removals, or status changes — automatically</td>
+            </tr>
+            <tr>
+              <td class="col-yes"><span class="dot-yes"></span>Summarising scheduling patterns for leader reporting</td>
+              <td class="col-no"><span class="dot-no"></span>Generating personalised communication on behalf of a pastor or leader</td>
+            </tr>
+            <tr>
+              <td class="col-yes"><span class="dot-yes"></span>Helping us write and refine internal documentation</td>
+              <td class="col-no"><span class="dot-no"></span>Analysing or profiling congregation members based on their data</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout caution">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M8.6 3.4L1.5 16a1.6 1.6 0 001.4 2.4h14.2a1.6 1.6 0 001.4-2.4L11.4 3.4a1.6 1.6 0 00-2.8 0z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">The pastoral relationship is not an AI surface</div>
+            <p class="callout-text">The connection between a pastor and their congregation is built on trust, care, and human presence. We will never build features that simulate, automate, or substitute for that relationship — regardless of how plausible the technology makes it seem.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Human review -->
+      <section class="section" id="human-review">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>Human review</h2>
+        </div>
+
+        <p>Wherever AI generates content that will be seen or acted upon — by your team or by members of your congregation — a human reviews it first. This is not a checkbox. It is a structural requirement in how our AI-assisted features are designed.</p>
+
+        <div class="review-flow">
+          <div class="flow-step">
+            <div class="flow-icon ai">
+              <svg viewBox="0 0 22 22" fill="none"><rect x="4" y="4" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="flow-label">AI generates a draft</div>
+            <div class="flow-desc">A suggestion, summary, or starting point is created</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon person">
+              <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 19c0-3.9 3.1-6 7-6s7 2.1 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="flow-label">Person reviews &amp; edits</div>
+            <div class="flow-desc">A staff member or leader reads, changes, or discards the draft</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon person">
+              <svg viewBox="0 0 22 22" fill="none"><path d="M7 11h5M7 7h8M7 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="3" y="3" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <div class="flow-label">Person approves</div>
+            <div class="flow-desc">An explicit action is required — nothing is sent or saved automatically</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-icon check">
+              <svg viewBox="0 0 22 22" fill="none"><path d="M6 11.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="flow-label">Content is used</div>
+            <div class="flow-desc">What reaches your church is what a human decided to send</div>
+          </div>
+        </div>
+
+        <p>This applies to every AI-assisted workflow in the app. There is no path from AI output to church member that does not pass through a deliberate human decision.</p>
+
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">AI output is always identified as such</div>
+            <p class="callout-text">When an AI draft or suggestion is shown in the interface, it is explicitly labelled. A person reviewing content always knows whether they are looking at something AI-generated or something written by a colleague.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Opt-out -->
+      <section class="section" id="opt-out">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Opt-out policy</h2>
+        </div>
+
+        <p>Every AI-powered feature in Wethr can be disabled, and disabling it does not reduce your access to any other part of the platform. No core function of Wethr depends on AI.</p>
+
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">A church that turns off every AI feature loses nothing structural</div>
+            <p class="callout-text">The directory, scheduling, Order of Service, team management, and communications all work in full without any AI involvement. AI features are enhancements — they are never the only path to completing a task.</p>
+          </div>
+        </div>
+
+        <div class="opt-out-grid">
+          <div class="opt-out-row">
+            <div class="opt-out-feature">
+              <div class="opt-out-name">Scheduling suggestions</div>
+              <div class="opt-out-desc">Turn off AI-suggested volunteer assignments. Leaders assign manually from the full eligible member list — exactly as scheduling works in Phase 1 today.</div>
+            </div>
+            <div class="opt-out-badge">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Settings → Scheduling
+            </div>
+          </div>
+          <div class="opt-out-row">
+            <div class="opt-out-feature">
+              <div class="opt-out-name">Service plan suggestions</div>
+              <div class="opt-out-desc">Turn off AI-suggested block structures when creating a new service. New services start from a blank canvas or a manually-saved template.</div>
+            </div>
+            <div class="opt-out-badge">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Settings → Services
+            </div>
+          </div>
+          <div class="opt-out-row">
+            <div class="opt-out-feature">
+              <div class="opt-out-name">Reminder message drafts</div>
+              <div class="opt-out-desc">Turn off AI-drafted reminder copy. Leaders write messages from scratch using a plain text editor, as they would in any messaging tool.</div>
+            </div>
+            <div class="opt-out-badge">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Settings → Communications
+            </div>
+          </div>
+          <div class="opt-out-row">
+            <div class="opt-out-feature">
+              <div class="opt-out-name">Smart search</div>
+              <div class="opt-out-desc">Turn off natural-language query interpretation. Directory search falls back to standard keyword and filter-based search — fully functional and fast.</div>
+            </div>
+            <div class="opt-out-badge">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5h6M6 3l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Settings → Directory
+            </div>
+          </div>
+        </div>
+
+        <p>Opt-out controls are accessible to Super Admins and Staff Admins from the Settings panel. Changes take effect immediately and can be reversed at any time.</p>
+      </section>
+
+      <!-- 6. Your data & AI -->
+      <section class="section" id="your-data">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Your data &amp; AI</h2>
+        </div>
+
+        <p>How your congregation's data interacts with AI systems — or doesn't — is a legitimate question. Here's the full picture.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Is congregation data used to train AI models?</td>
+              <td>No. Wethr does not share your directory, scheduling, or any congregation data with AI model providers for training purposes.</td>
+            </tr>
+            <tr>
+              <td>When AI features are used in the app, what data is sent to an AI provider?</td>
+              <td>Only the minimum data required for the specific feature — for example, a scheduling suggestion may send volunteer availability and role fit data. Personal contact details, household information, and member notes are never included.</td>
+            </tr>
+            <tr>
+              <td>Which AI providers does Wethr use?</td>
+              <td>We will publish this specifically in our <a href="wethr-security.html" style="color:var(--cerulean-600);font-weight:500;">Security page</a> and keep it current. Any provider used is subject to a data processing agreement that prohibits training on customer data.</td>
+            </tr>
+            <tr>
+              <td>If I opt out of AI features, does any data still reach AI providers?</td>
+              <td>No. Opt-out is a complete cutoff. If AI features are disabled for your church, none of your data is sent to AI systems — not even anonymised or aggregated data.</td>
+            </tr>
+            <tr>
+              <td>Can Wethr staff use our data to prompt AI tools internally?</td>
+              <td>No. Our internal AI usage policy prohibits Wethr team members from entering customer data into general-purpose AI tools. Any internal AI use involving customer data would require explicit consent and a specific data processing agreement.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 7. Our posture -->
+      <section class="section" id="our-posture">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>Our posture</h2>
+        </div>
+
+        <p>Beyond the specific policies above, these are the principles that guide how we think about AI at Wethr — not as legal commitments, but as the convictions that shape our decisions.</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon sunrise">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.2 2 3 4.2 3 7c0 1.7.8 3.2 2 4.2V13h6v-1.8c1.2-1 2-2.5 2-4.2 0-2.8-2.2-5-5-5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 13h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">We stay humble about what AI is</div>
+              <div class="card-desc">AI is a probabilistic tool. It makes plausible-sounding mistakes. We design our features around that reality — not the marketing version of AI.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon meadow">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4.5H14l-3.8 2.8 1.5 4.5L8 11l-3.7 2.8 1.5-4.5L2 6.5h4.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Usefulness, not impressiveness</div>
+              <div class="card-desc">We won't add AI features because they look impressive in a demo. We add them when they solve a real coordination problem for a real person running a real church.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon cerulean">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 5V4a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="9.5" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Disclosure over convenience</div>
+              <div class="card-desc">We will always tell you when AI is involved in something — even when disclosing it makes the feature seem less magical or more provisional.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon amber">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2.5L9.8 6H13l-2.8 2.2 1 3.8L8 10l-3.2 2 1-3.8L3 6h3.2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Accountability stays with people</div>
+              <div class="card-desc">When something goes into the service plan or out to a volunteer, a person chose that. AI can propose. It cannot decide.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon navy">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z" stroke="currentColor" stroke-width="1.4"/><path d="M2 14.5c0-2.5 2.7-4.5 6-4.5s6 2 6 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="card-title">We move slower than the hype</div>
+              <div class="card-desc">We're deliberate about adding new AI-powered features. The pace of AI development in the industry is not a reason to rush. Your church's trust is worth more than being first.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon meadow">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3v10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.4"/></svg>
+            </div>
+            <div>
+              <div class="card-title">You can always ask us anything</div>
+              <div class="card-desc">If a specific use of AI concerns you and you don't see it addressed here, ask us directly. We're committed to answering with full specificity — not with generalities.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Let's talk -->
+      <section class="section" id="conversation">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Let's talk about it</h2>
+        </div>
+
+        <p>If anything on this page raises a question, surfaces a concern, or prompts a "but what about…" — we want to hear it. This is not a topic we're protective about. The right answer for your church should be based on a real conversation, not a policy document.</p>
+
+        <p>We're particularly interested in hearing from churches that have governance or policy positions on AI — whether from a theological perspective, a data stewardship perspective, or simply a practical one. If you've thought carefully about this and want to compare notes, that conversation is genuinely useful to us.</p>
+
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M2 4h16a1 1 0 011 1v8a1 1 0 01-1 1H2a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Reach out — about anything on this page</div>
+            <p class="callout-text">Email <a href="mailto:hello@wethr.co" style="color:var(--cerulean-600);font-weight:500;">hello@wethr.co</a> with your questions, concerns, or pushback. We read every message and respond personally. If you're evaluating Wethr and AI is a factor in that decision, we'd rather talk you through it than have you decide based on this document alone.</p>
+          </div>
+        </div>
+
+        <div class="callout info" style="margin-top: 12px;">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">This page will be updated as we add AI features</div>
+            <p class="callout-text">Whenever a new AI-assisted feature ships, this page is updated before or alongside the release — not after. The table in Section 2 is the authoritative list of where AI is used in the product.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="footer-wordmark">Wethr</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Landing</a>
+      <a href="faq.html">FAQs</a>
+      <a href="preview.html">App Preview</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="security.html">Security</a>
+      <a href="support.html">Support</a> 
+      <a href="contact.html">Contact</a>
+      <a href="ai.html">AI Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const tocLinks  = document.querySelectorAll('.toc-list a');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

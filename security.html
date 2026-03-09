@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security — Wethr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --navy-600: #3A6B9E;
+      --navy-100: #D6E4F0;
+      --navy-50:  #EBF2F9;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50:  #E8F5FB;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50:  #FEF6EC;
+      --meadow-700: #2A6120;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50:  #EBF7E4;
+      --amber-700: #9A5B00;
+      --amber-500: #D97B00;
+      --amber-100: #FDECC8;
+      --amber-50:  #FEF7E8;
+      --crimson-700: #8B1A2B;
+      --crimson-500: #C0293F;
+      --crimson-100: #F9D0D6;
+      --crimson-50:  #FDF0F2;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50:  #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-700);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-900);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.4px;
+      opacity: 0.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+      padding: 72px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(46,134,171,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 30%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(240,131,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--cerulean-100);
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: var(--sunrise-400);
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--navy-100);
+      opacity: 0.85;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.7;
+    }
+
+    .hero-meta-item svg { width: 14px; height: 14px; opacity: 0.8; }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR TOC ── */
+    .toc { position: sticky; top: 80px; }
+
+    .toc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: 14px;
+    }
+
+    .toc-list { list-style: none; }
+    .toc-list li + li { margin-top: 2px; }
+
+    .toc-list a {
+      display: block;
+      padding: 7px 12px 7px 14px;
+      font-size: 13px;
+      color: var(--neutral-500);
+      text-decoration: none;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--cerulean-600);
+      background: var(--cerulean-50);
+      border-left-color: var(--cerulean-500);
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: var(--neutral-200);
+      margin: 16px 0;
+    }
+
+    .toc-contact-card {
+      background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50));
+      border: 1px solid var(--navy-100);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .toc-contact-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .toc-contact-card a {
+      font-size: 13px;
+      color: var(--cerulean-600);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toc-contact-card a:hover { text-decoration: underline; }
+
+    .toc-contact-card p {
+      font-size: 12px;
+      color: var(--neutral-500);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* Summary banner */
+    .commitment-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .commitment-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .commitment-item + .commitment-item {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 20px;
+    }
+
+    .commitment-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .commitment-icon.cerulean { background: rgba(46,134,171,0.2); }
+    .commitment-icon.meadow   { background: rgba(74,154,53,0.2); }
+    .commitment-icon.sunrise  { background: rgba(240,131,48,0.2); }
+    .commitment-icon svg { width: 16px; height: 16px; }
+
+    .commitment-title { font-size: 13px; font-weight: 600; color: #fff; }
+    .commitment-desc  { font-size: 12px; color: var(--navy-100); opacity: 0.75; line-height: 1.5; }
+
+    /* Section */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 84px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .section-number {
+      width: 32px;
+      height: 32px;
+      background: var(--navy-900);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: -0.2px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--neutral-700);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section h3 {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin: 28px 0 10px;
+    }
+
+    /* Callout */
+    .callout {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .callout.info    { background: var(--cerulean-50); border: 1px solid var(--cerulean-100); }
+    .callout.success { background: var(--meadow-50);   border: 1px solid var(--meadow-100); }
+    .callout.warm    { background: var(--sunrise-50);  border: 1px solid var(--sunrise-100); }
+    .callout.caution { background: var(--amber-50);    border: 1px solid var(--amber-100); }
+
+    .callout-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .callout.info    .callout-icon { color: var(--cerulean-600); }
+    .callout.success .callout-icon { color: var(--meadow-500); }
+    .callout.warm    .callout-icon { color: var(--sunrise-500); }
+    .callout.caution .callout-icon { color: var(--amber-500); }
+
+    .callout-body { flex: 1; }
+
+    .callout-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .callout-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--neutral-700);
+      margin: 0 !important;
+    }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--neutral-200);
+    }
+
+    .data-table thead { background: var(--navy-900); }
+
+    .data-table thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--neutral-200);
+      transition: background 0.1s;
+    }
+
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:nth-child(odd)  { background: #fff; }
+    .data-table tbody tr:nth-child(even) { background: var(--neutral-50); }
+    .data-table tbody tr:hover { background: var(--cerulean-50); }
+
+    .data-table td {
+      padding: 12px 16px;
+      vertical-align: top;
+      color: var(--neutral-700);
+      line-height: 1.6;
+    }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: var(--navy-900);
+      white-space: nowrap;
+    }
+
+    /* Feature / pillar cards */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .right-card {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+
+    .right-card:hover { box-shadow: 0 2px 12px rgba(30,58,95,0.08); }
+
+    .right-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--navy-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .right-card-icon svg { width: 16px; height: 16px; color: var(--cerulean-600); }
+    .right-card-title { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .right-card-desc  { font-size: 12.5px; color: var(--neutral-500); line-height: 1.55; }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    .badge.blue   { background: var(--cerulean-50); color: var(--cerulean-700); border: 1px solid var(--cerulean-100); }
+    .badge.green  { background: var(--meadow-50);   color: var(--meadow-700);   border: 1px solid var(--meadow-100); }
+    .badge.warm   { background: var(--sunrise-50);  color: var(--sunrise-500);  border: 1px solid var(--sunrise-100); }
+    .badge.navy   { background: var(--navy-50);     color: var(--navy-900);     border: 1px solid var(--navy-100); }
+    .badge.amber  { background: var(--amber-50);    color: var(--amber-700);    border: 1px solid var(--amber-100); }
+
+    /* Role badge strip */
+    .role-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .role-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+
+    .role-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .role-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-900);
+      min-width: 140px;
+    }
+
+    .role-access {
+      font-size: 13px;
+      color: var(--neutral-700);
+      line-height: 1.55;
+    }
+
+    /* Stack diagram */
+    .stack-diagram {
+      background: var(--navy-950);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stack-layer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 4px;
+    }
+
+    .stack-layer:last-child { margin-bottom: 0; }
+
+    .stack-layer.cerulean { background: rgba(46,134,171,0.15); border: 1px solid rgba(46,134,171,0.25); }
+    .stack-layer.meadow   { background: rgba(74,154,53,0.15);  border: 1px solid rgba(74,154,53,0.25); }
+    .stack-layer.sunrise  { background: rgba(240,131,48,0.15); border: 1px solid rgba(240,131,48,0.25); }
+    .stack-layer.navy-mid { background: rgba(45,88,134,0.25);  border: 1px solid rgba(45,88,134,0.4); }
+
+    .stack-provider {
+      font-size: 12px;
+      font-weight: 500;
+      min-width: 140px;
+    }
+
+    .stack-layer.cerulean .stack-provider { color: #72B8D4; }
+    .stack-layer.meadow   .stack-provider { color: #7BC96F; }
+    .stack-layer.sunrise  .stack-provider { color: #FAC48A; }
+    .stack-layer.navy-mid .stack-provider { color: var(--navy-100); }
+
+    .stack-desc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    .stack-connector {
+      text-align: center;
+      font-size: 10px;
+      color: rgba(255,255,255,0.2);
+      margin: 2px 0;
+      letter-spacing: 1px;
+    }
+
+    /* Incident timeline */
+    .timeline {
+      margin: 20px 0;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--neutral-200);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -24px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    .timeline-dot.blue   { background: var(--cerulean-500); }
+    .timeline-dot.green  { background: var(--meadow-500); }
+    .timeline-dot.orange { background: var(--sunrise-500); }
+    .timeline-dot.navy   { background: var(--navy-700); }
+
+    .timeline-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 3px;
+    }
+
+    .timeline-desc {
+      font-size: 13.5px;
+      color: var(--neutral-700);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy-950);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 12px; color: var(--navy-100); opacity: 0.4; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-body { grid-template-columns: 1fr; padding: 36px 20px 60px; gap: 0; }
+      .toc { display: none; }
+      .hero { padding: 48px 20px 56px; }
+      nav { padding: 0 20px; }
+      .commitment-banner { grid-template-columns: 1fr; padding: 20px; }
+      .commitment-item + .commitment-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .role-name { min-width: 100px; }
+      .stack-provider { min-width: 100px; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="nav-wordmark">Wethr</span>
+    </a>
+    <span class="nav-badge">Security</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Trust &amp; Infrastructure</div>
+      <h1>Security at Wethr</h1>
+      <p>Your congregation's data is sensitive. We've designed Wethr from the ground up with security as a first-class requirement — not an afterthought. Here's exactly how we protect it.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1L2 3.5V7c0 2.8 2 5.2 5 5.9C10 12.2 12 9.8 12 7V3.5L7 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Defense in depth
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M4 7h6M7 4v6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          US-based infrastructure
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7l2 2 3-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          72-hour incident notification
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#overview" class="active">Overview</a></li>
+        <li><a href="#infrastructure">Infrastructure</a></li>
+        <li><a href="#data-isolation">Data Isolation</a></li>
+        <li><a href="#encryption">Encryption</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#access-control">Access Control</a></li>
+        <li><a href="#file-storage">File Storage</a></li>
+        <li><a href="#backups">Backups &amp; Recovery</a></li>
+        <li><a href="#team-access">Wethr Team Access</a></li>
+        <li><a href="#incident-response">Incident Response</a></li>
+        <li><a href="#responsible-disclosure">Responsible Disclosure</a></li>
+        <li><a href="#your-role">Your Role in Security</a></li>
+      </ul>
+
+      <div class="toc-divider"></div>
+
+      <div class="toc-contact-card">
+        <div class="label">Report a vulnerability</div>
+        <a href="mailto:security@wethr.co">security@wethr.co</a>
+        <p>We respond to all security reports within 48 hours.</p>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- Commitment banner -->
+      <div class="commitment-banner">
+        <div class="commitment-item">
+          <div class="commitment-icon cerulean">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L2 4v4c0 3.3 2.5 6.1 6 7 3.5-.9 6-3.7 6-7V4L8 1z" stroke="#2E86AB" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">Isolated by design.</div>
+          <div class="commitment-desc">Each church's data is structurally separated — not just by application logic, but enforced at the database level.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon meadow">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="6" width="12" height="9" rx="2" stroke="#4A9A35" stroke-width="1.4"/><path d="M5 6V4.5a3 3 0 016 0V6" stroke="#4A9A35" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1.5" fill="#4A9A35"/></svg>
+          </div>
+          <div class="commitment-title">Encrypted end to end.</div>
+          <div class="commitment-desc">All data is encrypted in transit with TLS 1.2+ and encrypted at rest with AES-256.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon sunrise">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#F08330" stroke-width="1.4"/><path d="M5 8.5l2 2 4-5" stroke="#F08330" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">Minimum access, always.</div>
+          <div class="commitment-desc">Every role — staff, leader, or volunteer — sees only what they need. Nothing more.</div>
+        </div>
+      </div>
+
+      <!-- 1. Overview -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Overview</h2>
+        </div>
+        <p>Wethr is built on a fully managed, serverless infrastructure stack. There are no servers for us to patch, no operating systems to maintain, and no hardware to secure. Every component is a managed service from a provider with its own security certifications and SLAs.</p>
+        <p>This document explains how each layer of the stack is secured, how church data is isolated from other churches, how access is controlled, and what happens when something goes wrong. We publish this so your church's leadership can make an informed decision about trusting Wethr with your congregation's data.</p>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Security is a shared responsibility</div>
+            <p class="callout-text">Wethr secures the platform and the infrastructure beneath it. Your church is responsible for managing who has access to your Wethr account, keeping credentials secure, and using the permission system appropriately. Both sides of that contract matter.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Infrastructure -->
+      <section class="section" id="infrastructure">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>Infrastructure</h2>
+        </div>
+        <p>Wethr runs on a fully serverless stack, distributed across industry-leading managed providers. Each provider is responsible for the physical and network security of the underlying hardware. Wethr is responsible for how we configure and use those services.</p>
+
+        <div class="stack-diagram">
+          <div class="stack-layer cerulean">
+            <span class="stack-provider">Vercel</span>
+            <span class="stack-desc">Application hosting · Next.js · API routes · Edge Middleware · Subdomain routing</span>
+          </div>
+          <div class="stack-connector">↕</div>
+          <div class="stack-layer meadow">
+            <span class="stack-provider">Supabase</span>
+            <span class="stack-desc">PostgreSQL database · Authentication · Row Level Security · Realtime subscriptions</span>
+          </div>
+          <div class="stack-connector">↕</div>
+          <div class="stack-layer sunrise">
+            <span class="stack-provider">Cloudflare R2</span>
+            <span class="stack-desc">File storage · Zero egress · Presigned URL access · No direct public exposure</span>
+          </div>
+          <div class="stack-connector">↕</div>
+          <div class="stack-layer navy-mid">
+            <span class="stack-provider">Inngest</span>
+            <span class="stack-desc">Background jobs · Schedule notifications · Event-driven workflows · Durable execution</span>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Role</th>
+              <th>Security posture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vercel <span class="badge blue">App</span></td>
+              <td>Hosts the Next.js application, API routes, and edge middleware</td>
+              <td>SOC 2 Type II certified. DDoS protection at the edge. Automatic HTTPS enforcement. Isolated deployment environments per branch.</td>
+            </tr>
+            <tr>
+              <td>Supabase <span class="badge green">DB + Auth</span></td>
+              <td>PostgreSQL database, authentication service, and realtime layer</td>
+              <td>SOC 2 Type II certified. Data hosted on AWS us-east-1. Encryption at rest (AES-256). Row Level Security enforced at the Postgres level. MFA on all Supabase dashboard access.</td>
+            </tr>
+            <tr>
+              <td>Cloudflare R2 <span class="badge warm">Files</span></td>
+              <td>Stores all user-uploaded files — PDFs, images, documents, audio</td>
+              <td>Cloudflare's global network with DDoS mitigation. Files are never publicly accessible — all access is via time-limited presigned URLs generated by the Wethr API. Zero direct public bucket access.</td>
+            </tr>
+            <tr>
+              <td>Inngest <span class="badge navy">Jobs</span></td>
+              <td>Background job processing for notifications, reminders, and scheduled tasks</td>
+              <td>Event payloads are encrypted in transit. Job execution is scoped per church. Failure states are logged and alertable.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>All infrastructure is hosted in US-based data centers. Data does not leave US jurisdiction under normal operation.</p>
+      </section>
+
+      <!-- 3. Data Isolation -->
+      <section class="section" id="data-isolation">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>Data Isolation</h2>
+        </div>
+        <p>Every church in Wethr is a completely isolated tenant. One church can never access another church's data — not through the application, and not through the database. This isolation is enforced at two independent layers.</p>
+
+        <h3>Layer 1 — Application (tRPC middleware)</h3>
+        <p>Every authenticated request resolves the caller's <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">church_id</code> from their verified session JWT — never from user input. All API procedures receive this <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">church_id</code> from the request context and inject it as an explicit filter into every database query. It is architecturally impossible for a user with a valid session for Church A to query Church B's data — the wrong <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">church_id</code> would return no results.</p>
+
+        <h3>Layer 2 — Database (Row Level Security)</h3>
+        <p>Supabase Row Level Security (RLS) policies are enabled on every table in the Wethr database. RLS enforces <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">church_id</code> scoping at the PostgreSQL level. Even if a bug in the application layer were to omit a <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">church_id</code> filter, the database would return only records matching the authenticated user's church. The application layer is the primary enforcement point; RLS is the backstop.</p>
+
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Two independent enforcement layers</div>
+            <p class="callout-text">The application layer and RLS enforce isolation independently. Both would need to fail simultaneously for a cross-church data leak to occur. This defense-in-depth approach means a single bug cannot breach tenant isolation.</p>
+          </div>
+        </div>
+
+        <h3>Subdomain isolation</h3>
+        <p>Every church accesses Wethr via their own subdomain — for example, <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">gracechurch.wethr.co</code>. Vercel Edge Middleware intercepts every request before it reaches the application and resolves the subdomain to a specific church context. A valid session for Church A cannot be used to authenticate at Church B's subdomain — the session is rejected and the user is shown Church B's login screen.</p>
+      </section>
+
+      <!-- 4. Encryption -->
+      <section class="section" id="encryption">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>Encryption</h2>
+        </div>
+        <p>All data in Wethr is protected by encryption at every stage — in transit between the browser and our servers, and at rest in our database and file storage.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Context</th>
+              <th>Standard</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data in transit</td>
+              <td><span class="badge blue">TLS 1.2+</span></td>
+              <td>All traffic between the browser and Wethr is encrypted via HTTPS. TLS 1.0 and 1.1 are disabled. HTTP requests are redirected to HTTPS automatically. Valid SSL certificates are managed and auto-renewed by Vercel and Cloudflare.</td>
+            </tr>
+            <tr>
+              <td>Database at rest</td>
+              <td><span class="badge green">AES-256</span></td>
+              <td>The PostgreSQL database hosted on Supabase (AWS us-east-1) encrypts all data at rest using AES-256. This includes all church, member, schedule, and communication data.</td>
+            </tr>
+            <tr>
+              <td>File storage at rest</td>
+              <td><span class="badge green">AES-256</span></td>
+              <td>Files stored in Cloudflare R2 are encrypted at rest. Uploaded files are stored in a private bucket and are only accessible via time-limited presigned URLs — not through any public URL.</td>
+            </tr>
+            <tr>
+              <td>Authentication tokens</td>
+              <td><span class="badge blue">JWT + RS256</span></td>
+              <td>Session tokens are signed JWTs using RS256 (asymmetric signing). Tokens are short-lived and scoped to a specific church. Token verification does not require a database lookup on every request.</td>
+            </tr>
+            <tr>
+              <td>Passwords</td>
+              <td><span class="badge navy">N/A — passwordless</span></td>
+              <td>Wethr uses a passwordless OTP authentication model. There are no stored passwords to compromise. Authentication codes are single-use and expire after 24 hours.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 5. Authentication -->
+      <section class="section" id="authentication">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Authentication</h2>
+        </div>
+        <p>Wethr uses a passwordless, email-based OTP (one-time passcode) authentication model. There are no passwords stored anywhere in our system — which eliminates an entire category of credential-based attacks.</p>
+
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 5V4a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="9.5" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">No passwords</div>
+              <div class="right-card-desc">Eliminates credential stuffing, brute-force, and password reuse attacks entirely.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="13" cy="11" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M15 13l1.5 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Single-use codes</div>
+              <div class="right-card-desc">OTP codes are valid for one use only and expire after 24 hours. Intercepted codes cannot be reused.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L2 4.5V9c0 3.3 3 5.5 6 6.5 3-1 6-3.2 6-6.5V4.5L8 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Rate-limited attempts</div>
+              <div class="right-card-desc">OTP entry is limited to 5 attempts per code. Too many failures lock the code and require requesting a new one.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Short-lived sessions</div>
+              <div class="right-card-desc">Session JWTs are scoped to a specific church and expire automatically. "Remember me" tokens are stored as secure, HttpOnly cookies.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M5 4V3h6v1M6 7v5M10 7v5M4 4l1 9h6l1-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Instant deactivation</div>
+              <div class="right-card-desc">Admins can deactivate a user immediately. Active sessions are blocked on the next request — no waiting for token expiry.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M1 8C1 4.1 4.1 1 8 1s7 3.1 7 7-3.1 7-7 7-7-3.1-7-7z" stroke="currentColor" stroke-width="1.3"/><path d="M5 5c0-1.7 1.3-3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="11" r="1" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Invite-only access</div>
+              <div class="right-card-desc">Users cannot self-register. Access to your Wethr account requires an explicit invitation from an admin within your church.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout warm">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Authentication is powered by Supabase Auth</div>
+            <p class="callout-text">Wethr's authentication layer is built on Supabase Auth, which is purpose-built for secure, production-grade authentication. It handles OTP generation, token signing, and session management — we don't implement these primitives ourselves.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Access Control -->
+      <section class="section" id="access-control">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Access Control</h2>
+        </div>
+        <p>Wethr uses a five-tier role-based access control (RBAC) model. Every user is assigned one or more roles, and every API endpoint enforces the minimum role required to access it. Role resolution happens fresh on every request — there is no stale permission state cached in a JWT.</p>
+
+        <div class="role-strip">
+          <div class="role-row">
+            <div class="role-dot" style="background: var(--navy-900);"></div>
+            <div class="role-name">Super Admin</div>
+            <div class="role-access">Full access to all data, settings, and users across the church account. Can manage billing and grant or revoke all other roles.</div>
+          </div>
+          <div class="role-row">
+            <div class="role-dot" style="background: var(--cerulean-500);"></div>
+            <div class="role-name">Staff / Admin</div>
+            <div class="role-access">Full operational access to all data and features. Cannot modify system-level settings or manage Super Admin accounts.</div>
+          </div>
+          <div class="role-row">
+            <div class="role-dot" style="background: var(--sunrise-500);"></div>
+            <div class="role-name">Ministry Leader</div>
+            <div class="role-access">Full access to their assigned team(s) and groups. Read-only access to the directory (name and photo for all; full contact info for their team members only).</div>
+          </div>
+          <div class="role-row">
+            <div class="role-dot" style="background: var(--meadow-500);"></div>
+            <div class="role-name">Volunteer</div>
+            <div class="role-access">View their own schedule, set preferences and blackout dates, and manage their own profile. Cannot access any other user's data or team management tools.</div>
+          </div>
+          <div class="role-row">
+            <div class="role-dot" style="background: var(--neutral-400);"></div>
+            <div class="role-name">Member</div>
+            <div class="role-access">View and edit their own directory profile. Browse publicly visible small group information. No access to scheduling, teams, or operational data.</div>
+          </div>
+        </div>
+
+        <h3>Enforcement</h3>
+        <p>Role enforcement is implemented at the tRPC API layer using procedure middleware. Every API endpoint is annotated with its minimum required role. If a user's resolved role does not meet the requirement, the endpoint returns an <code style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--neutral-100); padding: 1px 5px; border-radius: 4px;">UNAUTHORIZED</code> error before any business logic executes. Role changes take effect immediately on the user's next request — no re-login required.</p>
+
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Leader scoping goes deeper</div>
+            <p class="callout-text">Ministry Leaders are not just role-restricted — they are team-scoped. A leader can only manage the specific teams they have been assigned to. If they attempt to access another team via the API, a secondary check returns a <code style="font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">FORBIDDEN</code> error regardless of their role level.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. File Storage -->
+      <section class="section" id="file-storage">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>File Storage</h2>
+        </div>
+        <p>User-uploaded files — PDFs, images, documents, chord charts, and audio — are stored in Cloudflare R2. The bucket is fully private. No file is ever accessible via a direct public URL.</p>
+
+        <h3>Access pattern</h3>
+        <p>All file access (both upload and download) uses short-lived presigned URLs generated by the Wethr API:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Who</th>
+              <th>What happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Request URL</td>
+              <td>Browser → Wethr API</td>
+              <td>The client requests an upload or download URL. The API validates the user's role and church membership before proceeding.</td>
+            </tr>
+            <tr>
+              <td>2. Generate presigned URL</td>
+              <td>Wethr API → Cloudflare R2</td>
+              <td>A time-limited (15-minute) presigned URL is generated server-side and returned to the client. The URL is scoped to a specific file key.</td>
+            </tr>
+            <tr>
+              <td>3. Transfer directly</td>
+              <td>Browser → Cloudflare R2</td>
+              <td>The client uploads or downloads directly to/from R2. File data never passes through Wethr's application servers, reducing exposure.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Files are organized in a per-church bucket structure. The Wethr API validates church membership and role before generating any presigned URL — ensuring that users can only access files belonging to their own church and within their permission scope.</p>
+      </section>
+
+      <!-- 8. Backups & Recovery -->
+      <section class="section" id="backups">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Backups &amp; Recovery</h2>
+        </div>
+        <p>Wethr's database is backed up automatically on a continuous basis. Our recovery capabilities ensure that data loss from any incident can be minimized and resolved quickly.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Daily automated backups</td>
+              <td>The production Supabase database is backed up daily with a 7-day retention window. Backups are stored in a separate AWS region from the primary database.</td>
+            </tr>
+            <tr>
+              <td>Point-in-time recovery (PITR)</td>
+              <td>PITR is enabled on the production database, allowing restoration to any second within the retention window. This protects against accidental data deletion or corruption.</td>
+            </tr>
+            <tr>
+              <td>Staging environment</td>
+              <td>A fully separate staging environment mirrors the production configuration. Migrations and changes are validated in staging before reaching production.</td>
+            </tr>
+            <tr>
+              <td>Migration process</td>
+              <td>Database schema changes are versioned via Prisma Migrate. Production migrations are applied manually by an engineer before deploying the corresponding application code, ensuring schema and application are always in sync.</td>
+            </tr>
+            <tr>
+              <td>File storage durability</td>
+              <td>Cloudflare R2 provides 99.999999999% (11 nines) object durability through redundant storage across multiple locations.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">You can export your own data at any time</div>
+            <p class="callout-text">Backup infrastructure protects against infrastructure-level failures. For your own peace of mind, church admins can export a full copy of their directory, service history, and team data from Wethr's admin settings at any time — no request required.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Wethr Team Access -->
+      <section class="section" id="team-access">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <h2>Wethr Team Access</h2>
+        </div>
+        <p>We take a strict minimum-access approach to our own team's access to customer data.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Policy</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Need-to-know only</td>
+              <td>Wethr engineers and support staff can access customer data only when explicitly required to resolve a support issue, and only when that access has been requested or approved by the church's account administrator.</td>
+            </tr>
+            <tr>
+              <td>MFA required</td>
+              <td>All Wethr team members with access to production systems are required to use multi-factor authentication on all accounts (Supabase dashboard, Vercel, Cloudflare, and internal tools).</td>
+            </tr>
+            <tr>
+              <td>No production access for non-engineers</td>
+              <td>Access to production infrastructure is limited to engineers. Support and customer-facing staff interact with a separate admin tooling layer that does not have direct database access.</td>
+            </tr>
+            <tr>
+              <td>Access logging</td>
+              <td>All access to production systems is logged. Logs are retained for 90 days and reviewed periodically for anomalous activity.</td>
+            </tr>
+            <tr>
+              <td>No third-party data sharing</td>
+              <td>Wethr does not share church or member data with any third party except as required to operate the service (email delivery, SMS delivery, payment processing) — all of which are governed by data processing agreements.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 10. Incident Response -->
+      <section class="section" id="incident-response">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <h2>Incident Response</h2>
+        </div>
+        <p>We maintain a documented incident response process. When a security incident is detected — whether by our monitoring systems, a third-party report, or internal discovery — we follow a structured response protocol.</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot blue"></div>
+            <div class="timeline-label">Immediately</div>
+            <div class="timeline-title">Detection &amp; Containment</div>
+            <div class="timeline-desc">The incident is escalated to the engineering team. The affected system or data path is isolated or taken offline as necessary to prevent further impact.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot orange"></div>
+            <div class="timeline-label">Within 24 hours</div>
+            <div class="timeline-title">Assessment</div>
+            <div class="timeline-desc">We assess the scope of the incident — what data was affected, which churches are involved, and whether the incident constitutes a reportable breach under applicable law.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green"></div>
+            <div class="timeline-label">Within 72 hours</div>
+            <div class="timeline-title">Customer Notification</div>
+            <div class="timeline-desc">If church data was affected, we notify the account administrator(s) of all affected churches within 72 hours of confirming the breach. Notification includes what happened, what data was involved, and what we've done to contain it.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot navy"></div>
+            <div class="timeline-label">Ongoing</div>
+            <div class="timeline-title">Remediation &amp; Review</div>
+            <div class="timeline-desc">The root cause is identified and remediated. A post-mortem is conducted. Findings are used to improve our security posture and prevent recurrence.</div>
+          </div>
+        </div>
+
+        <div class="callout caution" style="margin-top: 24px;">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 3L2 17h16L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 10v3m0 2.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Infrastructure provider incidents</div>
+            <p class="callout-text">For incidents originating from our infrastructure providers (Supabase, Vercel, Cloudflare), we will communicate the provider's status and our own impact assessment to affected churches. Provider status pages are publicly accessible and we will reference them directly in communications.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Responsible Disclosure -->
+      <section class="section" id="responsible-disclosure">
+        <div class="section-header">
+          <div class="section-number">11</div>
+          <h2>Responsible Disclosure</h2>
+        </div>
+        <p>We welcome security researchers and community members who identify potential vulnerabilities in Wethr. If you believe you've found a security issue, please report it to us before disclosing it publicly — we will work with you to investigate and resolve it promptly.</p>
+
+        <div style="background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50)); border: 1px solid var(--navy-100); border-radius: 12px; padding: 28px 32px; margin-top: 20px;">
+          <div style="font-family: 'Lora', serif; font-size: 18px; font-weight: 600; color: var(--navy-900); margin-bottom: 16px;">How to report a vulnerability</div>
+          <div style="display: grid; gap: 14px;">
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 24px; height: 24px; background: var(--cerulean-500); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+                <span style="font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: #fff;">1</span>
+              </div>
+              <div>
+                <div style="font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 2px;">Email us directly</div>
+                <div style="font-size: 13px; color: var(--neutral-700);">Send a detailed report to <a href="mailto:security@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">security@wethr.co</a>. Include a description of the vulnerability, steps to reproduce, and the potential impact you've assessed.</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 24px; height: 24px; background: var(--cerulean-500); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+                <span style="font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: #fff;">2</span>
+              </div>
+              <div>
+                <div style="font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 2px;">We respond within 48 hours</div>
+                <div style="font-size: 13px; color: var(--neutral-700);">We will acknowledge your report and provide an initial assessment. We will keep you updated as we investigate and remediate.</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <div style="width: 24px; height: 24px; background: var(--cerulean-500); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+                <span style="font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: #fff;">3</span>
+              </div>
+              <div>
+                <div style="font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 2px;">We ask for coordinated disclosure</div>
+                <div style="font-size: 13px; color: var(--neutral-700);">Please give us reasonable time to patch before public disclosure. We will work with you on timing and are happy to acknowledge your contribution when the fix is released.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 20px;">We do not take legal action against researchers who act in good faith, follow responsible disclosure practices, and do not access, modify, or exfiltrate customer data in the course of their research.</p>
+      </section>
+
+      <!-- 12. Your Role in Security -->
+      <section class="section" id="your-role">
+        <div class="section-header">
+          <div class="section-number">12</div>
+          <h2>Your Role in Security</h2>
+        </div>
+        <p>Platform security is a partnership. Wethr secures the infrastructure — but your church's administrators play an essential role in protecting your account from the inside.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Your responsibility</th>
+              <th>Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Keep OTP codes private</td>
+              <td>Login codes are single-use and sent to individual email addresses. Never share a code with another person — treat it like a password.</td>
+            </tr>
+            <tr>
+              <td>Use a secure email account</td>
+              <td>Since Wethr sends login codes by email, the security of your Wethr account depends on the security of the email address it's linked to. Use strong passwords and MFA on your email provider.</td>
+            </tr>
+            <tr>
+              <td>Assign roles carefully</td>
+              <td>Grant the minimum role necessary. Not every staff member needs Super Admin access — use Staff/Admin, Leader, or Volunteer roles where appropriate.</td>
+            </tr>
+            <tr>
+              <td>Deactivate departing users promptly</td>
+              <td>When a volunteer, leader, or staff member leaves your church, deactivate their Wethr account immediately from Settings &gt; Users. Deactivation takes effect on the next request — there is no delay.</td>
+            </tr>
+            <tr>
+              <td>Review active users periodically</td>
+              <td>Review your user list at least once a year to ensure that everyone with access still needs it. Remove accounts that are no longer in use.</td>
+            </tr>
+            <tr>
+              <td>Report suspicious activity</td>
+              <td>If you notice unexpected logins, unusual data changes, or anything that looks wrong, contact us immediately at <a href="mailto:security@wethr.co" style="color: var(--cerulean-600);">security@wethr.co</a>.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Questions? We're here to help.</div>
+            <p class="callout-text">If your church has specific security requirements, compliance questions, or needs a security review before adopting Wethr, reach out to <a href="mailto:security@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">security@wethr.co</a>. We are happy to answer detailed questions and work with your leadership team directly.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="footer-wordmark">Wethr</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Landing</a>
+      <a href="faq.html">FAQs</a>
+      <a href="preview.html">App Preview</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="security.html">Security</a>
+      <a href="support.html">Support</a> 
+      <a href="contact.html">Contact</a>
+      <a href="ai.html">AI Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

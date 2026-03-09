@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Wethr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --navy-600: #3A6B9E;
+      --navy-100: #D6E4F0;
+      --navy-50: #EBF2F9;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50: #E8F5FB;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50: #FEF6EC;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50: #EBF7E4;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50: #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-700);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-900);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.4px;
+      opacity: 0.7;
+    }
+
+    /* ── HERO BAND ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+      padding: 72px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(46,134,171,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 30%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(240,131,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--cerulean-100);
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: var(--sunrise-400);
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--navy-100);
+      opacity: 0.85;
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.7;
+    }
+
+    .hero-meta-item svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.8;
+    }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 40px 100px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR TOC ── */
+    .toc {
+      position: sticky;
+      top: 80px;
+    }
+
+    .toc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: 14px;
+    }
+
+    .toc-list {
+      list-style: none;
+    }
+
+    .toc-list li + li { margin-top: 2px; }
+
+    .toc-list a {
+      display: block;
+      padding: 7px 12px 7px 14px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--neutral-500);
+      text-decoration: none;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--cerulean-600);
+      background: var(--cerulean-50);
+      border-left-color: var(--cerulean-500);
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: var(--neutral-200);
+      margin: 16px 0;
+    }
+
+    .toc-contact-card {
+      background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50));
+      border: 1px solid var(--navy-100);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    .toc-contact-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .toc-contact-card a {
+      font-size: 13px;
+      color: var(--cerulean-600);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .toc-contact-card a:hover { text-decoration: underline; }
+
+    .toc-contact-card p {
+      font-size: 12px;
+      color: var(--neutral-500);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* Commitment banner */
+    .commitment-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .commitment-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .commitment-item + .commitment-item {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 20px;
+    }
+
+    .commitment-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .commitment-icon.cerulean { background: rgba(46,134,171,0.2); }
+    .commitment-icon.meadow  { background: rgba(74,154,53,0.2); }
+    .commitment-icon.sunrise { background: rgba(240,131,48,0.2); }
+
+    .commitment-icon svg { width: 16px; height: 16px; }
+
+    .commitment-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .commitment-desc {
+      font-size: 12px;
+      color: var(--navy-100);
+      opacity: 0.75;
+      line-height: 1.5;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 84px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .section-number {
+      width: 32px;
+      height: 32px;
+      background: var(--navy-900);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: -0.2px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--neutral-700);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* Callout box */
+    .callout {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .callout.info {
+      background: var(--cerulean-50);
+      border: 1px solid var(--cerulean-100);
+    }
+
+    .callout.success {
+      background: var(--meadow-50);
+      border: 1px solid var(--meadow-100);
+    }
+
+    .callout.warm {
+      background: var(--sunrise-50);
+      border: 1px solid var(--sunrise-100);
+    }
+
+    .callout-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .callout.info .callout-icon { color: var(--cerulean-600); }
+    .callout.success .callout-icon { color: var(--meadow-500); }
+    .callout.warm .callout-icon { color: var(--sunrise-500); }
+
+    .callout-body { flex: 1; }
+
+    .callout-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .callout-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--neutral-700);
+      margin: 0 !important;
+    }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--neutral-200);
+    }
+
+    .data-table thead {
+      background: var(--navy-900);
+    }
+
+    .data-table thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy-100);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid var(--neutral-200);
+      transition: background 0.1s;
+    }
+
+    .data-table tbody tr:last-child { border-bottom: none; }
+
+    .data-table tbody tr:nth-child(odd) { background: #fff; }
+    .data-table tbody tr:nth-child(even) { background: var(--neutral-50); }
+
+    .data-table tbody tr:hover { background: var(--cerulean-50); }
+
+    .data-table td {
+      padding: 12px 16px;
+      vertical-align: top;
+      color: var(--neutral-700);
+      line-height: 1.6;
+    }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: var(--navy-900);
+      white-space: nowrap;
+    }
+
+    /* Rights grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .right-card {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+
+    .right-card:hover {
+      box-shadow: 0 2px 12px rgba(30,58,95,0.08);
+    }
+
+    .right-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--navy-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .right-card-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--cerulean-600);
+    }
+
+    .right-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 3px;
+    }
+
+    .right-card-desc {
+      font-size: 12.5px;
+      color: var(--neutral-500);
+      line-height: 1.55;
+    }
+
+    /* Retention table badge */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    .badge.blue  { background: var(--cerulean-50); color: var(--cerulean-700); border: 1px solid var(--cerulean-100); }
+    .badge.green { background: var(--meadow-50); color: var(--meadow-500); border: 1px solid var(--meadow-100); }
+    .badge.warm  { background: var(--sunrise-50); color: var(--sunrise-500); border: 1px solid var(--sunrise-100); }
+
+    /* Footer */
+    footer {
+      background: var(--navy-950);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--navy-100);
+      opacity: 0.4;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-body {
+        grid-template-columns: 1fr;
+        padding: 36px 20px 60px;
+        gap: 0;
+      }
+
+      .toc { display: none; }
+      .hero { padding: 48px 20px 56px; }
+      nav { padding: 0 20px; }
+
+      .commitment-banner {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .commitment-item + .commitment-item {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 16px;
+      }
+
+      .rights-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-inner { animation: fadeUp 0.5s ease both; }
+    .commitment-banner { animation: fadeUp 0.5s 0.1s ease both; }
+    .section { animation: fadeUp 0.4s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="nav-wordmark">Wethr</span>
+    </a>
+    <span class="nav-badge">Privacy Policy</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Legal & Trust</div>
+      <h1>Privacy Policy</h1>
+      <p>Wethr is built for churches — communities of trust. We hold your congregation's data to the same standard of care you hold your people.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 2V1M10 2V1M1 5.5h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Effective: March 1, 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5V7l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Last updated: March 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5L7 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Version 1.0
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#overview" class="active">Overview</a></li>
+        <li><a href="#what-we-collect">What We Collect</a></li>
+        <li><a href="#how-we-use">How We Use It</a></li>
+        <li><a href="#sharing">Sharing & Disclosure</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#your-rights">Your Rights</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#changes">Policy Changes</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+
+      <div class="toc-divider"></div>
+
+      <div class="toc-contact-card">
+        <div class="label">Privacy questions?</div>
+        <a href="mailto:privacy@wethr.co">privacy@wethr.co</a>
+        <p>We aim to respond within 3 business days.</p>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- Commitment banner -->
+      <div class="commitment-banner">
+        <div class="commitment-item">
+          <div class="commitment-icon cerulean">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L9.5 5H14L10.5 7.5L12 11.5L8 9L4 11.5L5.5 7.5L2 5H6.5L8 1Z" stroke="#2E86AB" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">No selling. Ever.</div>
+          <div class="commitment-desc">Your congregation's data is never sold or used for advertising.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon meadow">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="6" width="12" height="9" rx="2" stroke="#4A9A35" stroke-width="1.4"/><path d="M5 6V4.5a3 3 0 016 0V6" stroke="#4A9A35" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="10.5" r="1.5" fill="#4A9A35"/></svg>
+          </div>
+          <div class="commitment-title">Church-controlled.</div>
+          <div class="commitment-desc">Your church administrator owns all member data within Wethr.</div>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-icon sunrise">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z" stroke="#F08330" stroke-width="1.4"/><path d="M5.5 8.5l2 2 3-4" stroke="#F08330" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="commitment-title">Transparent by design.</div>
+          <div class="commitment-desc">We explain exactly what we collect and why, in plain language.</div>
+        </div>
+      </div>
+
+      <!-- 1. Overview -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Overview</h2>
+        </div>
+        <p>Wethr ("we," "our," or "us") operates a church management platform designed for mid-size congregations. This Privacy Policy explains how we collect, use, and protect information when your church uses our services at <strong>wethr.co</strong> and any associated subdomains.</p>
+        <p>Wethr operates as a <strong>data processor</strong> on behalf of your church. Your church — as the administrator of the Wethr account — is the data controller responsible for its congregation members' information. We process that data solely according to your instructions and this policy.</p>
+        <div class="callout warm">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">A note on church data</div>
+            <p class="callout-text">Churches store sensitive pastoral information. We treat everything in Wethr — names, contact details, member status, and volunteer history — with discretion appropriate to that trust. We never monetize this data or use it outside of providing the Wethr service.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. What We Collect -->
+      <section class="section" id="what-we-collect">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>What We Collect</h2>
+        </div>
+        <p>We collect information in two categories: data your church provides to Wethr, and data generated automatically through use of the platform.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Examples</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Directory data</td>
+              <td>Names, email addresses, phone numbers, household relationships, birthdates, photos, member status, tags</td>
+              <td>Church admin / CSV import</td>
+            </tr>
+            <tr>
+              <td>Scheduling data</td>
+              <td>Availability preferences, blackout dates, frequency caps, role assignments, RSVP responses</td>
+              <td>Volunteers & leaders</td>
+            </tr>
+            <tr>
+              <td>Service data</td>
+              <td>Order of service blocks, notes, file attachments, service history</td>
+              <td>Staff & leaders</td>
+            </tr>
+            <tr>
+              <td>Communications</td>
+              <td>In-app messages, notification preferences, SMS opt-in status</td>
+              <td>All users</td>
+            </tr>
+            <tr>
+              <td>Account data</td>
+              <td>Login credentials, church subdomain, billing contacts, role assignments</td>
+              <td>Church admin</td>
+            </tr>
+            <tr>
+              <td>Usage & logs</td>
+              <td>IP addresses, browser type, pages visited, feature interactions, error logs</td>
+              <td>Automatically collected</td>
+            </tr>
+            <tr>
+              <td>Visitor form submissions</td>
+              <td>Names, contact info, interest areas submitted through public visitor forms</td>
+              <td>Public form submitters</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">We don't collect payment information directly</div>
+            <p class="callout-text">Billing for Wethr subscriptions is handled by our payment processor. We store only a reference token — never full card numbers or banking details.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. How We Use It -->
+      <section class="section" id="how-we-use">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>How We Use Your Information</h2>
+        </div>
+        <p>We use the information collected exclusively to deliver, maintain, and improve the Wethr platform. We do not use congregation member data for marketing, advertising, or any purpose outside of operating the service.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Purpose</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Service delivery</td>
+              <td>Powering the directory, scheduling, order of service, communications, and all platform features.</td>
+            </tr>
+            <tr>
+              <td>Notifications</td>
+              <td>Sending schedule assignments, reminders, RSVP prompts, and messages on behalf of your church leaders.</td>
+            </tr>
+            <tr>
+              <td>Account management</td>
+              <td>Authenticating users, enforcing role permissions, and managing church account settings.</td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>Diagnosing technical issues, responding to support requests, and resolving data import problems.</td>
+            </tr>
+            <tr>
+              <td>Security</td>
+              <td>Detecting unauthorized access, preventing fraud, and maintaining platform integrity.</td>
+            </tr>
+            <tr>
+              <td>Product improvement</td>
+              <td>Analyzing aggregated usage patterns (never individual member data) to improve features.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 4. Sharing -->
+      <section class="section" id="sharing">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>Sharing &amp; Disclosure</h2>
+        </div>
+        <p>We do not sell, rent, or trade your data. We share information only in the following limited circumstances:</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Recipient</th>
+              <th>Reason</th>
+              <th>Safeguard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Infrastructure providers</td>
+              <td>Hosting, storage, and CDN services necessary to operate the platform</td>
+              <td>Data processing agreements in place</td>
+            </tr>
+            <tr>
+              <td>Email / SMS providers</td>
+              <td>Delivering transactional notifications on your church's behalf (e.g., SendGrid, Twilio)</td>
+              <td>Minimal data; no retention rights</td>
+            </tr>
+            <tr>
+              <td>Payment processor</td>
+              <td>Billing and subscription management</td>
+              <td>PCI-compliant; Wethr never sees card data</td>
+            </tr>
+            <tr>
+              <td>Legal authorities</td>
+              <td>When required by law, court order, or to protect safety</td>
+              <td>We notify your church unless prohibited</td>
+            </tr>
+            <tr>
+              <td>Business successors</td>
+              <td>In the event of a merger or acquisition</td>
+              <td>New entity must honor this policy or notify you</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout success">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">No third-party analytics on congregation data</div>
+            <p class="callout-text">We do not pass congregation member information to Google Analytics, Meta, or any advertising or analytics network. Our internal analytics use only anonymized, aggregated signals.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Retention -->
+      <section class="section" id="retention">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Data Retention</h2>
+        </div>
+        <p>We retain your data only as long as needed to provide the service and meet legal obligations. Your church controls the primary lifecycle of member data through Wethr's admin tools.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Data Type</th>
+              <th>Retention Period</th>
+              <th>Deletion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Active member records</td>
+              <td>Until church admin deletes or account closes</td>
+              <td><span class="badge green">Admin-controlled</span></td>
+            </tr>
+            <tr>
+              <td>Service & scheduling history</td>
+              <td>Until church admin deletes or account closes</td>
+              <td><span class="badge green">Admin-controlled</span></td>
+            </tr>
+            <tr>
+              <td>In-app messages</td>
+              <td>2 years from message date</td>
+              <td><span class="badge blue">Auto-purged</span></td>
+            </tr>
+            <tr>
+              <td>System logs & usage data</td>
+              <td>90 days</td>
+              <td><span class="badge blue">Auto-purged</span></td>
+            </tr>
+            <tr>
+              <td>Account data after cancellation</td>
+              <td>30-day grace period, then deleted</td>
+              <td><span class="badge warm">On cancellation</span></td>
+            </tr>
+            <tr>
+              <td>Billing records</td>
+              <td>7 years (legal requirement)</td>
+              <td><span class="badge blue">Legal hold</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Churches may export all their data at any time through the Wethr admin settings. Upon account closure, we will provide a final data export upon request within 30 days before deletion.</p>
+      </section>
+
+      <!-- 6. Security -->
+      <section class="section" id="security">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Security</h2>
+        </div>
+        <p>We take the security of your church's data seriously and implement industry-standard technical and organizational measures, including:</p>
+        <p>All data is encrypted in transit using TLS 1.2 or higher. Sensitive data at rest is encrypted using AES-256. Access to production systems is restricted to authorized Wethr engineers with multi-factor authentication required. We perform regular security reviews and vulnerability assessments.</p>
+        <p>Wethr is designed with role-based access controls baked in — volunteers see only what they need, leaders see their team, and admins control the rest. We do not allow any Wethr employee to access congregation data except to troubleshoot issues when explicitly requested by your church admin.</p>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 2L4 5v5c0 3.9 2.6 7.3 6 8.2C13.4 17.3 16 13.9 16 10V5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Security incident notification</div>
+            <p class="callout-text">In the event of a data breach that affects your church's data, we will notify your account administrator within 72 hours of becoming aware of the incident, in compliance with applicable data protection law.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Your Rights -->
+      <section class="section" id="your-rights">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>Your Rights</h2>
+        </div>
+        <p>Church administrators have full control over their congregation's data within Wethr. Individual members may exercise privacy rights by contacting their church administrator, who can act on their behalf within the platform.</p>
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Access</div>
+              <div class="right-card-desc">Request a copy of the personal data we hold about you.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M11 3L13 5L5 13H3V11L11 3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Correction</div>
+              <div class="right-card-desc">Update or correct inaccurate information in your profile.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 4h10M5 4V3h6v1M6 7v5M10 7v5M4 4l1 9h6l1-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Deletion</div>
+              <div class="right-card-desc">Request removal of your personal data from the platform.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 6.5h12" stroke="currentColor" stroke-width="1.3"/><path d="M7 10l2-1.5L7 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Portability</div>
+              <div class="right-card-desc">Export your church's data in a standard, machine-readable format.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 5.5V8M8 10h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Objection</div>
+              <div class="right-card-desc">Object to certain types of data processing in applicable circumstances.</div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="right-card-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v4M8 10v4M2 8h4M10 8h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.3"/></svg>
+            </div>
+            <div>
+              <div class="right-card-title">Restriction</div>
+              <div class="right-card-desc">Request that we limit how we process your data in certain situations.</div>
+            </div>
+          </div>
+        </div>
+        <p>To exercise any of these rights, contact your church administrator or email us at <a href="mailto:privacy@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">privacy@wethr.co</a>. We will respond within 30 days.</p>
+      </section>
+
+      <!-- 8. Cookies -->
+      <section class="section" id="cookies">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Cookies &amp; Tracking</h2>
+        </div>
+        <p>Wethr uses a minimal set of cookies necessary to operate the platform. We do not use advertising cookies, cross-site trackers, or third-party analytics that profile your behavior.</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Cookie</th>
+              <th>Purpose</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Session token</td>
+              <td>Keeps you logged in during your session</td>
+              <td>Session / 30 days (if "remember me")</td>
+            </tr>
+            <tr>
+              <td>CSRF token</td>
+              <td>Security protection against cross-site request forgery</td>
+              <td>Session</td>
+            </tr>
+            <tr>
+              <td>Preferences</td>
+              <td>Stores UI preferences (e.g., collapsed sidebar, last viewed tab)</td>
+              <td>1 year</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>You may disable cookies in your browser settings, but doing so will prevent you from logging in to Wethr.</p>
+      </section>
+
+      <!-- 9. Children -->
+      <section class="section" id="children">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <h2>Children's Privacy</h2>
+        </div>
+        <p>Wethr is designed for use by church staff, team leaders, and adult volunteers. We do not knowingly collect personal information from children under 13.</p>
+        <p>Churches may store household records that include children's names and birthdates as part of family directory management. This information is controlled entirely by the church administrator and is subject to the same protections as all other directory data. If you believe a child's data has been collected inappropriately, please contact us at <a href="mailto:privacy@wethr.co" style="color: var(--cerulean-600); font-weight: 500;">privacy@wethr.co</a> so we can address it promptly.</p>
+      </section>
+
+      <!-- 10. Changes -->
+      <section class="section" id="changes">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <h2>Changes to This Policy</h2>
+        </div>
+        <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify church administrators via email and display a notice within the Wethr platform at least 14 days before the changes take effect.</p>
+        <p>Continued use of Wethr after the effective date of a revised policy constitutes acceptance of the updated terms. We encourage you to review this page periodically.</p>
+        <div class="callout info">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Version history</div>
+            <p class="callout-text">Previous versions of this Privacy Policy are available upon request. Email us at privacy@wethr.co to request a prior version.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Contact -->
+      <section class="section" id="contact">
+        <div class="section-header">
+          <div class="section-number">11</div>
+          <h2>Contact Us</h2>
+        </div>
+        <p>If you have questions, concerns, or requests related to this Privacy Policy or how Wethr handles data, please reach out:</p>
+        <div style="background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50)); border: 1px solid var(--navy-100); border-radius: 12px; padding: 28px 32px; margin-top: 20px;">
+          <div style="font-family: 'Lora', serif; font-size: 18px; font-weight: 600; color: var(--navy-900); margin-bottom: 16px;">Wethr Privacy Team</div>
+          <div style="display: grid; gap: 10px;">
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Email</span>
+              <a href="mailto:privacy@wethr.co" style="color: var(--cerulean-600); text-decoration: none; font-weight: 500;">privacy@wethr.co</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Response</span>
+              <span>Within 3 business days for privacy inquiries</span>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--neutral-700);">
+              <span style="font-weight: 600; color: var(--navy-900); min-width: 80px;">Support</span>
+              <a href="mailto:support@wethr.co" style="color: var(--cerulean-600); text-decoration: none; font-weight: 500;">support@wethr.co</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="footer-wordmark">Wethr</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Landing</a>
+      <a href="faq.html">FAQs</a>
+      <a href="preview.html">App Preview</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="security.html">Security</a>
+      <a href="support.html">Support</a> 
+      <a href="contact.html">Contact</a>
+      <a href="ai.html">AI Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
+  </footer>
+
+  <script>
+    // Active TOC highlight on scroll
+    const sections = document.querySelectorAll('.section');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Wethr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-950: #0F2337;
+      --navy-900: #1E3A5F;
+      --navy-800: #254873;
+      --navy-700: #2D5886;
+      --navy-600: #3A6B9E;
+      --navy-100: #D6E4F0;
+      --navy-50:  #EBF2F9;
+      --cerulean-700: #1A6B8A;
+      --cerulean-600: #2180A4;
+      --cerulean-500: #2E86AB;
+      --cerulean-400: #4A9EC1;
+      --cerulean-100: #C8E8F3;
+      --cerulean-50:  #E8F5FB;
+      --sunrise-500: #F08330;
+      --sunrise-400: #F5A254;
+      --sunrise-100: #FDE8CC;
+      --sunrise-50:  #FEF6EC;
+      --meadow-700: #2A6120;
+      --meadow-500: #4A9A35;
+      --meadow-100: #C8EABC;
+      --meadow-50:  #EBF7E4;
+      --amber-500: #D97B00;
+      --amber-100: #FDECC8;
+      --amber-50:  #FEF7E8;
+      --neutral-900: #1A1A1A;
+      --neutral-700: #374151;
+      --neutral-500: #6B7280;
+      --neutral-400: #9CA3AF;
+      --neutral-300: #D1D5DB;
+      --neutral-200: #E5E7EB;
+      --neutral-100: #F3F4F6;
+      --neutral-50:  #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-700);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-900);
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .nav-logo-mark svg { width: 18px; height: 18px; }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 17px; font-weight: 600;
+      color: #fff; letter-spacing: -0.2px;
+    }
+
+    .nav-badge {
+      font-size: 11px; font-weight: 600;
+      color: var(--navy-100); letter-spacing: 0.4px; opacity: 0.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+      padding: 72px 40px 80px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(46,134,171,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -60px; left: 30%;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(240,131,48,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 760px; margin: 0 auto;
+      position: relative;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--cerulean-100);
+      margin-bottom: 20px; opacity: 0.85;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 18px; height: 2px;
+      background: var(--sunrise-400); border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 48px); font-weight: 600;
+      color: #fff; line-height: 1.2; margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 16px; color: var(--navy-100); opacity: 0.85;
+      max-width: 560px; line-height: 1.75;
+    }
+
+    .hero-meta {
+      margin-top: 32px; display: flex; gap: 24px; flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--navy-100); opacity: 0.7;
+    }
+
+    .hero-meta-item svg { width: 14px; height: 14px; opacity: 0.8; }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 1100px; margin: 0 auto;
+      padding: 56px 40px 100px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR TOC ── */
+    .toc { position: sticky; top: 80px; }
+
+    .toc-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--neutral-400); margin-bottom: 14px;
+    }
+
+    .toc-list { list-style: none; }
+    .toc-list li + li { margin-top: 2px; }
+
+    .toc-list a {
+      display: block; padding: 7px 12px 7px 14px;
+      font-size: 13px; color: var(--neutral-500);
+      text-decoration: none; border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--cerulean-600); background: var(--cerulean-50);
+      border-left-color: var(--cerulean-500);
+    }
+
+    .toc-divider { height: 1px; background: var(--neutral-200); margin: 16px 0; }
+
+    .toc-contact-card {
+      background: linear-gradient(135deg, var(--navy-50), var(--cerulean-50));
+      border: 1px solid var(--navy-100); border-radius: 10px;
+      padding: 16px; margin-top: 20px;
+    }
+
+    .toc-contact-card .label {
+      font-size: 11px; font-weight: 600; color: var(--navy-900);
+      letter-spacing: 0.4px; margin-bottom: 6px;
+    }
+
+    .toc-contact-card a {
+      font-size: 13px; color: var(--cerulean-600);
+      text-decoration: none; font-weight: 500;
+    }
+
+    .toc-contact-card a:hover { text-decoration: underline; }
+
+    .toc-contact-card p {
+      font-size: 12px; color: var(--neutral-500);
+      margin-top: 4px; line-height: 1.5;
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    /* Intro banner */
+    .intro-banner {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+      border-radius: 14px; padding: 28px 32px; margin-bottom: 48px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .intro-item { display: flex; flex-direction: column; gap: 6px; }
+    .intro-item + .intro-item {
+      border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px;
+    }
+
+    .intro-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 4px;
+    }
+
+    .intro-icon.cerulean { background: rgba(46,134,171,0.2); color: #4A9EC1; }
+    .intro-icon.meadow   { background: rgba(74,154,53,0.2);  color: #6BB855; }
+    .intro-icon.sunrise  { background: rgba(240,131,48,0.2); color: #F5A254; }
+    .intro-icon svg { width: 16px; height: 16px; }
+
+    .intro-title { font-size: 13px; font-weight: 600; color: #fff; }
+    .intro-desc  { font-size: 12px; color: var(--navy-100); opacity: 0.75; line-height: 1.5; }
+
+    /* Section */
+    .section {
+      margin-bottom: 56px; scroll-margin-top: 84px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .section-number {
+      width: 32px; height: 32px; background: var(--navy-900);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Lora', serif; font-size: 13px; font-weight: 600;
+      color: #fff; flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Lora', serif; font-size: 22px; font-weight: 600;
+      color: var(--navy-900); letter-spacing: -0.2px;
+    }
+
+    .section p {
+      font-size: 15px; line-height: 1.8;
+      color: var(--neutral-700); margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* Callout */
+    .callout {
+      border-radius: 10px; padding: 18px 20px; margin: 20px 0;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+
+    .callout.info    { background: var(--cerulean-50); border: 1px solid var(--cerulean-100); }
+    .callout.success { background: var(--meadow-50);   border: 1px solid var(--meadow-100); }
+    .callout.warm    { background: var(--sunrise-50);  border: 1px solid var(--sunrise-100); }
+
+    .callout-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .callout.info    .callout-icon { color: var(--cerulean-600); }
+    .callout.success .callout-icon { color: var(--meadow-500); }
+    .callout.warm    .callout-icon { color: var(--sunrise-500); }
+
+    .callout-body { flex: 1; }
+    .callout-title { font-size: 13px; font-weight: 600; color: var(--navy-900); margin-bottom: 4px; }
+    .callout-text  { font-size: 13.5px; line-height: 1.65; color: var(--neutral-700); margin: 0 !important; }
+
+    /* ── CONTACT REASON CARDS ── */
+    .reason-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0;
+    }
+
+    .reason-card {
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 12px;
+      padding: 22px 24px; cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+      position: relative; overflow: hidden;
+    }
+
+    .reason-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: transparent;
+      transition: background 0.15s;
+    }
+
+    .reason-card:hover {
+      box-shadow: 0 4px 20px rgba(30,58,95,0.10);
+      border-color: var(--cerulean-100);
+      transform: translateY(-1px);
+    }
+
+    .reason-card.selected {
+      border-color: var(--cerulean-500);
+      box-shadow: 0 0 0 3px rgba(46,134,171,0.12);
+    }
+
+    .reason-card.selected::before { background: var(--cerulean-500); }
+
+    .reason-card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+    }
+
+    .reason-card-icon svg { width: 20px; height: 20px; }
+    .reason-card-icon.cerulean { background: var(--cerulean-50); color: var(--cerulean-600); }
+    .reason-card-icon.meadow   { background: var(--meadow-50);   color: var(--meadow-500); }
+    .reason-card-icon.sunrise  { background: var(--sunrise-50);  color: var(--sunrise-500); }
+    .reason-card-icon.navy     { background: var(--navy-50);     color: var(--navy-700); }
+    .reason-card-icon.amber    { background: var(--amber-50);    color: var(--amber-500); }
+    .reason-card-icon.neutral  { background: var(--neutral-100); color: var(--neutral-500); }
+
+    .reason-card-title {
+      font-size: 14px; font-weight: 600; color: var(--navy-900); margin-bottom: 4px;
+    }
+
+    .reason-card-desc {
+      font-size: 12.5px; color: var(--neutral-500); line-height: 1.55; margin-bottom: 12px;
+    }
+
+    .reason-card-route {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 600; color: var(--cerulean-600);
+    }
+
+    .reason-card-route svg { width: 11px; height: 11px; }
+
+    /* Selected indicator */
+    .reason-card .check {
+      position: absolute; top: 12px; right: 12px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--cerulean-500); border: 2px solid var(--cerulean-500);
+      display: none; align-items: center; justify-content: center;
+    }
+
+    .reason-card .check svg { width: 10px; height: 10px; color: #fff; }
+    .reason-card.selected .check { display: flex; }
+
+    /* ── CONTACT FORM ── */
+    .form-wrapper {
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 14px;
+      padding: 32px; margin-top: 10px;
+    }
+
+    .form-title {
+      font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+      color: var(--navy-900); margin-bottom: 6px;
+    }
+
+    .form-subtitle {
+      font-size: 13.5px; color: var(--neutral-500); margin-bottom: 24px; line-height: 1.55;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-row.single { grid-template-columns: 1fr; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group:last-child { margin-bottom: 0; }
+
+    label {
+      font-size: 13px; font-weight: 600; color: var(--navy-900);
+    }
+
+    label .req { color: var(--cerulean-500); margin-left: 2px; }
+    label .optional { font-size: 11px; font-weight: 400; color: var(--neutral-400); margin-left: 4px; }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%; padding: 10px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px;
+      color: var(--neutral-900);
+      background: var(--neutral-50); border: 1px solid var(--neutral-300);
+      border-radius: 8px; outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+      -webkit-appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--cerulean-500);
+      box-shadow: 0 0 0 3px rgba(46,134,171,0.12);
+      background: #fff;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--neutral-400); }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    textarea { resize: vertical; min-height: 120px; line-height: 1.65; }
+
+    .field-hint {
+      font-size: 12px; color: var(--neutral-400); line-height: 1.5;
+    }
+
+    .form-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid var(--neutral-100);
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .form-footer-note {
+      font-size: 12.5px; color: var(--neutral-400); line-height: 1.5; flex: 1;
+    }
+
+    .form-footer-note a { color: var(--cerulean-600); text-decoration: none; }
+    .form-footer-note a:hover { text-decoration: underline; }
+
+    .btn-submit {
+      background: var(--navy-900); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      padding: 11px 28px; border: none; border-radius: 8px;
+      cursor: pointer; letter-spacing: 0.2px;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+      display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    }
+
+    .btn-submit:hover {
+      background: var(--navy-800);
+      box-shadow: 0 4px 12px rgba(30,58,95,0.25);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit svg { width: 14px; height: 14px; }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center; padding: 48px 24px;
+    }
+
+    .form-success.visible { display: block; }
+    .form-wrapper.submitted .form-fields { display: none; }
+    .form-wrapper.submitted .form-success { display: block; }
+
+    .success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--meadow-50); border: 2px solid var(--meadow-100);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .success-icon svg { width: 24px; height: 24px; color: var(--meadow-500); }
+
+    .success-title {
+      font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
+      color: var(--navy-900); margin-bottom: 8px;
+    }
+
+    .success-message {
+      font-size: 14px; color: var(--neutral-500); line-height: 1.7; max-width: 400px; margin: 0 auto;
+    }
+
+    /* ── DIRECT EMAIL SECTION ── */
+    .email-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0;
+    }
+
+    .email-card {
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 10px;
+      padding: 18px 20px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .email-card:hover {
+      border-color: var(--cerulean-100);
+      box-shadow: 0 2px 12px rgba(30,58,95,0.07);
+    }
+
+    .email-card-label {
+      font-size: 11px; font-weight: 600; color: var(--neutral-400);
+      letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 4px;
+    }
+
+    .email-card-address {
+      font-size: 14px; font-weight: 600; color: var(--cerulean-600);
+      text-decoration: none; display: block; margin-bottom: 4px;
+    }
+
+    .email-card-address:hover { text-decoration: underline; }
+
+    .email-card-desc {
+      font-size: 12px; color: var(--neutral-500); line-height: 1.5;
+    }
+
+    .email-card-sla {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 600;
+      color: var(--meadow-700); margin-top: 8px;
+    }
+
+    .email-card-sla::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--meadow-500);
+    }
+
+    /* ── PILOT INFO ── */
+    .pilot-card {
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+      border-radius: 14px; padding: 32px 36px; margin: 24px 0;
+      position: relative; overflow: hidden;
+    }
+
+    .pilot-card::after {
+      content: '';
+      position: absolute; bottom: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(240,131,48,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pilot-card-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--sunrise-400); margin-bottom: 10px;
+    }
+
+    .pilot-card-title {
+      font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
+      color: #fff; margin-bottom: 10px; line-height: 1.3;
+    }
+
+    .pilot-card-body {
+      font-size: 14px; color: var(--navy-100); opacity: 0.85;
+      line-height: 1.7; max-width: 540px; margin-bottom: 20px;
+    }
+
+    .pilot-card-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sunrise-500); color: #fff;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.2px;
+      padding: 10px 22px; border-radius: 8px; text-decoration: none;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+
+    .pilot-card-cta:hover {
+      background: var(--sunrise-400);
+      box-shadow: 0 4px 16px rgba(240,131,48,0.35);
+      transform: translateY(-1px);
+    }
+
+    .pilot-card-cta svg { width: 13px; height: 13px; }
+
+    /* ── WHAT TO EXPECT ── */
+    .expect-list {
+      margin: 20px 0; display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .expect-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: #fff; border: 1px solid var(--neutral-200);
+      border-radius: 10px; padding: 16px 18px;
+    }
+
+    .expect-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--cerulean-50); border: 1.5px solid var(--cerulean-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--cerulean-700); flex-shrink: 0;
+    }
+
+    .expect-body { flex: 1; }
+    .expect-title { font-size: 14px; font-weight: 600; color: var(--navy-900); margin-bottom: 3px; }
+    .expect-desc  { font-size: 13px; color: var(--neutral-500); line-height: 1.55; }
+
+    /* Footer */
+    footer {
+      background: var(--navy-950); padding: 40px; text-align: center;
+    }
+
+    .footer-logo {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; }
+
+    .footer-links {
+      display: flex; justify-content: center; gap: 24px;
+      margin-bottom: 16px; flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px; color: var(--navy-100); opacity: 0.6;
+      text-decoration: none; transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+    .footer-copy { font-size: 12px; color: var(--navy-100); opacity: 0.4; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-body { grid-template-columns: 1fr; padding: 36px 20px 60px; gap: 0; }
+      .toc { display: none; }
+      .hero { padding: 48px 20px 56px; }
+      nav { padding: 0 20px; }
+      .intro-banner { grid-template-columns: 1fr; padding: 20px; }
+      .intro-item + .intro-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+      .reason-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .email-row { grid-template-columns: 1fr; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="nav-wordmark">Wethr</span>
+    </a>
+    <span class="nav-badge">Contact</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Get in touch</div>
+      <h1>We'd love to hear<br>from you.</h1>
+      <p>Whether you're curious about the pilot, need help with your account, or just want to talk through whether Wethr is a fit for your church — we respond personally, not with a bot.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5V7l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          1 business day response
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 12.5c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Real people, not a ticket queue
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.8 5.2l4.2.6-3 2.9.7 4.1L7 10.8l-3.7 2 .7-4.1L1 5.8l4.2-.6z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Currently accepting pilot churches
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-body">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#reach-out" class="active">Send a message</a></li>
+        <li><a href="#pilot">Join the pilot</a></li>
+        <li><a href="#direct">Direct email</a></li>
+        <li><a href="#what-to-expect">What to expect</a></li>
+      </ul>
+
+      <div class="toc-divider"></div>
+
+      <div class="toc-contact-card">
+        <div class="label">Quickest path</div>
+        <a href="mailto:hello@wethr.co">hello@wethr.co</a>
+        <p>For general inquiries, pilot interest, and anything else.</p>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- Intro banner -->
+      <div class="intro-banner">
+        <div class="intro-item">
+          <div class="intro-icon cerulean">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M2 3h12a1 1 0 011 1v7a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4"/><path d="M1 4.5l7 4.5 7-4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="intro-title">Four email addresses.</div>
+          <div class="intro-desc">Each routed to the right person — not a shared inbox where things get lost.</div>
+        </div>
+        <div class="intro-item">
+          <div class="intro-icon meadow">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6.5" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M2 14c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="intro-title">Always a human.</div>
+          <div class="intro-desc">No auto-replies, no AI support bots. A person on the Wethr team reads and answers every message.</div>
+        </div>
+        <div class="intro-item">
+          <div class="intro-icon sunrise">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 2.5L9.5 6H13l-3 2.2 1.1 3.8L8 10 4.9 12l1.1-3.8L3 6h3.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="intro-title">Pilot spots are limited.</div>
+          <div class="intro-desc">We're selective about who joins early — because we want to actually serve each church well, not just grow fast.</div>
+        </div>
+      </div>
+
+      <!-- 1. Send a message -->
+      <section class="section" id="reach-out">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Send a message</h2>
+        </div>
+        <p>Tell us a little about your church and what you're looking for. We'll read it and reply with something useful — not a generic drip sequence.</p>
+
+        <!-- Reason selector -->
+        <div class="reason-grid">
+          <div class="reason-card" onclick="selectReason(this, 'pilot')" data-reason="pilot">
+            <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="reason-card-icon sunrise">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.4 7.2H18L13.3 10.5L15.1 16L10 12.5L4.9 16L6.7 10.5L2 7.2H7.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="reason-card-title">Join the pilot program</div>
+            <div class="reason-card-desc">Interested in bringing Wethr to your church as an early adopter.</div>
+            <div class="reason-card-route">
+              <svg viewBox="0 0 11 11" fill="none"><path d="M2 9L9 2M9 2H4.5M9 2v4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              hello@wethr.co
+            </div>
+          </div>
+          <div class="reason-card" onclick="selectReason(this, 'support')" data-reason="support">
+            <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="reason-card-icon cerulean">
+              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 7.5C7.5 6.1 8.6 5 10 5s2.5 1.1 2.5 2.5c0 1.7-2.5 2.5-2.5 4M10 15h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="reason-card-title">Account support</div>
+            <div class="reason-card-desc">Need help with an existing Wethr account, setup, or a feature question.</div>
+            <div class="reason-card-route">
+              <svg viewBox="0 0 11 11" fill="none"><path d="M2 9L9 2M9 2H4.5M9 2v4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              support@wethr.co
+            </div>
+          </div>
+          <div class="reason-card" onclick="selectReason(this, 'billing')" data-reason="billing">
+            <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="reason-card-icon meadow">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 8h15M6 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="reason-card-title">Billing or payments</div>
+            <div class="reason-card-desc">A question or issue related to your subscription, invoices, or payment method.</div>
+            <div class="reason-card-route">
+              <svg viewBox="0 0 11 11" fill="none"><path d="M2 9L9 2M9 2H4.5M9 2v4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              billing@wethr.co
+            </div>
+          </div>
+          <div class="reason-card" onclick="selectReason(this, 'other')" data-reason="other">
+            <div class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="reason-card-icon neutral">
+              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="1.5" fill="currentColor"/><circle cx="4" cy="10" r="1.5" fill="currentColor"/><circle cx="16" cy="10" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <div class="reason-card-title">Something else</div>
+            <div class="reason-card-desc">Press, partnerships, feedback, or a question we haven't anticipated.</div>
+            <div class="reason-card-route">
+              <svg viewBox="0 0 11 11" fill="none"><path d="M2 9L9 2M9 2H4.5M9 2v4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              hello@wethr.co
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="form-wrapper" id="contact-form-wrapper">
+          <div class="form-fields">
+            <div class="form-title" id="form-title">Tell us about your church</div>
+            <div class="form-subtitle" id="form-subtitle">We'll read every submission personally and follow up within one business day.</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First name <span class="req">*</span></label>
+                <input type="text" id="first-name" placeholder="Sarah" autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last name <span class="req">*</span></label>
+                <input type="text" id="last-name" placeholder="Kimura" autocomplete="family-name" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email address <span class="req">*</span></label>
+                <input type="email" id="email" placeholder="sarah@gracecommunitychurch.org" autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="role">Your role <span class="optional">(optional)</span></label>
+                <select id="role">
+                  <option value="" disabled selected>Select your role</option>
+                  <option>Senior Pastor</option>
+                  <option>Associate Pastor</option>
+                  <option>Executive Pastor</option>
+                  <option>Worship Leader</option>
+                  <option>Ministry Director</option>
+                  <option>Church Administrator</option>
+                  <option>Volunteer Coordinator</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row single" id="church-row">
+              <div class="form-group">
+                <label for="church">Church name <span class="optional">(optional)</span></label>
+                <input type="text" id="church" placeholder="Grace Community Church" />
+              </div>
+            </div>
+
+            <div class="form-row single" id="size-row">
+              <div class="form-group">
+                <label for="size">Approximate congregation size <span class="optional">(optional)</span></label>
+                <select id="size">
+                  <option value="" disabled selected>Select a range</option>
+                  <option>Under 100</option>
+                  <option>100–200</option>
+                  <option>200–350</option>
+                  <option>350–500</option>
+                  <option>500+</option>
+                </select>
+                <span class="field-hint">Wethr is designed for congregations between 100–500 members.</span>
+              </div>
+            </div>
+
+            <div class="form-row single">
+              <div class="form-group">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" placeholder="Tell us a bit about your church, what you're currently using to manage Sunday services and volunteers, and what's not working about it..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <div class="form-footer-note">
+                We'll only use this to respond to your message. No spam, no lists. See our <a href="bellwether-privacy.html">Privacy Policy</a>.
+              </div>
+              <button class="btn-submit" onclick="submitForm()">
+                Send message
+                <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-success">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="success-title">Message received.</div>
+            <div class="success-message">Thanks for reaching out. Someone on the Wethr team will read your message and reply within one business day — personally, not from a template.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Pilot program -->
+      <section class="section" id="pilot">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>Join the pilot</h2>
+        </div>
+
+        <p>Wethr is currently in an early access pilot with a small group of churches. Pilot churches get hands-on onboarding, direct access to the team, and pricing that reflects the trust they're placing in us at this stage.</p>
+
+        <div class="pilot-card">
+          <div class="pilot-card-eyebrow">Phase 1 · Early access</div>
+          <div class="pilot-card-title">We're looking for churches that are<br>genuinely frustrated with the status quo.</div>
+          <div class="pilot-card-body">If you're running Sunday coordination out of spreadsheets, group texts, and Planning Center — and it's becoming real work — that's exactly who Wethr is built for. We're selective about pilot churches because we want to serve each one well, not just grow fast. Pilot spots are limited.</div>
+          <a href="mailto:hello@wethr.co?subject=Pilot%20program%20interest" class="pilot-card-cta">
+            Express interest
+            <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2v5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <p style="margin-top: 20px;">When you reach out about the pilot, it helps to know:</p>
+
+        <div class="email-row" style="margin-top:12px;">
+          <div class="email-card">
+            <div class="email-card-label">Congregation size</div>
+            <div class="email-card-desc">We're focused on churches in the 100–500 member range — the sweet spot where spreadsheets are breaking down but enterprise software is overkill.</div>
+          </div>
+          <div class="email-card">
+            <div class="email-card-label">Current tools</div>
+            <div class="email-card-desc">What you're using today for volunteer scheduling and service planning — and what's not working about it. This helps us understand the problem you actually need solved.</div>
+          </div>
+          <div class="email-card">
+            <div class="email-card-label">Your role</div>
+            <div class="email-card-desc">Whether you're the pastor, an admin, or a worship leader — the person we onboard needs to have the authority to make the call for your church.</div>
+          </div>
+          <div class="email-card">
+            <div class="email-card-label">Timeline</div>
+            <div class="email-card-desc">No pressure to move fast — but knowing whether you're looking to get started in weeks or months helps us plan the onboarding queue.</div>
+          </div>
+        </div>
+
+        <div class="callout warm" style="margin-top:24px;">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11v4m0 3h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">Pilot pricing is being worked out church-by-church</div>
+            <p class="callout-text">Formal pricing hasn't been finalized. Pilot churches are joining under early-access arrangements, and we're committed to treating their contribution fairly when production pricing launches. The goal is a flat per-church subscription — no per-seat fees, no per-member pricing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Direct email -->
+      <section class="section" id="direct">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>Direct email</h2>
+        </div>
+        <p>Prefer to skip the form? Each address below goes directly to the right person on the team.</p>
+
+        <div class="email-row">
+          <div class="email-card">
+            <div class="email-card-label">General &amp; pilot inquiries</div>
+            <a href="mailto:hello@wethr.co" class="email-card-address">hello@wethr.co</a>
+            <div class="email-card-desc">Pilot interest, general questions, partnerships, press.</div>
+            <div class="email-card-sla">2–3 business days</div>
+          </div>
+          <div class="email-card">
+            <div class="email-card-label">Account support</div>
+            <a href="mailto:support@wethr.co" class="email-card-address">support@wethr.co</a>
+            <div class="email-card-desc">Feature questions, onboarding, anything with your existing account.</div>
+            <div class="email-card-sla">1 business day</div>
+          </div>
+          <div class="email-card">
+            <div class="email-card-label">Billing</div>
+            <a href="mailto:billing@wethr.co" class="email-card-address">billing@wethr.co</a>
+            <div class="email-card-desc">Subscription questions, invoices, payment issues, cancellations.</div>
+            <div class="email-card-sla">1 business day</div>
+          </div>
+          <div class="email-card">
+            <div class="email-card-label">Security &amp; privacy</div>
+            <a href="mailto:security@wethr.co" class="email-card-address">security@wethr.co</a>
+            <div class="email-card-desc">Vulnerability reports, data incidents, privacy requests.</div>
+            <div class="email-card-sla">48 hours</div>
+          </div>
+        </div>
+
+        <div class="callout info" style="margin-top:4px;">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5m0-8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">We work Monday through Friday</div>
+            <p class="callout-text">Response times are measured in business days. If you write in over the weekend, we'll get back to you Monday. For urgent issues with an active account, please include "urgent" in your subject line.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. What to expect -->
+      <section class="section" id="what-to-expect">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>What to expect</h2>
+        </div>
+        <p>Here's what happens after you reach out — whether it's about the pilot or an existing account.</p>
+
+        <div class="expect-list">
+          <div class="expect-item">
+            <div class="expect-num">1</div>
+            <div class="expect-body">
+              <div class="expect-title">A real reply, within one business day</div>
+              <div class="expect-desc">Someone on the Wethr team will read your message and respond personally. No auto-replies, no case numbers, no waiting for a ticket to route to the right queue.</div>
+            </div>
+          </div>
+          <div class="expect-item">
+            <div class="expect-num">2</div>
+            <div class="expect-body">
+              <div class="expect-title">An honest conversation about fit</div>
+              <div class="expect-desc">If Wethr isn't the right tool for your church right now, we'll say so. We'd rather tell you that upfront than onboard a church we can't actually serve well.</div>
+            </div>
+          </div>
+          <div class="expect-item">
+            <div class="expect-num">3</div>
+            <div class="expect-body">
+              <div class="expect-title">For pilot interest: a short discovery call</div>
+              <div class="expect-desc">If the fit looks right, we'll schedule a 20–30 minute call to understand your setup, walk you through how Wethr works, and answer any questions your team has before committing.</div>
+            </div>
+          </div>
+          <div class="expect-item">
+            <div class="expect-num">4</div>
+            <div class="expect-body">
+              <div class="expect-title">For new churches: white-glove onboarding</div>
+              <div class="expect-desc">If you decide to move forward, the Wethr team handles all the setup — importing your directory, configuring your teams, provisioning your subdomain. You receive a fully configured account, not a blank slate. Typical timeline is 3–5 business days from when we receive your data.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout success" style="margin-top:8px;">
+          <svg class="callout-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="callout-body">
+            <div class="callout-title">No sales pressure, ever</div>
+            <p class="callout-text">We're not running a funnel. If you reach out, you'll have a conversation — not a sequence of follow-up emails pushing you toward a decision. Take the time you need.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+      <span class="footer-wordmark">Wethr</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Landing</a>
+      <a href="faq.html">FAQs</a>
+      <a href="preview.html">App Preview</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="security.html">Security</a>
+      <a href="support.html">Support</a> 
+      <a href="contact.html">Contact</a>
+      <a href="ai.html">AI Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
+  </footer>
+
+  <script>
+    // Reason card selection
+    const reasonConfig = {
+      pilot: {
+        title: "Tell us about your church",
+        subtitle: "We'd love to understand your situation before we talk — what you're currently using, how big your church is, and what's not working."
+      },
+      support: {
+        title: "How can we help?",
+        subtitle: "Tell us what's going on and include your church subdomain if you have one. We'll get back to you within one business day."
+      },
+      billing: {
+        title: "Billing question or issue",
+        subtitle: "Describe what you're seeing and we'll sort it out. Include your church name or subdomain so we can look up your account quickly."
+      },
+      other: {
+        title: "What's on your mind?",
+        subtitle: "We read everything. Tell us what you're reaching out about."
+      }
+    };
+
+    function selectReason(card, reason) {
+      document.querySelectorAll('.reason-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      if (reasonConfig[reason]) {
+        document.getElementById('form-title').textContent = reasonConfig[reason].title;
+        document.getElementById('form-subtitle').textContent = reasonConfig[reason].subtitle;
+      }
+      // Scroll to form smoothly
+      document.getElementById('contact-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Form submit (demo — shows success state)
+    function submitForm() {
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName  = document.getElementById('last-name').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const message   = document.getElementById('message').value.trim();
+
+      if (!firstName || !lastName || !email || !message) {
+        // Simple inline validation highlight
+        [
+          { id: 'first-name', val: firstName },
+          { id: 'last-name',  val: lastName  },
+          { id: 'email',      val: email     },
+          { id: 'message',    val: message   }
+        ].forEach(({ id, val }) => {
+          const el = document.getElementById(id);
+          if (!val) {
+            el.style.borderColor = '#C0293F';
+            el.style.boxShadow = '0 0 0 3px rgba(192,41,63,0.10)';
+            el.addEventListener('input', () => {
+              el.style.borderColor = '';
+              el.style.boxShadow = '';
+            }, { once: true });
+          }
+        });
+        return;
+      }
+
+      // Show success state
+      document.getElementById('contact-form-wrapper').classList.add('submitted');
+    }
+
+    // TOC scroll spy
+    const sections = document.querySelectorAll('.section');
+    const tocLinks  = document.querySelectorAll('.toc-list a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>

@@ -312,13 +312,58 @@
     .cta-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.7); font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 9px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
     .cta-btn-outline:hover { background: rgba(255,255,255,0.06); color: white; }
 
-    /* ── FOOTER ── */
-    footer { background: var(--navy-950); padding: 36px 48px; border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .footer-brand { display: flex; align-items: center; gap: 10px; }
-    .footer-wordmark { font-family: 'Lora', serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.65); }
-    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 3px; margin-left: 42px; }
-    .footer-right { font-size: 12px; color: rgba(255,255,255,0.22); text-align: right; line-height: 1.7; }
+    /* Footer */
+    footer {
+      background: var(--navy-950);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--navy-100);
+      opacity: 0.4;
+    }
 
     /* ── ANIMATIONS ── */
     .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -361,7 +406,9 @@
     <li><a href="#features">Phase 1 Features</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <!-- <li><a href="./wethr-preview.html">Preview the App</a></li> -->
-    <li><a href="./wethr-faq.html">FAQs</a></li>
+    <li><a href="./faq.html">FAQs</a></li>
+    <li><a href="./contact.html">Contact</a></li>
+    <li><a href="./support.html">Support</a></li>
     <li><a href="#cta" class="nav-cta">Request a Demo</a></li>
   </ul>
 </nav>
@@ -781,19 +828,22 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">
-        <img src="./wethr_logo-192.png" alt="Wethr" class="nav-logo">
-        <span class="footer-wordmark">Wethr</span>
-      </div>
-      <div class="footer-tagline">Descended from Bellwether · Built for the church at your scale.</div>
-    </div>
-    <div class="footer-right">
-      <div>Phase 1 · Foundation Release · 2026</div>
-      <div>hello@wethr.co</div>
-    </div>
+  <div class="footer-logo">
+    <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+    <span class="footer-wordmark">Wethr</span>
   </div>
+  <div class="footer-links">
+    <a href="index.html">Landing</a>
+    <a href="faq.html">FAQs</a>
+    <a href="preview.html">App Preview</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="tos.html">Terms of Service</a>
+    <a href="security.html">Security</a>
+    <a href="support.html">Support</a> 
+    <a href="contact.html">Contact</a>
+    <a href="ai.html">AI Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
 </footer>
 
 <script>

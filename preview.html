@@ -15,6 +15,8 @@
       --navy-900: #1E3A5F;
       --navy-800: #254873;
       --navy-700: #2D5886;
+      --navy-100: #D6E4F0;
+      --navy-50: #EBF2F9;
       --cerulean-700: #1A6B8A;
       --cerulean-600: #2180A4;
       --cerulean-500: #2E86AB;
@@ -282,6 +284,59 @@
       color: var(--meadow-700);
     }
 
+    /* Footer */
+    footer {
+      background: var(--navy-950);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--sunrise-400), var(--cerulean-500));
+      border-radius: 7px;
+    }
+
+    .footer-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--navy-100);
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--navy-100);
+      opacity: 0.4;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
@@ -316,24 +371,10 @@
 <!-- NAV -->
 <nav>
   <a href="wethr-pitch-brochure.html" class="nav-brand">
-    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-      <rect width="34" height="34" rx="8" fill="#0F2337"/>
-      <line x1="17" y1="4.5" x2="17" y2="7" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
-      <line x1="23.2" y1="6.3" x2="21.6" y2="7.9" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
-      <line x1="25.5" y1="12.5" x2="23" y2="12.5" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
-      <line x1="10.8" y1="6.3" x2="12.4" y2="7.9" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
-      <line x1="8.5" y1="12.5" x2="11" y2="12.5" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
-      <circle cx="17" cy="12.5" r="2.8" fill="#F08330"/>
-      <polygon points="17,12 11,18 23,18" fill="#1E3A5F"/>
-      <rect x="15.8" y="9.5" width="2.4" height="4" rx="0.5" fill="#1E3A5F"/>
-      <line x1="14.8" y1="10.8" x2="19.2" y2="10.8" stroke="#F08330" stroke-width="0.9" stroke-linecap="round"/>
-      <rect x="12" y="18" width="10" height="7" rx="1" fill="#2E86AB"/>
-      <rect x="15.3" y="20.5" width="3.4" height="4.5" rx="1.7" fill="#0F2337"/>
-      <path d="M3 27.5 Q6 26 9 27.5 Q12 29 15 27.5 Q18 26 21 27.5 Q24 29 27 27.5 Q30 26 33 27.5" stroke="#4A9EC1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.85"/>
-    </svg>
+    <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
     <span class="nav-wordmark">Wethr</span>
   </a>
-  <a href="wethr-pitch-brochure.html" class="nav-back">← Back to Pitch</a>
+  <a href="index.html" class="nav-back">← Back to Pitch</a>
 </nav>
 
 <!-- HERO -->
@@ -953,17 +994,23 @@
 </main>
 
 <!-- FOOTER -->
-<footer style="background:var(--navy-950);padding:36px 48px;border-top:1px solid rgba(255,255,255,0.05);margin-top:0">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between">
-    <div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <svg width="28" height="28" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#0F2337"/><line x1="17" y1="4.5" x2="17" y2="7" stroke="#F08330" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/><circle cx="17" cy="12.5" r="2.8" fill="#F08330"/><polygon points="17,12 11,18 23,18" fill="#1E3A5F"/><rect x="15.8" y="9.5" width="2.4" height="4" rx="0.5" fill="#1E3A5F"/><line x1="14.8" y1="10.8" x2="19.2" y2="10.8" stroke="#F08330" stroke-width="0.9" stroke-linecap="round"/><rect x="12" y="18" width="10" height="7" rx="1" fill="#2E86AB"/><rect x="15.3" y="20.5" width="3.4" height="4.5" rx="1.7" fill="#0F2337"/><path d="M3 27.5 Q6 26 9 27.5 Q12 29 15 27.5 Q18 26 21 27.5 Q24 29 27 27.5 Q30 26 33 27.5" stroke="#4A9EC1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.8"/></svg>
-        <span style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:rgba(255,255,255,0.65)">Wethr</span>
-      </div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:6px;margin-left:38px">App Preview · Phase 1 · 2026</div>
-    </div>
-    <a href="wethr-pitch-brochure.html" style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.4);text-decoration:none">← Back to Pitch Brochure</a>
+<footer>
+  <div class="footer-logo">
+    <img src="./wethr_logo-192.png" alt="Wethr" class="footer-logo-mark">
+    <span class="footer-wordmark">Wethr</span>
   </div>
+  <div class="footer-links">
+    <a href="index.html">Landing</a>
+    <a href="faq.html">FAQs</a>
+    <a href="preview.html">App Preview</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="tos.html">Terms of Service</a>
+    <a href="security.html">Security</a>
+    <a href="support.html">Support</a> 
+    <a href="contact.html">Contact</a>
+    <a href="ai.html">AI Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 Wethr. Built for churches, with care.</div>
 </footer>
 
 <script>
