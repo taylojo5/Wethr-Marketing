@@ -141,6 +141,20 @@ nav::after {
 .nav-cta:hover {
   background: var(--sunrise-600) !important;
 }
+.nav-links a[aria-current="page"] {
+  color: #fff;
+  position: relative;
+}
+.nav-links a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--sunrise-500);
+  border-radius: 1px;
+}
 
 /* ── FOOTER ── */
 footer {
